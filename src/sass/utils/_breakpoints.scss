@@ -4,7 +4,7 @@
     $desktop: 1280px;
 
     @if $range ==mobile-only {
-        @media (max-width: #{$tablet - 0.02}) {
+        @media (max-width: $tablet) {
             @content;
         }
     }
@@ -16,7 +16,7 @@
     }
 
     @else if $range ==tablet-only {
-        @media (min-width: $tablet ) and (max-width:#{$desktop - 0.02}) {
+        @media (min-width: $tablet ) and (max-width: $desktop) {
             @content;
         }
     }
@@ -28,25 +28,13 @@
     }
 
     @else if $range ==no-desktop {
-        @media (max-width: #{$desktop - 0.02}) {
+        @media (max-width: $desktop) {
             @content;
         }
     }
 
     @else if $range ==desktop {
         @media (min-width: $desktop) {
-            @content;
-        }
-    }
-
-    @else if $range ==retina {
-
-        @media screen and (min-device-pixel-ratio: 2),
-        screen and (-moz-min-device-pixel-ratio: 2),
-        screen and (-o-min-device-pixel-ratio: 2/1),
-        screen and (-webkit-min-device-pixel-ratio: 2),
-        screen and (min-resolution: 192dpi),
-        screen and (min-resolution: 2dppx) {
             @content;
         }
     }
