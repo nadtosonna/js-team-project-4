@@ -20,6 +20,7 @@ const addHeaderSearchForm = () => {
 const addHeaderBtnList = () => {
   const searchForm = getRefs().searchForm;
   const headerBtnList = getRefs().headerBtnList;
+
   if (searchForm) {
     searchForm.remove();
   }
