@@ -1,15 +1,40 @@
 .header {
-  background-color: black;
+  height: 230px;
+
+  @media (min-dvice-pixel-retio: 1),
+    (min-resolution: 96dpi),
+    (min-resolution: 1dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(#000000, 0.4),
+        rgba(#000000, 0.4)
+      ),
+      url(../images/header-bg/home-header-bg-mobile.jpg);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(#000000, 0.4),
+        rgba(#000000, 0.4)
+      ),
+      url(../images/header-bg/home-header-bg-mobile@2x.jpg);
+  }
+
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.header-container {
+  padding-top: 40px;
 }
 
 .naw-wrapper {
   display: flex;
   justify-content: space-between;
 }
-
-// .header-container {
-
-// }
 
 .naw-list {
   display: flex;
