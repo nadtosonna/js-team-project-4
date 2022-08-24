@@ -1,0 +1,25 @@
+.header {
+  background-color: black;
+}
+
+.naw-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+// .header-container {
+
+// }
+
+.naw-list {
+  display: flex;
+}
+// .naw-list::before {
+//   content: '';
+//   width: 24px;
+//   display: block;
+//   background-image: url(../images/logo-icon.svg);
+// }
+.logo-icon {
+  stroke: green;
+}
