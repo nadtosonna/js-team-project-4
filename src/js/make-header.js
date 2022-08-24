@@ -2,8 +2,7 @@ import { refs } from './common/refs';
 import logoIcon from '../images/header/logo-icon.svg';
 import search from '../images/header/search.svg';
 
-export default createHeader = () => {
-  console.log(document.documentElement.clientWidth);
+createHeader = () => {
   return (refs.header.innerHTML = markupHeaderMobile());
 };
 
