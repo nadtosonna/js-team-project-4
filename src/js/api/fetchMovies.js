@@ -10,18 +10,17 @@ export async function fetchTrendingMovies(page) {
   return response.data;
 }
 
-// export async function fetchMovies(query, page) {
-//     const response = await axios.get(`${SEARCH_URL}?api_key=${API_KEY}&language=en-US&include_adult=false`, {
-//         params: {
-//         query: query.length ? query : null,
-//         page,
-//       },
-//     },
-//     );
-//     console.log(response.data);
-//     return response.data;
-// }
-
+export async function fetchMovies(query, page) {
+    const response = await axios.get(`${SEARCH_URL}?api_key=${API_KEY}&language=en-US&include_adult=false`, {
+        params: {
+        query: query.length ? query : null,
+        page,
+      },
+    },
+    );
+    console.log(response.data);
+    return response.data;
+}
 
 // export default class trendingMovies {
 //     constructor() {
