@@ -1,4 +1,4 @@
-import refs from './common/refs';
+import { refs } from './common/refs';
 
 export function showLoader() {
   refs.loader.classList.remove('is-hidden');
