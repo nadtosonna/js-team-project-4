@@ -20,7 +20,7 @@ const addHeaderSearchForm = () => {
 addHeaderBtnList = () => {
   const searchForm = getRefs().searchForm;
   const headerBtnList = getRefs().headerBtnList;
-  console.log(headerBtnList);
+
   if (searchForm) {
     searchForm.remove();
   }
