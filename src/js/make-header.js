@@ -10,14 +10,14 @@ const addHeaderSearchForm = () => {
     headerBtnList.remove();
   }
   if (searchForm) {
-    searchForm.remove();
+    return;
   }
   refs.headerContainer.insertAdjacentHTML(
     'beforeend',
     markupHeaderSearchForm()
   );
 };
-addHeaderBtnList = () => {
+const addHeaderBtnList = () => {
   const searchForm = getRefs().searchForm;
   const headerBtnList = getRefs().headerBtnList;
 
