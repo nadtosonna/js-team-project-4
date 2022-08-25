@@ -2,7 +2,15 @@ import getRefs from './common/refs';
 import search from '../images/header/search.svg';
 const refs = getRefs();
 
-const addHeaderSearchForm = () => {
+addHeaderSearchForm();
+const searchForm = getRefs().searchForm;
+searchForm.addEventListener('input', searchMovies);
+
+function searchMovies(e) {
+  console.log(e.currentTarget.elements.search.value);
+}
+
+function addHeaderSearchForm() {
   const searchForm = getRefs().searchForm;
   const headerBtnList = getRefs().headerBtnList;
 
@@ -16,8 +24,8 @@ const addHeaderSearchForm = () => {
     'beforeend',
     markupHeaderSearchForm()
   );
-};
-const addHeaderBtnList = () => {
+}
+function addHeaderBtnList() {
   const searchForm = getRefs().searchForm;
   const headerBtnList = getRefs().headerBtnList;
 
@@ -29,13 +37,13 @@ const addHeaderBtnList = () => {
     return;
   }
   refs.headerContainer.insertAdjacentHTML('beforeend', markupHeaderBtnList());
-};
+}
 
-const markupHeaderSearchForm = () => {
+function markupHeaderSearchForm() {
   return `
-    <form class="search-form">
+    <form class="search-form" data-id = "search-form">
     <label class="search-form__field">
-    <input class="search-form__input" type="text" name="name" placeholder = 'Movie search' />
+    <input class="search-form__input" type="text" name="search" placeholder = 'Movie search' />
     </label>
     <img
         class="search-icon"
@@ -44,7 +52,7 @@ const markupHeaderSearchForm = () => {
         height="12"
         alt="logo icon"
       />`;
-};
+}
 
 const markupHeaderBtnList = () => {
   return `<div class="header-btn-list">
@@ -53,14 +61,13 @@ const markupHeaderBtnList = () => {
 </div>`;
 };
 
-addHeaderSearchForm();
-
 const onClickLibrary = e => {
   refs.library.classList.add('current');
   refs.home.classList.remove('current');
   refs.header.classList.remove('home-header-bg');
   refs.header.classList.add('library-header-bg');
   addHeaderBtnList();
+  searchForm.addEventListener('input', searchMovies);
 };
 
 const onClickHome = e => {
@@ -68,7 +75,10 @@ const onClickHome = e => {
   refs.home.classList.add('current');
   refs.header.classList.add('home-header-bg');
   refs.header.classList.remove('library-header-bg');
+
   addHeaderSearchForm();
+  const searchForm = getRefs().searchForm;
+  searchForm.addEventListener('input', searchMovies);
 };
 
 refs.library.addEventListener('click', onClickLibrary);

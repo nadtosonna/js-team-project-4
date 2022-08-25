@@ -1,9 +1,8 @@
 .header {
   height: 230px;
-  max-width: 1600px;
   margin: 0 auto;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% bottom;
   background-repeat: no-repeat;
 }
 
@@ -132,10 +131,6 @@
   border-color: transparent;
   color: white;
 }
-
-// .header-btn-current {
-
-// }
 
 @include breakpoints(tablet) {
   .header {
