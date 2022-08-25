@@ -3,12 +3,12 @@ import search from '../images/header/search.svg';
 const refs = getRefs();
 
 addHeaderSearchForm();
-const searchForm = getRefs().searchForm;
-searchForm.addEventListener('input', searchMovies);
+// const searchForm = getRefs().searchForm;
+// searchForm.addEventListener('input', searchMovies);
 
-function searchMovies(e) {
-  console.log(e.currentTarget.elements.search.value);
-}
+// function searchMovies(e) {
+//   console.log(e.currentTarget.elements.search.value);
+// }
 
 function addHeaderSearchForm() {
   const searchForm = getRefs().searchForm;
