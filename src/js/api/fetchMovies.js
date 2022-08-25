@@ -39,3 +39,4 @@ export async function fetchMoviesByID(id) {
     console.log(error);
   }
 }
+
