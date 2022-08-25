@@ -7,7 +7,10 @@ async function getTrendingMovies(page) {
     try {
         showLoader();
         const { results } = await fetchTrendingMovies(page);
-        console.log(results);
+        // console.log(results);
+        // results.forEach(element => {
+        //     console.log(element.title);
+        // });
         hideLoader();
     } catch (error) {
         console.log(error);
@@ -15,4 +18,5 @@ async function getTrendingMovies(page) {
 }
 
 getTrendingMovies(page);
+
 

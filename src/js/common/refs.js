@@ -8,5 +8,6 @@ export default function getRefs() {
     home: document.querySelector('[data-name="Home"]'),
     searchForm: document.querySelector('.search-form'),
     headerBtnList: document.querySelector('.header-btn-list'),
+    logoLink: document.querySelector('.logo-link'),
   };
 }
