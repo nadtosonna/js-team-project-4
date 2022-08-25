@@ -1,0 +1,1 @@
+const teamRef = document.querySelector('.footer__link');
