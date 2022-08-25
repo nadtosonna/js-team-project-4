@@ -37,15 +37,13 @@ const markupHeaderSearchForm = () => {
     <label class="search-form__field">
     <input class="search-form__input" type="text" name="name" placeholder = 'Movie search' />
     </label>
-    <button class="search-form__btn" type="submit"> <img
-    class="logo-icon"
-    src="${search}"
-    width="12"
-    height="12"
-    alt="logo icon"
-    /></button>
-    </form>
-  `;
+    <img
+        class="search-icon"
+        src="${search}"
+        width="12"
+        height="12"
+        alt="logo icon"
+      />`;
 };
 
 const markupHeaderBtnList = () => {
@@ -56,18 +54,23 @@ const markupHeaderBtnList = () => {
 };
 
 addHeaderSearchForm();
-refs.library.addEventListener('click', e => {
+
+const onClickLibrary = e => {
   refs.library.classList.add('current');
   refs.home.classList.remove('current');
   refs.header.classList.remove('home-header-bg');
   refs.header.classList.add('library-header-bg');
   addHeaderBtnList();
-});
+};
 
-refs.home.addEventListener('click', e => {
+const onClickHome = e => {
   refs.library.classList.remove('current');
   refs.home.classList.add('current');
   refs.header.classList.add('home-header-bg');
   refs.header.classList.remove('library-header-bg');
   addHeaderSearchForm();
-});
+};
+
+refs.library.addEventListener('click', onClickLibrary);
+
+refs.home.addEventListener('click', onClickHome);
