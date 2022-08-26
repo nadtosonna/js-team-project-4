@@ -1,6 +1,6 @@
 import getRefs from './common/refs';
 import search from '../images/header/search.svg';
-
+import { page, getTrendingMovies } from './main-page-render.js';
 const debounce = require('lodash.debounce');
 const refs = getRefs();
 
@@ -28,6 +28,7 @@ function onClickHome(e) {
   e.preventDefault();
   goHomePage(e);
   removeLogoHover();
+  getTrendingMovies(page);
 }
 
 function onClickLogoLink(e) {
@@ -38,6 +39,7 @@ function onClickLogoLink(e) {
   goHomePage();
   removeLogoHover();
   refs.logoLink.classList.remove('logo-link-hover');
+  getTrendingMovies(page);
 }
 
 function searchMovies(e) {

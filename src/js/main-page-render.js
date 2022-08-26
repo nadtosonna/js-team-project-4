@@ -3,7 +3,7 @@ import { showLoader, hideLoader } from './loader';
 import getRefs from './common/refs';
 import { getCardTemplate } from './get-templates';
 
-let page = 1;
+export let page = 1;
 
 const { moviesGallery } = getRefs();
 
@@ -15,7 +15,7 @@ async function getGenresList() {
   }, {});
 }
 
-async function getTrendingMovies(page) {
+export async function getTrendingMovies(page) {
   try {
     showLoader();
     const { results } = await fetchTrendingMovies(page);
