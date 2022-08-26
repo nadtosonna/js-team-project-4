@@ -39,10 +39,16 @@ body {
   
 
 
-  .modal-open {
-    visibility: visible;
+
+//   .modal-open {
+//     visibility: visible;
+//     opacity: 1;
+//     pointer-events: all;
+
+  .backdrop-team.modal-open {
     opacity: 1;
-    pointer-events: all;
+    visibility: visible;
+    pointer-events: auto;
 
   }
 
