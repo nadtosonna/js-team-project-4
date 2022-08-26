@@ -1,6 +1,6 @@
 # :movie_camera: FILMOTEKA
 
-**JavaScript course final project. Web-application for movies search - browse, save movies and create your own lists. .**
+**JavaScript course final project. Web-application for movies search - browse, save movies and create your own lists.**
 
 ### :gem: Developers:
 
