@@ -27,18 +27,27 @@
 }
 
 .logo-link {
+  cursor: default;
   color: var(--primary-color-white);
   display: flex;
   align-items: center;
 }
 
 .logo-link-hover {
-  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.logo-link-active {
+  cursor: pointer;
+  &:active {
+    color: var(--accent-color);
+  }
 }
 
 .lodo-title {
+  @include font(30px, 500, 35px);
   color: inherit;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-left: 10px;
 }
 
@@ -69,10 +78,12 @@
 .naw-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 54px;
 }
 
 .naw-list {
+  @include font(12px, 500, 14px);
   display: flex;
 }
 
@@ -85,7 +96,6 @@
   text-transform: uppercase;
   color: var(--primary-color-white);
   cursor: pointer;
-  &:hover,
   &:active {
     color: var(--accent-color);
   }
@@ -113,6 +123,8 @@
   border-bottom: 0.5px solid var(--primary-color-white);
   color: var(--primary-color-white);
   outline: none;
+  font-family: inherit;
+  @include font(14px, 400, 16px);
   &:focus {
     border-color: var(--accent-color);
     border-width: 1px;
@@ -128,6 +140,7 @@
 }
 
 .header-btn-list {
+  @include font(12px, 500, 16px);
   display: flex;
   justify-content: center;
 
@@ -265,7 +278,17 @@
   }
 
   .search-form {
-    width: 336px;
-    margin: 0 auto;
+    width: 396px;
+  }
+
+  .logo-link-hover {
+    cursor: pointer;
+    color: var(--accent-color);
+  }
+
+  .naw-list-link {
+    &:hover {
+      color: var(--accent-color);
+    }
   }
 }
