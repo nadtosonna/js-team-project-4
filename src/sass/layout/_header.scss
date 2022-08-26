@@ -37,11 +37,13 @@
   cursor: pointer;
 }
 
+.logo-icon {
+  stroke: var(--primary-color-white);
+}
+
 .logo-link-active {
-  cursor: pointer;
-  &:active {
-    color: var(--accent-color);
-  }
+  color: var(--accent-color);
+  stroke: var(--accent-color);
 }
 
 .lodo-title {
@@ -284,6 +286,7 @@
   .logo-link-hover {
     cursor: pointer;
     color: var(--accent-color);
+    stroke: var(--accent-color);
   }
 
   .naw-list-link {
