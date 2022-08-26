@@ -10,5 +10,7 @@ export default function getRefs() {
     headerBtnList: document.querySelector('.header-btn-list'),
     logoLink: document.querySelector('.logo-link'),
     modal: document.querySelector('.modal'),
+    watchedBtn: document.querySelector('.modal-btn__addwatch'),
+    queueBtn: document.querySelector('.modal-btn__addqueue'),
   };
 }
