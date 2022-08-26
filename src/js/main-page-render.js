@@ -17,7 +17,7 @@ export async function getGenresList() {
 
 export async function getTrendingMovies(page) {
   try {
-    showLoader();
+    // showLoader();
     const { results } = await fetchTrendingMovies(page);
     const genres = await getGenresList();
 
@@ -27,7 +27,7 @@ export async function getTrendingMovies(page) {
     });
     moviesGallery.innerHTML = html;
 
-    hideLoader();
+    // hideLoader();
   } catch (error) {
     console.log(error);
   }
