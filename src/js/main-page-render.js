@@ -7,7 +7,7 @@ let page = 1;
 
 const { moviesGallery } = getRefs();
 
-async function getGenresList() {
+export async function getGenresList() {
   const { genres } = await fetchGenresList();
   return genres.reduce((acc, { id, name: genre }) => {
     acc[id] = genre;
