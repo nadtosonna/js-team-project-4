@@ -27,13 +27,13 @@
 }
 
 .logo-link {
-  color: white;
+  color: var(--primary-color-white);
   display: flex;
   align-items: center;
 }
 
 .logo-link-hover {
-  color: red;
+  color: var(--accent-color);
 }
 
 .lodo-title {
@@ -83,10 +83,11 @@
 }
 .naw-list-link {
   text-transform: uppercase;
-  color: white;
+  color: var(--primary-color-white);
   cursor: pointer;
-  &:hover {
-    color: red;
+  &:hover,
+  &:active {
+    color: var(--accent-color);
   }
 }
 
@@ -95,7 +96,7 @@
   content: '';
   width: 100%;
   height: 3px;
-  background-color: red;
+  background-color: var(--error-color);
 }
 
 .search-form {
@@ -109,13 +110,13 @@
   background-color: transparent;
   border: none;
   padding-bottom: 4px;
-  border-bottom: 0.5px solid white;
-  color: white;
+  border-bottom: 0.5px solid var(--primary-color-white);
+  color: var(--primary-color-white);
   outline: none;
   &:focus {
-    border-color: red;
+    border-color: var(--accent-color);
     border-width: 1px;
-    fill: red;
+    fill: var(--accent-color);
   }
 }
 
@@ -139,11 +140,11 @@
   display: block;
   text-align: center;
   width: calc((100% - 30px) / 2);
-  border: 1px solid white;
+  border: 1px solid var(--primary-color-white);
   padding-bottom: 12px;
   padding-top: 14px;
   border-radius: 5px;
-  color: white;
+  color: var(--primary-color-white);
   cursor: pointer;
 }
 
@@ -151,7 +152,7 @@
   background-color: #ff6b01;
 
   border-color: transparent;
-  color: white;
+  color: var(--primary-color-white);
 }
 
 @include breakpoints(tablet) {
