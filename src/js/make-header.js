@@ -1,13 +1,12 @@
 import getRefs from './common/refs';
 import search from '../images/header/search.svg';
-
+import { page, getTrendingMovies } from './main-page-render.js';
+import { addSearchListener } from './search-movie.js';
 const debounce = require('lodash.debounce');
 const refs = getRefs();
-
 addHeaderSearchForm();
 chandeLogoLink();
-const searchForm = getRefs().searchForm;
-searchForm.addEventListener('input', searchMovies);
+addSearchListener();
 
 refs.library.addEventListener('click', onClickLibrary);
 refs.home.addEventListener('click', onClickHome);
@@ -22,12 +21,19 @@ function onClickLibrary(e) {
   refs.header.classList.add('library-header-bg');
   addHeaderBtnList();
   addLogoHover();
+  refs.logoLink.classList.add('logo-link-active');
 }
 
 function onClickHome(e) {
   e.preventDefault();
+  if (refs.home.classList.contains('current')) {
+    return;
+  }
   goHomePage(e);
   removeLogoHover();
+  getTrendingMovies(page);
+  addSearchListener();
+  refs.logoLink.classList.remove('logo-link-active');
 }
 
 function onClickLogoLink(e) {
@@ -38,6 +44,9 @@ function onClickLogoLink(e) {
   goHomePage();
   removeLogoHover();
   refs.logoLink.classList.remove('logo-link-hover');
+  getTrendingMovies(page);
+  addSearchListener();
+  refs.logoLink.classList.remove('logo-link-active');
 }
 
 function searchMovies(e) {
@@ -45,8 +54,7 @@ function searchMovies(e) {
 }
 
 function addHeaderSearchForm() {
-  const searchForm = getRefs().searchForm;
-  const headerBtnList = getRefs().headerBtnList;
+  const { searchForm, headerBtnList } = getRefs();
 
   if (headerBtnList) {
     headerBtnList.remove();
@@ -118,7 +126,7 @@ function chandeLogoLink() {
     return;
   }
 
-  if (window.innerWidth > 768) {
+  if (window.innerWidth >= 768) {
     refs.logoLink.insertAdjacentHTML(
       'beforeend',
       '<p class = "lodo-title"  data-id="logo-item" >Filmoteka</p>'

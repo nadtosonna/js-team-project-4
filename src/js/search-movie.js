@@ -1,45 +1,47 @@
-import { fetchMovies } from "./api/fetchMovies";
-import { showLoader, hideLoader } from "./loader";
+import { fetchMovies } from './api/fetchMovies';
+import { showLoader, hideLoader } from './loader';
 import getRefs from './common/refs';
-import { showLoader } from './loader';
+import { showLoader, hideLoader } from './loader';
+import { getCardTemplate } from './get-templates';
+import { getGenresList } from './main-page-render';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { notiflixSettings } from './common/notiflix-settings';
 
-const DEBOUNCE_DELAY = 600;
-const refs = getRefs();
-const searchForm = getRefs().searchForm;
+const DEBOUNCE_DELAY = 300;
+const { moviesGallery } = getRefs();
 
-searchForm.addEventListener('input', debounce(searchMovies, DEBOUNCE_DELAY));
-
-function debounce (callback, delay) {
-  let timeout;
-  
-  return function () {
-    let originalArguments = arguments;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => callback.apply(this, originalArguments), delay);
-  }
+const debounce = require('lodash.debounce');
+export function addSearchListener() {
+  const { searchForm } = getRefs();
+  searchForm.addEventListener('input', debounce(searchMovies, DEBOUNCE_DELAY));
 }
 
 async function searchMovies(event) {
-    const searchQuery = event.target.value.trim();
-    console.log(searchQuery);
+  const searchQuery = event.target.value.trim();
 
-    if (searchQuery === '') return;
+  if (searchQuery === '') return;
 
-    try {
-        showLoader();
-        const { results, total_results: totalResults } = await fetchMovies(
-        searchQuery,
+  try {
+    showLoader();
+    const { results, total_results: totalResults } = await fetchMovies(
+      searchQuery
     );
-        hideLoader();
+    const genres = await getGenresList();
+    hideLoader();
 
-        if (totalResults === 0) {
-            alert('No matches found! Please enter correct movie name!');
-            return;
-        }
-
-    } catch (error) {
-        console.log(error);
+    if (totalResults === 0) {
+      Notify.failure(
+        'Search result was not successful. Enter the correct movie name!',
+        notiflixSettings
+      );
+      return;
     }
+    let searchUI = '';
+    results.forEach(film => {
+      searchUI += getCardTemplate(film, genres);
+    });
+    moviesGallery.innerHTML = searchUI;
+  } catch (error) {
+    console.log(error);
+  }
 }
-
-

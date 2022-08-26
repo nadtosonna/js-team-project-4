@@ -9,5 +9,6 @@ export default function getRefs() {
     searchForm: document.querySelector('.search-form'),
     headerBtnList: document.querySelector('.header-btn-list'),
     logoLink: document.querySelector('.logo-link'),
+    modal: document.querySelector('.modal'),
   };
 }
