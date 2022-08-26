@@ -1,6 +1,6 @@
 # :movie_camera: FILMOTEKA
 
-**JavaScript course final project. Web-application for movies search and creating own movies lists.**
+**JavaScript course final project. Web-application for movies search - browse, save movies and create your own lists.**
 
 ### :gem: Developers:
 
@@ -12,7 +12,7 @@
 **Front-end Developer:** [Elena Holovina](https://github.com/Elena-Holz)  
 **Front-end Developer:** [Nikita Kovpak](https://github.com/nikstyles)  
 **Front-end Developer:** [Ivan Shvayka](https://github.com/barmaglot91)  
-**Front-end Developer:** [ROPAN prk](https://github.com/ROPAN1991)
+**Front-end Developer:** [Ihor Ropan](https://github.com/ROPAN1991)
 
 ### :pushpin: Technologies used in project:
 
@@ -24,3 +24,6 @@
 ### :pushpin: Libraries used in project:
 
 + AXIOS
++ Notiflix
++ LODASH
++ TOAST UI Component : Pagination

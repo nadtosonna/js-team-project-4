@@ -27,18 +27,27 @@
 }
 
 .logo-link {
-  color: white;
+  cursor: default;
+  color: var(--primary-color-white);
   display: flex;
   align-items: center;
 }
 
 .logo-link-hover {
-  color: red;
+  cursor: pointer;
+}
+
+.logo-link-active {
+  cursor: pointer;
+  &:active {
+    color: var(--accent-color);
+  }
 }
 
 .lodo-title {
+  @include font(30px, 500, 35px);
   color: inherit;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-left: 10px;
 }
 
@@ -69,10 +78,12 @@
 .naw-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 54px;
 }
 
 .naw-list {
+  @include font(12px, 500, 14px);
   display: flex;
 }
 
@@ -83,10 +94,10 @@
 }
 .naw-list-link {
   text-transform: uppercase;
-  color: white;
+  color: var(--primary-color-white);
   cursor: pointer;
-  &:hover {
-    color: red;
+  &:active {
+    color: var(--accent-color);
   }
 }
 
@@ -95,7 +106,7 @@
   content: '';
   width: 100%;
   height: 3px;
-  background-color: red;
+  background-color: var(--error-color);
 }
 
 .search-form {
@@ -109,13 +120,15 @@
   background-color: transparent;
   border: none;
   padding-bottom: 4px;
-  border-bottom: 0.5px solid white;
-  color: white;
+  border-bottom: 0.5px solid var(--primary-color-white);
+  color: var(--primary-color-white);
   outline: none;
+  font-family: inherit;
+  @include font(14px, 400, 16px);
   &:focus {
-    border-color: red;
+    border-color: var(--accent-color);
     border-width: 1px;
-    fill: red;
+    fill: var(--accent-color);
   }
 }
 
@@ -127,6 +140,7 @@
 }
 
 .header-btn-list {
+  @include font(12px, 500, 16px);
   display: flex;
   justify-content: center;
 
@@ -139,11 +153,11 @@
   display: block;
   text-align: center;
   width: calc((100% - 30px) / 2);
-  border: 1px solid white;
+  border: 1px solid var(--primary-color-white);
   padding-bottom: 12px;
   padding-top: 14px;
   border-radius: 5px;
-  color: white;
+  color: var(--primary-color-white);
   cursor: pointer;
 }
 
@@ -151,7 +165,7 @@
   background-color: #ff6b01;
 
   border-color: transparent;
-  color: white;
+  color: var(--primary-color-white);
 }
 
 @include breakpoints(tablet) {
@@ -264,7 +278,17 @@
   }
 
   .search-form {
-    width: 336px;
-    margin: 0 auto;
+    width: 396px;
+  }
+
+  .logo-link-hover {
+    cursor: pointer;
+    color: var(--accent-color);
+  }
+
+  .naw-list-link {
+    &:hover {
+      color: var(--accent-color);
+    }
   }
 }
