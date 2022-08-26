@@ -7,7 +7,7 @@ import { getGenresList } from "./main-page-render";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notiflixSettings } from "./common/notiflix-settings";
 
-const DEBOUNCE_DELAY = 500;
+const DEBOUNCE_DELAY = 300;
 const { searchForm, moviesGallery } = getRefs();
 
 const debounce = require('lodash.debounce');
@@ -22,18 +22,17 @@ async function searchMovies(event) {
         showLoader();
         const { results, total_results: totalResults } = await fetchMovies(searchQuery);
         const genres = await getGenresList();
-        let searchUI = '';
-        results.forEach(film => {
-        searchUI += getCardTemplate(film, genres);
-    });
-        moviesGallery.innerHTML = searchUI;
-
         hideLoader();
 
         if (totalResults === 0) {
             Notify.failure('Search result was not successful. Enter the correct movie name!', notiflixSettings);
             return;
         }
+        let searchUI = '';
+        results.forEach(film => {
+        searchUI += getCardTemplate(film, genres);
+            });
+        moviesGallery.innerHTML = searchUI;
 
     } catch (error) {
         console.log(error);
