@@ -1,13 +1,12 @@
 import getRefs from './common/refs';
 import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
+import { addSearchListener } from './search-movie.js';
 const debounce = require('lodash.debounce');
 const refs = getRefs();
-
 addHeaderSearchForm();
 chandeLogoLink();
-const searchForm = getRefs().searchForm;
-searchForm.addEventListener('input', searchMovies);
+addSearchListener();
 
 refs.library.addEventListener('click', onClickLibrary);
 refs.home.addEventListener('click', onClickHome);
@@ -29,6 +28,7 @@ function onClickHome(e) {
   goHomePage(e);
   removeLogoHover();
   getTrendingMovies(page);
+  addSearchListener();
 }
 
 function onClickLogoLink(e) {
@@ -40,6 +40,7 @@ function onClickLogoLink(e) {
   removeLogoHover();
   refs.logoLink.classList.remove('logo-link-hover');
   getTrendingMovies(page);
+  addSearchListener();
 }
 
 function searchMovies(e) {
