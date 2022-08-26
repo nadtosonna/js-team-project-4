@@ -1,15 +1,15 @@
 :root {
+  --primary-font-family: 'Roboto', sans-serif;
 
-    --primary-color-white: #FFFFFF;
-    --primary-bg-color: #E5E5E5;
-    --text-color-black: #000000;
-    --text-color-grey: #545454;
-    --accent-color: #FF6B08;
-    --error-color: #FF001B;
-    --footer-color: #F7F7F7;
+  --primary-color-white: #ffffff;
+  --primary-bg-color: #e5e5e5;
+  --text-color-black: #000000;
+  --text-color-grey: #545454;
+  --accent-color: #ff6b08;
+  --error-color: #ff001b;
+  --footer-color: #f7f7f7;
 
-    --time-function-primary: linear;
-    --time-function-secondary: cubic-bezier(0.4, 0, 0.2, 1);
-    --animation-duration: 250ms;
-
+  --time-function-primary: linear;
+  --time-function-secondary: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
 }
