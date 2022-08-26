@@ -4,7 +4,7 @@
 
     @media screen and (max-width:767px) {
         width: 280px;
-        height: 940px;
+        height: auto;
         padding: 48px 20px 40px 20px;
     }
 
@@ -40,8 +40,8 @@
     transform: rotate(-90deg);
 
 @media screen and (max-width:767px) {
-    left: 300px;
-    bottom: 622px;
+    left: 242px;
+    bottom: 985px;
     }
 
     @media screen and (min-width:768px) {
@@ -165,6 +165,13 @@
     color: var(--text-color-black);
 }
 
+.modal-block__btn {
+    @media screen and (max-width:767px) {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
 .modal-btn__addwatch,
 .modal-btn__addqueue {
    
@@ -182,6 +189,7 @@
 
     @media screen and (max-width:767px) {
         width: 110px;
+        // display: inline-block;
     }
 
     @media screen and (min-width:780px) {
@@ -195,9 +203,9 @@
 
 }
 
-.modal-btn__addqueue {
-    position: absolute;
-}
+// .modal-btn__addqueue {
+//     position: absolute;
+// }
 
 .modal-btn__addwatch {
     @media screen and (max-width:767px) {
@@ -221,11 +229,11 @@
     line-height: 1.33px;
     text-align: center;
     text-transform: uppercase;
-    padding: 12px 10px;
-    border-radius: 5px;
+     border-radius: 5px;
     border: 1px solid var(--accent-color);
     color: var(--primary-color-white);
     background: var(--accent-color);
+    margin-top: 20px;
 
     @media screen and (max-width:767px) {
         width: 110px;
@@ -237,6 +245,6 @@
 
     @media screen and (min-width:1280px) {
         width: 136px;
-        padding: 12px 10px;
+        // padding: 12px 10px;
     }
 }
