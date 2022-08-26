@@ -13,5 +13,6 @@ export default function getRefs() {
     modal: document.querySelector('.modal'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
+    logoIcon: document.querySelector('.logo-icon'),
   };
 }
