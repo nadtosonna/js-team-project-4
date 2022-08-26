@@ -40,8 +40,9 @@ export const getCardTemplate = (
         <p class="movies-gallery__genre ellipsis">
           ${getGenresNames(genre_ids, genres)} ${
   release_date?.split('-')[0] || '2077'
-} <span class="movies-gallery__rating">${vote_average}</span>
+} 
         </p>
+        <span class="movies-gallery__rating">${vote_average}</span>
       </div>
     </li>
   `;
