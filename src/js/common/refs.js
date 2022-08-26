@@ -1,6 +1,7 @@
 export default function getRefs() {
   return {
     loader: document.querySelector('.loader'),
+    preloader: document.querySelector('.preloader'),
     moviesGallery: document.querySelector('.movies-gallery__list'),
     header: document.querySelector('.header'),
     headerContainer: document.querySelector('.header-container'),
