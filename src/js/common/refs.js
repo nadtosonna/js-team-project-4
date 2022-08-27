@@ -11,7 +11,10 @@ export default function getRefs() {
     headerBtnList: document.querySelector('.header-btn-list'),
     logoLink: document.querySelector('.logo-link'),
     modal: document.querySelector('.modal'),
+    logoIcon: document.querySelector('.logo-icon'),
+    closeModalBtn: document.querySelector('.modal-btn'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
+    queueBtn: document.querySelector('.modal-btn__accent'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
     logoIcon: document.querySelector('.logo-icon'),
     trendingBtn: document.querySelector('.trending-btn'),
@@ -22,5 +25,8 @@ export default function getRefs() {
     yearFilter: document.querySelector('#yearFilter'),
     genreFilter: document.querySelector('#genreFilter'),
     filterInput: document.querySelectorAll('.filter-input'),
+    backToTopBtn: document.querySelector('.back-to-top-btn'),
+    emptyCard: document.querySelector('.empty-card'),
+    moviesGalleryContainer: document.querySelector('.movies-gallery'),
   };
 }

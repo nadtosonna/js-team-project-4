@@ -1,12 +1,13 @@
 .movies-gallery {
-  margin-bottom: 40px;
-  margin-top: 20px;
+  padding-bottom: 40px;
+  padding-top: 20px;
 
   @include breakpoints(tablet) {
     display: flex;
     flex-wrap: wrap;
     margin-left: -32px;
-    margin-top: 60px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
   @include breakpoints(desktop) {
   }
@@ -16,12 +17,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
+
     @include breakpoints(tablet) {
       display: flex;
       flex-wrap: wrap;
       justify-content: left;
-
-      margin-bottom: 60px;
     }
     @include breakpoints(desktop) {
     }
@@ -29,7 +29,9 @@
 
   &__item {
     margin-bottom: 20px;
-    transition: 1s;
+    transition: transform 0.5s linear;
+
+    border-radius: 5px;
     @include breakpoints(tablet) {
       contain: content;
       width: calc(100% / 2 - 32px);
@@ -41,6 +43,16 @@
       margin: 16px 0;
       margin-left: 15px;
     }
+    &:hover,
+    &:focus {
+      box-shadow: 2px 7px 27px -5px var(--accent-color);
+      transform: scale(1.012);
+    }
+
+    &:hover .movies-gallery__text,
+    &:focus .movies-gallery__text {
+      transform: translate(10px, -10%);
+    }
   }
 
   &__img {
@@ -48,22 +60,28 @@
     border-radius: 5px;
     margin-bottom: 10px;
     overflow: hidden;
-
+    // height: 480px;
+    @include breakpoints(tablet) {
+      height: 480px;
+    }
     @include breakpoints(desktop) {
       margin-bottom: 12px;
       height: 583px;
     }
-    &:hover img {
-      transform: scale(1.15);
-    }
   }
 
   &__img img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     transition: transform 0.55s;
   }
 
   &__text {
     font-family: Roboto, sans-serif;
+    // transition: translate 10s linear;
+
     @include font(12px, 500, 16px);
 
     @include breakpoints(desktop) {
@@ -73,9 +91,6 @@
 
   &__title {
     color: var(--text-color-black);
-    // @include breakpoints(desktop) {
-    //   margin-bottom: 10px;
-    // }
   }
 
   &__genre {
