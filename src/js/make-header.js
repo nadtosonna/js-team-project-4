@@ -19,6 +19,7 @@ function onClickLibrary(e) {
   refs.home.classList.remove('current');
   refs.header.classList.remove('home-header-bg');
   refs.header.classList.add('library-header-bg');
+  refs.btnFilter.classList.add('visually-hidden');
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
@@ -29,6 +30,7 @@ function onClickHome(e) {
   if (refs.home.classList.contains('current')) {
     return;
   }
+  refs.btnFilter.classList.remove('visually-hidden');
   goHomePage(e);
   removeLogoHover();
   removeLogoActive();
@@ -48,6 +50,7 @@ function onClickLogoLink(e) {
   addSearchListener();
   refs.logoLink.classList.remove('logo-link-hover');
   refs.logoIcon.classList.remove('logo-link-hover');
+  refs.btnFilter.classList.remove('visually-hidden');
 }
 
 function searchMovies(e) {

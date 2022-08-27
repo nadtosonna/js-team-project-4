@@ -14,5 +14,13 @@ export default function getRefs() {
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
     logoIcon: document.querySelector('.logo-icon'),
+    trendingBtn: document.querySelector('.trending-btn'),
+    tvBtn :document.querySelector('.tv-btn'),
+    topRatedBtn: document.querySelector('.top-rated-btn'),
+    upcomingBtn: document.querySelector('.upcoming-btn'),
+    btnFilter: document.querySelector('.filter-btn'),
+    yearFilter: document.querySelector('#yearFilter'),
+    genreFilter: document.querySelector('#genreFilter'),
+    filterInput: document.querySelectorAll('.filter-input'),
   };
 }
