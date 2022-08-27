@@ -14,6 +14,9 @@ export default function getRefs() {
     closeModalBtn: document.querySelector('.modal-btn'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__accent'),
+    queueBtn: document.querySelector('.modal-btn__addqueue'),
+    emptyCard: document.querySelector('.empty-card'),
+    moviesGalleryContainer: document.querySelector('.movies-gallery'),
     logoIcon: document.querySelector('.logo-icon'),
   };
 }
