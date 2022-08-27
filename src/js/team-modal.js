@@ -1,66 +1,26 @@
-const teamRef = document.querySelector('.footer__link');
-const backdropTeamRef = document.querySelector('.backdrop-team');
-const closeBtnRef = document.querySelector('.modal-team__close-btn');
+import getRefs from './common/refs';
+const { teamRef, backdropTeamRef, closeBtnRef, body } = getRefs();
 
-function onGoitteamClick(event) {
-  event.preventDefault();
-
-  backdropTeamRef.classList.remove('backdrop-team--is-hidden');
-  document.body.classList.add('modal-open');
-
-  addAllEventListeners();
+teamRef.addEventListener("click", openModal);
+closeBtnRef.addEventListener("click", closeModal);
+    
+function openModal() {
+  backdropTeamRef.classList.remove("is-hidden");
+  body.classList.add('modal-open');
+  document.addEventListener('keydown', onEscape)
 }
 
-function onEscClick(event) {
-  event.preventDefault();
-
-  if (event.code !== 'Escape') {
-    return;
+function onEscape(event) {
+  if (event.key === 'Escape') {
+    backdropTeamRef.classList.add("is-hidden");
+    body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onEscape);
   }
-
-  closingModalStaff();
 }
 
-function onBackdropClick(event) {
-  if (event.target.closest('.modal-team')) {
-    return;
-  }
-
-  closingModalStaff();
+function closeModal() {
+  backdropTeamRef.classList.add("is-hidden");
+  body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onEscape);
 }
 
-function onCloseBtnClick(event) {
-  event.preventDefault();
-
-  closingModalStaff();
-}
-
-function addAllEventListeners() {
-  document.addEventListener('keydown', onEscClick);
-  backdropTeamRef.addEventListener('click', onBackdropClick);
-  closeBtnRef.addEventListener('click', onCloseBtnClick);
-}
-
-function closingModalStaff() {
-  document.removeEventListener('keydown', onEscClick);
-  backdropTeamRef.removeEventListener('click', onBackdropClick);
-  closeBtnRef.removeEventListener('click', onCloseBtnClick);
-
-  backdropTeamRef.classList.add('backdrop-team--is-hidden');
-  document.body.classList.remove('modal-open');
-}
-
-// (() => {
-//     const refs = {
-//       openModalBtn: document.querySelector("[data-modal-open]"),
-//       closeModalBtn: document.querySelector("[data-modal-close]"),
-//       modal: document.querySelector("[data-modal]"),
-//     };
-
-//     refs.openModalBtn.addEventListener("click", toggleModal);
-//     refs.closeModalBtn.addEventListener("click", toggleModal);
-
-//     function toggleModal() {
-//       refs.modal.classList.toggle("is-hidden");
-//     }
-//   })();
