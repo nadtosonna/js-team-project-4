@@ -1,3 +1,4 @@
+import './js/close-modal';
 import './js/modal';
 import './js/main-page-render';
 import './js/make-header.js';

@@ -30,6 +30,8 @@ export default function getRefs() {
     backToTopBtn: document.querySelector('.back-to-top-btn'),
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
+    logoIcon: document.querySelector('.logo-icon'),
+    backdrop: document.querySelector('.backdrop'),
     container: document.getElementById('tui-pagination-container'),
   };
 }
