@@ -11,7 +11,7 @@ const options = {
     totalItems: 0,
     itemsPerPage: 10,
     visiblePages: 5,
-    page: 1,
+    page,
     template: {
          page: '<a href="#" class="tui-page-btn">{{page}}</a>',
          currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',

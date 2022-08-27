@@ -43,7 +43,7 @@
     position: absolute;
     width: 30px;
     height: 30px;
-    background-color: aqua;
+    // background-color: aqua;
     transform: rotate(-90deg);
 
 @media screen and (max-width:767px) {
@@ -63,8 +63,8 @@
     }
 }
 
-.modal-close__icon{
-    fill: #000000;
+.modal-close__icon, .modal-btn__icon{
+    fill: var(--text-color-black);
 }
 
 .modal-img {
@@ -247,4 +247,7 @@
     margin-top: 20px;
     width: 100%;
     max-width: 150px;
+}
+.modal-btn {
+    color: var(--text-color-black);
 }
