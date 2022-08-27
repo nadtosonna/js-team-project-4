@@ -13,6 +13,8 @@ export default function getRefs() {
     modal: document.querySelector('.modal'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
+    emptyCard: document.querySelector('.empty-card'),
+    moviesGalleryContainer: document.querySelector('.movies-gallery'),
     logoIcon: document.querySelector('.logo-icon'),
   };
 }
