@@ -10,13 +10,6 @@ document.body.onload = function () {
   }, 1000);
 };
 
-// window.addEventListener('load', () => {
-//   preloader.classList.add('loader-hide');
-//   setTimeout(() => {
-//     preloader.remove();
-//   }, 1000)
-// })
-
 // export function showLoader() {
 //   loader.classList.remove('is-hidden');
 // }
