@@ -1,11 +1,11 @@
 (() => {
   const refs = {
-    openModal: document.querySelector(".movies-gallery__item"),
+    openModal: document.querySelector(".movies-gallery__img"),
     closeModalBtn: document.querySelector("[data-modal-close]"),
     modal: document.querySelector("[data-modal]"),
   };
 
-  refs.openModal.addEventListener("click", openModal);
+  // refs.openModal.addEventListener("click", openModal);
     refs.closeModalBtn.addEventListener("click", closeModal);
     
      function openModal() {
