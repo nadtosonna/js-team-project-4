@@ -8,6 +8,7 @@
   left: 0;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 20px;
 }
 
 .body-overflow {
@@ -24,11 +25,11 @@
   border-radius: 5px;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  max-width: 360px;
   padding: 40px 20px;
 }
 
@@ -52,9 +53,10 @@
 
   @include font(14px, 400, 16px);
   &:focus {
-    border-color: var(--accent-color);
+    border-color: rgba(255, 0, 27, 0.8);
     border-width: 1px;
     fill: var(--accent-color);
+    box-shadow: 0 6px 8px rgba(255, 0, 27, 0.4);
   }
 }
 
@@ -78,4 +80,7 @@
 
 .auth-form-btn.register {
   margin-bottom: 30px;
+}
+
+@include breakpoints(tablet) {
 }

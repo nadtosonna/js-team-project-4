@@ -20,7 +20,7 @@ export default function getRefs() {
     authForm: document.querySelector('.auth-form'),
     authBackdrop: document.querySelector('.auth-backdrop'),
     trendingBtn: document.querySelector('.trending-btn'),
-    tvBtn :document.querySelector('.tv-btn'),
+    tvBtn: document.querySelector('.tv-btn'),
     topRatedBtn: document.querySelector('.top-rated-btn'),
     upcomingBtn: document.querySelector('.upcoming-btn'),
     btnFilter: document.querySelector('.filter-btn'),
@@ -34,5 +34,7 @@ export default function getRefs() {
     closeBtnRef: document.querySelector('.modal-team__close-btn'),
     backdropTeamRef: document.querySelector('.backdrop-team'),
     body: document.querySelector('body'),
+    backdrop: document.querySelector('.backdrop'),
+    container: document.getElementById('tui-pagination-container'),
   };
 }

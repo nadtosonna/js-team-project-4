@@ -12,7 +12,7 @@ export function addEmptyTemplate(keyName) {
   refs.emptyCard.insertAdjacentHTML('beforeend', markupEmptyTemplate());
 }
 
-function markupEmptyTemplate() {
+export function markupEmptyTemplate() {
   return `
 <section class="empty-template">
   <div class="container">
@@ -33,5 +33,3 @@ function markupEmptyTemplate() {
   </div>
 </section>`;
 }
-
-refs.library.addEventListener('click', addEmptyTemplate);
