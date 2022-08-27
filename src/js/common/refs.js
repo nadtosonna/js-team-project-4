@@ -15,6 +15,7 @@ export default function getRefs() {
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__accent'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
+    backToTopBtn: document.querySelector('.back-to-top-btn'),
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
     logoIcon: document.querySelector('.logo-icon'),
