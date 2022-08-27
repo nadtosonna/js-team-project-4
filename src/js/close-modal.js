@@ -1,16 +1,19 @@
 import getRefs from './common/refs';
 
-const backdropREF = document.querySelector('.backdrop-team');
+
+const { backdrop, closeModalBtn } = getRefs();
 
 window.addEventListener('keydown', closeModalWindow);
-backdropREF.addEventListener('click', closeModalWindow);
-const { modal } = getRefs();
+backdrop.addEventListener('click', closeModalWindow);
+
+closeModalBtn.addEventListener('click', closeModalWindowBtn =>
+backdrop.classList.add('is-hidden'));
+
 
 export function closeModalWindow(event) {
-  if (event.code === 'Escape' || event.target === backdropREF) {
-    backdropREF.classList.add('is-hidden');
-    window.removeEventListener('keydown', closeModalWindow);
-    backdropREF.removeEventListener('click', closeModalWindow);
-    modal.classList.add('is-hidden');
+  if (event.code === 'Escape' || event.target === backdrop) {
+    backdrop.classList.add('is-hidden');
+    // window.removeEventListener('keydown', closeModalWindow);
+    console.log(event.target);
   }
 }
