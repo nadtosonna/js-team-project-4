@@ -1,12 +1,5 @@
 body {
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 200px;
-  
-    @media screen and (min-width: 768px) {
-      padding-bottom: 107px;
-    }
-  
+    
     &.modal-open {
       overflow: hidden;
     }
@@ -74,7 +67,20 @@ body {
   
   .footer__heart {
     margin: 0 5px;
+    animation: pulsate 0.5s infinite;
   }
+
+  @keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
   
   .footer__link {
     font-weight: 500;
@@ -160,3 +166,5 @@ body {
   .app__icon {
     fill: currentColor;
   }
+
+  
