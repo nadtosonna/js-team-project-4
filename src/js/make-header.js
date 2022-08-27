@@ -40,6 +40,8 @@ function onClickHome(e) {
 
 function onClickLogoLink(e) {
   e.preventDefault();
+  refs.moviesGalleryContainer.classList.remove('visually-hidden');
+  refs.emptyCard.innerHTML = '';
   if (refs.home.classList.contains('current')) {
     return;
   }
