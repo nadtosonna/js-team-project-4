@@ -33,5 +33,3 @@ function markupEmptyTemplate() {
   </div>
 </section>`;
 }
-
-refs.library.addEventListener('click', addEmptyTemplate);

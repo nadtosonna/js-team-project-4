@@ -20,7 +20,7 @@ export default function getRefs() {
     authForm: document.querySelector('.auth-form'),
     authBackdrop: document.querySelector('.auth-backdrop'),
     trendingBtn: document.querySelector('.trending-btn'),
-    tvBtn :document.querySelector('.tv-btn'),
+    tvBtn: document.querySelector('.tv-btn'),
     topRatedBtn: document.querySelector('.top-rated-btn'),
     upcomingBtn: document.querySelector('.upcoming-btn'),
     btnFilter: document.querySelector('.filter-btn'),
@@ -30,5 +30,6 @@ export default function getRefs() {
     backToTopBtn: document.querySelector('.back-to-top-btn'),
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
+    container: document.getElementById('tui-pagination-container'),
   };
 }
