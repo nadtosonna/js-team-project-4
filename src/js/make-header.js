@@ -3,13 +3,11 @@ import { monitorAuthState } from './firebase';
 import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
+import { addEmptyTemplate } from './make-empty-template-my-library';
+
+console.log(addEmptyTemplate);
 
 const debounce = require('lodash.debounce');
-// async function getUid() {
-//   let userId = await monitorAuthState();
-//   console.log(userId);
-// }
-// getUid();
 
 const {
   header,
@@ -22,6 +20,7 @@ const {
   moviesGalleryContainer,
   emptyCard,
   btnFilter,
+  container,
 } = getRefs();
 
 addHeaderSearchForm();
@@ -35,12 +34,19 @@ window.addEventListener('resize', debounce(chandeLogoLink, 250));
 
 export function onClickLibrary(e) {
   e.preventDefault();
+
+  if (library.classList.contains('current')) {
+    return;
+  }
+
   monitorAuthState();
   library.classList.add('current');
   home.classList.remove('current');
   header.classList.remove('home-header-bg');
   header.classList.add('library-header-bg');
   btnFilter.classList.add('visually-hidden');
+  container.classList.add('is-hidden');
+  addEmptyTemplate();
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
@@ -48,8 +54,6 @@ export function onClickLibrary(e) {
 
 function onClickHome(e) {
   e.preventDefault();
-  moviesGalleryContainer.classList.remove('visually-hidden');
-  emptyCard.innerHTML = '';
   if (home.classList.contains('current')) {
     return;
   }
@@ -61,6 +65,8 @@ function onClickHome(e) {
 }
 
 function onClickLogoLink(e) {
+  moviesGalleryContainer.classList.remove('visually-hidden');
+  emptyCard.innerHTML = '';
   e.preventDefault();
   if (home.classList.contains('current')) {
     return;
@@ -131,6 +137,10 @@ function goHomePage() {
   home.classList.add('current');
   header.classList.add('home-header-bg');
   header.classList.remove('library-header-bg');
+  moviesGalleryContainer.classList.remove('visually-hidden');
+  btnFilter.classList.remove('visually-hidden');
+  container.classList.remove('is-hidden');
+  emptyCard.innerHTML = '';
 
   addHeaderSearchForm();
   const searchForm = getRefs().searchForm;
