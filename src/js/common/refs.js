@@ -15,5 +15,6 @@ export default function getRefs() {
     queueBtn: document.querySelector('.modal-btn__addqueue'),
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
+    logoIcon: document.querySelector('.logo-icon'),
   };
 }

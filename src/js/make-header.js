@@ -21,7 +21,7 @@ function onClickLibrary(e) {
   refs.header.classList.add('library-header-bg');
   addHeaderBtnList();
   addLogoHover();
-  refs.logoLink.classList.add('logo-link-active');
+  addLogoActive();
 }
 
 function onClickHome(e) {
@@ -33,9 +33,9 @@ function onClickHome(e) {
   }
   goHomePage(e);
   removeLogoHover();
+  removeLogoActive();
   getTrendingMovies(page);
   addSearchListener();
-  refs.logoLink.classList.remove('logo-link-active');
 }
 
 function onClickLogoLink(e) {
@@ -45,10 +45,11 @@ function onClickLogoLink(e) {
   }
   goHomePage();
   removeLogoHover();
-  refs.logoLink.classList.remove('logo-link-hover');
+  removeLogoActive();
   getTrendingMovies(page);
   addSearchListener();
-  refs.logoLink.classList.remove('logo-link-active');
+  refs.logoLink.classList.remove('logo-link-hover');
+  refs.logoIcon.classList.remove('logo-link-hover');
 }
 
 function searchMovies(e) {
@@ -147,9 +148,30 @@ function removeLogoHover() {
   refs.logoLink.removeEventListener('mouseout', onMouseout);
 }
 
+function addLogoActive() {
+  refs.logoLink.addEventListener('touchstart', onTouchStart);
+  refs.logoLink.addEventListener('touchend', onTouchend);
+}
+
+function removeLogoActive() {
+  refs.logoLink.removeEventListener('touchstart', onTouchStart);
+  refs.logoLink.removeEventListener('touchend', onTouchend);
+}
+
 function onMouseover() {
   refs.logoLink.classList.add('logo-link-hover');
+  refs.logoIcon.classList.add('logo-link-hover');
 }
 function onMouseout() {
   refs.logoLink.classList.remove('logo-link-hover');
+  refs.logoIcon.classList.remove('logo-link-hover');
+}
+
+function onTouchStart() {
+  refs.logoLink.classList.add('logo-link-active');
+  refs.logoIcon.classList.add('logo-link-active');
+}
+function onTouchend() {
+  refs.logoLink.classList.remove('logo-link-active');
+  refs.logoIcon.classList.remove('logo-link-active');
 }
