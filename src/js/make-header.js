@@ -1,25 +1,46 @@
 import getRefs from './common/refs';
+import { monitorAuthState } from './firebase';
 import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
+
 const debounce = require('lodash.debounce');
-const refs = getRefs();
+// async function getUid() {
+//   let userId = await monitorAuthState();
+//   console.log(userId);
+// }
+// getUid();
+
+const {
+  header,
+  headerContainer,
+  home,
+  logoLink,
+  logoIcon,
+  library,
+  authBackdrop,
+  moviesGalleryContainer,
+  emptyCard,
+  btnFilter,
+} = getRefs();
+
 addHeaderSearchForm();
 chandeLogoLink();
 addSearchListener();
 
-refs.library.addEventListener('click', onClickLibrary);
-refs.home.addEventListener('click', onClickHome);
-refs.logoLink.addEventListener('click', onClickLogoLink);
+library.addEventListener('click', onClickLibrary);
+home.addEventListener('click', onClickHome);
+logoLink.addEventListener('click', onClickLogoLink);
 window.addEventListener('resize', debounce(chandeLogoLink, 250));
 
-function onClickLibrary(e) {
+export function onClickLibrary(e) {
   e.preventDefault();
-  refs.library.classList.add('current');
-  refs.home.classList.remove('current');
-  refs.header.classList.remove('home-header-bg');
-  refs.header.classList.add('library-header-bg');
-  refs.btnFilter.classList.add('visually-hidden');
+  monitorAuthState();
+  library.classList.add('current');
+  home.classList.remove('current');
+  header.classList.remove('home-header-bg');
+  header.classList.add('library-header-bg');
+  btnFilter.classList.add('visually-hidden');
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
@@ -27,12 +48,11 @@ function onClickLibrary(e) {
 
 function onClickHome(e) {
   e.preventDefault();
-  refs.moviesGalleryContainer.classList.remove('visually-hidden');
-  refs.emptyCard.innerHTML = '';
-  if (refs.home.classList.contains('current')) {
+  moviesGalleryContainer.classList.remove('visually-hidden');
+  emptyCard.innerHTML = '';
+  if (home.classList.contains('current')) {
     return;
   }
-  refs.btnFilter.classList.remove('visually-hidden');
   goHomePage(e);
   removeLogoHover();
   removeLogoActive();
@@ -42,9 +62,7 @@ function onClickHome(e) {
 
 function onClickLogoLink(e) {
   e.preventDefault();
-  refs.moviesGalleryContainer.classList.remove('visually-hidden');
-  refs.emptyCard.innerHTML = '';
-  if (refs.home.classList.contains('current')) {
+  if (home.classList.contains('current')) {
     return;
   }
   goHomePage();
@@ -52,9 +70,8 @@ function onClickLogoLink(e) {
   removeLogoActive();
   getTrendingMovies(page);
   addSearchListener();
-  refs.logoLink.classList.remove('logo-link-hover');
-  refs.logoIcon.classList.remove('logo-link-hover');
-  refs.btnFilter.classList.remove('visually-hidden');
+  logoLink.classList.remove('logo-link-hover');
+  logoIcon.classList.remove('logo-link-hover');
 }
 
 function searchMovies(e) {
@@ -70,10 +87,7 @@ function addHeaderSearchForm() {
   if (searchForm) {
     return;
   }
-  refs.headerContainer.insertAdjacentHTML(
-    'beforeend',
-    markupHeaderSearchForm()
-  );
+  headerContainer.insertAdjacentHTML('beforeend', markupHeaderSearchForm());
 }
 
 function addHeaderBtnList() {
@@ -87,7 +101,7 @@ function addHeaderBtnList() {
   if (headerBtnList) {
     return;
   }
-  refs.headerContainer.insertAdjacentHTML('beforeend', markupHeaderBtnList());
+  headerContainer.insertAdjacentHTML('beforeend', markupHeaderBtnList());
 }
 
 function markupHeaderSearchForm() {
@@ -113,10 +127,10 @@ function markupHeaderBtnList() {
 }
 
 function goHomePage() {
-  refs.library.classList.remove('current');
-  refs.home.classList.add('current');
-  refs.header.classList.add('home-header-bg');
-  refs.header.classList.remove('library-header-bg');
+  library.classList.remove('current');
+  home.classList.add('current');
+  header.classList.add('home-header-bg');
+  header.classList.remove('library-header-bg');
 
   addHeaderSearchForm();
   const searchForm = getRefs().searchForm;
@@ -135,7 +149,7 @@ function chandeLogoLink() {
   }
 
   if (window.innerWidth >= 768) {
-    refs.logoLink.insertAdjacentHTML(
+    logoLink.insertAdjacentHTML(
       'beforeend',
       '<p class = "lodo-title"  data-id="logo-item" >Filmoteka</p>'
     );
@@ -144,39 +158,39 @@ function chandeLogoLink() {
 }
 
 function addLogoHover() {
-  refs.logoLink.addEventListener('mouseover', onMouseover);
-  refs.logoLink.addEventListener('mouseout', onMouseout);
+  logoLink.addEventListener('mouseover', onMouseover);
+  logoLink.addEventListener('mouseout', onMouseout);
 }
 
 function removeLogoHover() {
-  refs.logoLink.removeEventListener('mouseover', onMouseover);
-  refs.logoLink.removeEventListener('mouseout', onMouseout);
+  logoLink.removeEventListener('mouseover', onMouseover);
+  logoLink.removeEventListener('mouseout', onMouseout);
 }
 
 function addLogoActive() {
-  refs.logoLink.addEventListener('touchstart', onTouchStart);
-  refs.logoLink.addEventListener('touchend', onTouchend);
+  logoLink.addEventListener('touchstart', onTouchStart);
+  logoLink.addEventListener('touchend', onTouchend);
 }
 
 function removeLogoActive() {
-  refs.logoLink.removeEventListener('touchstart', onTouchStart);
-  refs.logoLink.removeEventListener('touchend', onTouchend);
+  logoLink.removeEventListener('touchstart', onTouchStart);
+  logoLink.removeEventListener('touchend', onTouchend);
 }
 
 function onMouseover() {
-  refs.logoLink.classList.add('logo-link-hover');
-  refs.logoIcon.classList.add('logo-link-hover');
+  logoLink.classList.add('logo-link-hover');
+  logoIcon.classList.add('logo-link-hover');
 }
 function onMouseout() {
-  refs.logoLink.classList.remove('logo-link-hover');
-  refs.logoIcon.classList.remove('logo-link-hover');
+  logoLink.classList.remove('logo-link-hover');
+  logoIcon.classList.remove('logo-link-hover');
 }
 
 function onTouchStart() {
-  refs.logoLink.classList.add('logo-link-active');
-  refs.logoIcon.classList.add('logo-link-active');
+  logoLink.classList.add('logo-link-active');
+  logoIcon.classList.add('logo-link-active');
 }
 function onTouchend() {
-  refs.logoLink.classList.remove('logo-link-active');
-  refs.logoIcon.classList.remove('logo-link-active');
+  logoLink.classList.remove('logo-link-active');
+  logoIcon.classList.remove('logo-link-active');
 }

@@ -17,6 +17,8 @@ export default function getRefs() {
     queueBtn: document.querySelector('.modal-btn__accent'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
     logoIcon: document.querySelector('.logo-icon'),
+    authForm: document.querySelector('.auth-form'),
+    authBackdrop: document.querySelector('.auth-backdrop'),
     trendingBtn: document.querySelector('.trending-btn'),
     tvBtn :document.querySelector('.tv-btn'),
     topRatedBtn: document.querySelector('.top-rated-btn'),
