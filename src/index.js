@@ -6,4 +6,4 @@ import './js/search-movie';
 import './js/team-modal';
 import './js/local-storage';
 import './js/pagination';
-import './js/open-modal';
+// import './js/modal';
