@@ -1,152 +1,66 @@
 <section class="movies-gallery">
+  
   <div class="container">
-    <ul class="movies-gallery__list">
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-      <li class="movies-gallery__item">
-        <div class="movies-gallery__img">
-          <img
-            src="./images/greyhound.jpg"
-            alt="greyhound"
-            loading="lazy"
-            width="395"
-          />
-        </div>
-        <div class="movies-gallery__text">
-          <p class="movies-gallery__title">GREYHOUND</p>
-          <p class="movies-gallery__genre">
-            Drama, Action | 2020 <span class="movies-gallery__rating">8.0</span>
-          </p>
-        </div>
-      </li>
-    </ul>
-    <!-- Pagination -->
-    <!-- Page Up Button -->
+    <h1 class="visually-hidden">Filmoteka</h1>
+    <h2 class="visually-hidden">Movies search</h2>
+    <div class="filter-btn">
+      <ul class="filter-btn-list">
+        <li class="filter-btn-item">
+          <button
+            type="button"
+            class="button-filter trending-btn"
+            data-action="trending"
+          >
+            TRENDING
+          </button>
+        </li>
+        <li class="filter-btn-item">
+          <button type="button" class="button-filter tv-btn" data-action="tv">
+            TV SHOW
+          </button>
+        </li>
+        <li class="filter-btn-item">
+          <button
+            type="button"
+            class="button-filter top-rated-btn"
+            data-action="top rated"
+          >
+            TOP RATED
+          </button>
+        </li>
+        <li class="filter-btn-item">
+          <button
+            type="button"
+            class="button-filter upcoming-btn"
+            data-action="upcoming"
+          >
+            UPCOMING
+          </button>
+        </li>
+        <select class="filter-input" name="genreFilter" id="genreFilter">
+          <option value="">Choose genre</option>
+          <option value="28">Action</option>
+          <option value="12">Adventure</option>
+          <option value="16">Animation</option>
+          <option value="35">Comedy</option>
+          <option value="80">Crime</option>
+          <option value="99">Documentary</option>
+          <option value="18">Drama</option>
+          <option value="14">History</option>
+          <option value="27">Horror</option>
+          <option value="10402">Music</option>
+          <option value="10749">Romance</option>
+          <option value="878">Science Fiction</option>
+          <option value="10770">TV Movie</option>
+          <option value="53">Thriller</option>
+          <option value="10752">War</option>
+          <option value="37">Western</option>
+        </select>
+        <select class="filter-input" name="yearFilter" id="yearFilter"></select>
+      </ul>
+    </div>
+    <ul class="movies-gallery__list"></ul>
   </div>
+  
+
 </section>

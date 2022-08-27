@@ -37,6 +37,7 @@ export function onClickLibrary(e) {
   home.classList.remove('current');
   header.classList.remove('home-header-bg');
   header.classList.add('library-header-bg');
+  refs.btnFilter.classList.add('visually-hidden');
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
@@ -44,6 +45,8 @@ export function onClickLibrary(e) {
 
 function onClickHome(e) {
   e.preventDefault();
+  refs.moviesGalleryContainer.classList.remove('visually-hidden');
+  refs.emptyCard.innerHTML = '';
   if (home.classList.contains('current')) {
     return;
   }

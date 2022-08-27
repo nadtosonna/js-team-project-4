@@ -1,6 +1,7 @@
 export default function getRefs() {
   return {
     loader: document.querySelector('.loader'),
+    preloader: document.querySelector('.preloader'),
     moviesGallery: document.querySelector('.movies-gallery__list'),
     header: document.querySelector('.header'),
     headerContainer: document.querySelector('.header-container'),
@@ -10,10 +11,24 @@ export default function getRefs() {
     headerBtnList: document.querySelector('.header-btn-list'),
     logoLink: document.querySelector('.logo-link'),
     modal: document.querySelector('.modal'),
+    logoIcon: document.querySelector('.logo-icon'),
+    closeModalBtn: document.querySelector('.modal-btn'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
+    queueBtn: document.querySelector('.modal-btn__accent'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),
     logoIcon: document.querySelector('.logo-icon'),
     authForm: document.querySelector('.auth-form'),
     authBackdrop: document.querySelector('.auth-backdrop'),
+    trendingBtn: document.querySelector('.trending-btn'),
+    tvBtn :document.querySelector('.tv-btn'),
+    topRatedBtn: document.querySelector('.top-rated-btn'),
+    upcomingBtn: document.querySelector('.upcoming-btn'),
+    btnFilter: document.querySelector('.filter-btn'),
+    yearFilter: document.querySelector('#yearFilter'),
+    genreFilter: document.querySelector('#genreFilter'),
+    filterInput: document.querySelectorAll('.filter-input'),
+    backToTopBtn: document.querySelector('.back-to-top-btn'),
+    emptyCard: document.querySelector('.empty-card'),
+    moviesGalleryContainer: document.querySelector('.movies-gallery'),
   };
 }

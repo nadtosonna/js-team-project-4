@@ -1,11 +1,19 @@
 import getRefs from './common/refs';
 
-const { loader } = getRefs();
+const { preloader, loader } = getRefs();
 
-export function showLoader() {
-  loader.classList.remove('is-hidden');
-}
+document.body.onload = function () {
+  setTimeout(function () {
+    if (!preloader.classList.contains('done')) {
+      preloader.classList.add('done');
+    }
+  }, 1000);
+};
 
-export function hideLoader() {
-  loader.classList.add('is-hidden');
-}
+// export function showLoader() {
+//   loader.classList.remove('is-hidden');
+// }
+
+// export function hideLoader() {
+//   loader.classList.add('is-hidden');
+// }

@@ -22,12 +22,12 @@ async function searchMovies(event) {
   if (searchQuery === '') return;
 
   try {
-    showLoader();
+    // showLoader();
     const { results, total_results: totalResults } = await fetchMovies(
       searchQuery
     );
     const genres = await getGenresList();
-    hideLoader();
+    // hideLoader();
 
     if (totalResults === 0) {
       Notify.failure(

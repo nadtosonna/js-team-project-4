@@ -1,10 +1,13 @@
 .movies-gallery {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  padding-top: 20px;
 
   @include breakpoints(tablet) {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -16px;
+    margin-left: -32px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
   @include breakpoints(desktop) {
   }
@@ -14,12 +17,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
+
     @include breakpoints(tablet) {
       display: flex;
       flex-wrap: wrap;
       justify-content: left;
-
-      margin-bottom: 60px;
     }
     @include breakpoints(desktop) {
     }
@@ -27,17 +29,29 @@
 
   &__item {
     margin-bottom: 20px;
-    transition: 1s;
+    transition: transform 0.5s linear;
+
+    border-radius: 5px;
     @include breakpoints(tablet) {
       contain: content;
-      width: calc(100% / 2 - 16px);
+      width: calc(100% / 2 - 32px);
       margin-bottom: 32px;
-      margin-left: 16px;
+      margin-left: 32px;
     }
     @include breakpoints(desktop) {
       width: calc(100% / 3 - 16px);
       margin: 16px 0;
       margin-left: 15px;
+    }
+    &:hover,
+    &:focus {
+      box-shadow: 2px 7px 27px -5px var(--accent-color);
+      transform: scale(1.012);
+    }
+
+    &:hover .movies-gallery__text,
+    &:focus .movies-gallery__text {
+      transform: translate(10px, -10%);
     }
   }
 
@@ -46,20 +60,28 @@
     border-radius: 5px;
     margin-bottom: 10px;
     overflow: hidden;
+    // height: 480px;
+    @include breakpoints(tablet) {
+      height: 480px;
+    }
     @include breakpoints(desktop) {
       margin-bottom: 12px;
-    }
-    &:hover img {
-      transform: scale(1.15);
+      height: 583px;
     }
   }
 
   &__img img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     transition: transform 0.55s;
   }
 
   &__text {
     font-family: Roboto, sans-serif;
+    // transition: translate 10s linear;
+
     @include font(12px, 500, 16px);
 
     @include breakpoints(desktop) {
@@ -69,20 +91,83 @@
 
   &__title {
     color: var(--text-color-black);
-    // @include breakpoints(desktop) {
-    //   margin-bottom: 10px;
-    // }
   }
 
   &__genre {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+
     color: var(--accent-color);
   }
   &__rating {
-    margin-left: 10px;
     padding: 1px 10px;
 
     color: var(--primary-color-white);
     background-color: var(--accent-color);
     border-radius: 5px;
   }
+}
+
+.filter-btn {
+  margin-bottom: 20px;
+
+  @include breakpoints(tablet) {
+    margin-bottom: 30px;
+  }
+}
+
+.filter-btn-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 15px;
+}
+.filter-btn-item {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-filter {
+    display: block;
+    min-width: 110px;
+    height: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 0 12px 0;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    color: var(--text-color-grey);
+    font-weight: 500;
+    cursor: pointer;
+  
+    &:hover,
+    :active {
+      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+      background-color: var(--accent-color);
+      color: var(--primary-color-white);
+    }
+
+        @include breakpoints(tablet) {
+          min-width: 160px;
+        }
+}
+
+.btn-tab-active {
+  opacity: 0.7;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  background-color: var(--accent-color);
+  color: var(--primary-color-white);
+  transform: scale(1.05);
+  box-shadow: none;
+}
+.filter-input {
+      min-width: 110px;
+        height: 40px;
+        text-transform: uppercase;
+        text-align: center;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+        color: var(--text-color-grey);
+        font-weight: 500;
+        cursor: pointer;
 }
