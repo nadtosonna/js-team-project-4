@@ -1,16 +1,6 @@
 const teamRef = document.querySelector('.footer__link');
 const backdropTeamRef = document.querySelector('.backdrop-team');
 const closeBtnRef = document.querySelector('.modal-team__close-btn');
-const options = {
-  rootMargin: '100px',
-  threshold: 1.0,
-};
-const isTeamListenerActive = teamRef.dataset.event;
-
-const observer = new IntersectionObserver(
-  toggleListenerByIntersection,
-  options
-);
 
 function onGoitteamClick(event) {
   event.preventDefault();
@@ -60,31 +50,16 @@ function closingModalStaff() {
   document.body.classList.remove('modal-open');
 }
 
-function toggleListenerByIntersection(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      teamRef.addEventListener('click', onGoitteamClick);
-      teamRef.dataset.event = 'true';
-    }
-
-    if (!entry.isIntersecting) {
-      teamRef.removeEventListener('click', onGoitteamClick);
-      teamRef.dataset.event = 'false';
-    }
-  });
-}
-
-
 // (() => {
 //     const refs = {
 //       openModalBtn: document.querySelector("[data-modal-open]"),
 //       closeModalBtn: document.querySelector("[data-modal-close]"),
 //       modal: document.querySelector("[data-modal]"),
 //     };
-  
+
 //     refs.openModalBtn.addEventListener("click", toggleModal);
 //     refs.closeModalBtn.addEventListener("click", toggleModal);
-  
+
 //     function toggleModal() {
 //       refs.modal.classList.toggle("is-hidden");
 //     }
