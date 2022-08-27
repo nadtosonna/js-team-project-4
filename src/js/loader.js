@@ -7,8 +7,8 @@ document.body.onload = function () {
     if (!preloader.classList.contains('done')) {
       preloader.classList.add('done');
     }
-  }, 1000)
-}
+  }, 1000);
+};
 
 // window.addEventListener('load', () => {
 //   preloader.classList.add('loader-hide');
