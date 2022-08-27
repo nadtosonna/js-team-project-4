@@ -19,5 +19,6 @@ export default function getRefs() {
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
     logoIcon: document.querySelector('.logo-icon'),
+    backdrop: document.querySelector('.backdrop'),
   };
 }
