@@ -17,3 +17,4 @@ export function closeModalWindow(event) {
     console.log(event.target);
   }
 }
+
