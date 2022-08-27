@@ -30,5 +30,9 @@ export default function getRefs() {
     backToTopBtn: document.querySelector('.back-to-top-btn'),
     emptyCard: document.querySelector('.empty-card'),
     moviesGalleryContainer: document.querySelector('.movies-gallery'),
+    teamRef: document.querySelector('.footer__link'),
+    closeBtnRef: document.querySelector('.modal-team__close-btn'),
+    backdropTeamRef: document.querySelector('.backdrop-team'),
+    body: document.querySelector('body'),
   };
 }
