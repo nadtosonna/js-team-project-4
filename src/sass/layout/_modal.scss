@@ -1,233 +1,229 @@
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    overflow-y: scroll;
-    z-index: 10;
+.backdrop-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  z-index: 10;
 }
-    
+
+.backdrop-modal-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .modal {
-    z-index: 8;
-    opacity: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--primary-color-white);
+  z-index: 8;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--primary-color-white);
 
-    &.is-hidden {
-            visibility: hidden;
-            pointer-events: none;
-            opacity: 0;
-        }
+  &.is-hidden {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+  }
 
-    @media screen and (max-width:767px) {
-        width: 280px;
-        height: auto;
-        padding: 48px 20px 40px 20px;
+  @media screen and (max-width: 767px) {
+    width: 280px;
+    height: auto;
+    padding: 48px 20px 40px 20px;
+  }
 
-    }
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 552px;
+    padding: 48px 20px 40px 20px;
+  }
 
-    @media screen and (min-width:768px) {
-        width: 704px;
-        height: 552px;
-        padding: 48px 20px 40px 20px;
-
-    }
-
-    @media screen and (min-width:1280px) {
-        width: 806px;
-        height: 558px;
-        padding: 40px 12px;
-
-    }
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+  }
 }
 
 .modal-contaner {
-
-    @media screen and (min-width:768px) {
-        display: flex;
-        align-items: flex-start;
-    }
-
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 
 .modal-close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    // background-color: aqua;
-    transform: rotate(-90deg);
+  position: absolute;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  // background-color: aqua;
+  transform: rotate(-90deg);
 
-@media screen and (max-width:767px) {
+  @media screen and (max-width: 767px) {
     left: 242px;
     bottom: 965px;
-    }
+  }
 
-    @media screen and (min-width:768px) {
-        left: 662px;
-        bottom: 514px;
-    }
+  @media screen and (min-width: 768px) {
+    left: 662px;
+    bottom: 514px;
+  }
 
-    @media screen and (min-width:1280px) {
-        left: 770px;
-        bottom: 522px;
-
-    }
+  @media screen and (min-width: 1280px) {
+    left: 770px;
+    bottom: 522px;
+  }
 }
 
-.modal-close__icon, .modal-btn__icon{
-    fill: var(--text-color-black);
+.modal-close__icon,
+.modal-btn__icon {
+  fill: var(--text-color-black);
 }
 
 .modal-img {
+  @media screen and (max-width: 767px) {
+    width: 240px;
+    height: 357px;
+  }
 
-    @media screen and (max-width:767px) {
-        width: 240px;
-        height: 357px;
-    }
+  @media screen and (min-width: 780px) {
+    width: 264px;
+    height: 374px;
+  }
 
-    @media screen and (min-width:780px) {
-        width: 264px;
-        height: 374px;
-    }
-
-    @media screen and (min-width:1280px) {
-        width: 375px;
-        height: 478px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 375px;
+    height: 478px;
+  }
 }
 
 .modal-block__text {
+  @media screen and (min-width: 780px) {
+    margin-left: 68px;
+  }
 
-@media screen and (min-width:780px) {
-        margin-left: 68px;
-    }
-
-@media screen and (min-width:1280px) {
+  @media screen and (min-width: 1280px) {
     margin-left: 16px;
-}
+  }
 }
 
 .modal-title {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 
-    @media screen and (max-width:767px) {
-        margin-top: 20px;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 1.1px;
-    }
+  @media screen and (max-width: 767px) {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.1px;
+  }
 
-    @media screen and (min-width:780px) {
+  @media screen and (min-width: 780px) {
+    font-size: 20px;
+    line-height: 1.13px;
+  }
 
-        font-size: 20px;
-        line-height: 1.13px;
-    }
-
-    @media screen and (min-width:1280px) {
-        padding-top: 5px;
-        font-size: 30px;
-        line-height: 1.13px;
-    }
+  @media screen and (min-width: 1280px) {
+    padding-top: 5px;
+    font-size: 30px;
+    line-height: 1.13px;
+  }
 }
 
 .modal-list__key {
-    display: inline-block;
+  display: inline-block;
 }
 
 .modal-info {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: #8C8C8C;
-
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
 }
 
 .modal-info:not(:last-child) {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .modal-info:last-child {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-list__library {
-    display: inline-block;
-    margin-left: 85px;
+  display: inline-block;
+  margin-left: 85px;
 }
 
 .modal-info__library {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
 }
 
 .modal-info__library:not(:last-child) {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .modal-info__library:last-child {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-text__title {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.67;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: var(--text-color-black);
 }
 
 .modal-text {
-    margin-top: 8px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.67;
-    color: var(--text-color-black);
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  color: var(--text-color-black);
 }
 
 .modal-block__btn {
-    @media screen and (max-width:767px) {
-        display: flex;
-        justify-content: space-around;
-    }
+  @media screen and (max-width: 767px) {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 .modal-btn__addwatch,
 .modal-btn__addqueue {
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 1px solid;
+  color: var(--text-color-black);
+  background: var(--primary-color-white);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33px;
+  height: 44px;
+  margin-top: 20px;
 
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: 1px solid;
-    color: var(--text-color-black);
-    background: var(--primary-color-white);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33px;
-    height: 44px;
-    margin-top: 20px;
+  @media screen and (max-width: 767px) {
+    width: 110px;
+    // display: inline-block;
+  }
 
-    @media screen and (max-width:767px) {
-        width: 110px;
-        // display: inline-block;
-    }
+  @media screen and (min-width: 780px) {
+    width: 125px;
+  }
 
-    @media screen and (min-width:780px) {
-        width: 125px;
-    }
-
-    @media screen and (min-width:1280px) {
-        width: 136px;
-        padding: 12px 10px;
-    }
-
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+    padding: 12px 10px;
+  }
 }
 
 // .modal-btn__addqueue {
@@ -235,41 +231,36 @@
 // }
 
 .modal-btn__addwatch {
-    @media screen and (max-width:767px) {
-        margin-right: 20px;
-    }
+  @media screen and (max-width: 767px) {
+    margin-right: 20px;
+  }
 
-    @media screen and (min-width:780px) {
-        margin-right: 15px;
-    }
+  @media screen and (min-width: 780px) {
+    margin-right: 15px;
+  }
 
-    @media screen and (min-width:1280px) {
-        margin-right: 15px;
-    }
+  @media screen and (min-width: 1280px) {
+    margin-right: 15px;
+  }
 }
 
-// .details__btn--in-the-list {
-//     background-color: green;
-//     color: pink;
-//     border: 1px solid green;
-// }
-.modal-btn__accent,
-.modal-btn__addwatch {
-    display: inline-block;
-    height: 44px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33px;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: 1px solid var(--accent-color);
-    color: var(--primary-color-white);
-    background: var(--accent-color);
-    margin-top: 20px;
-    width: 100%;
-    max-width: 150px;
+.modal-btn__accent {
+  display: inline-block;
+  height: 44px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  color: var(--primary-color-white);
+  background: var(--accent-color);
+  margin-top: 20px;
+  width: 100%;
+  max-width: 150px;
+
 }
 .modal-btn {
-    color: var(--text-color-black);
+  color: var(--text-color-black);
 }

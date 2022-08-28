@@ -34,7 +34,7 @@ export default function getRefs() {
     closeBtnRef: document.querySelector('.modal-team__close-btn'),
     backdropTeamRef: document.querySelector('.backdrop-team'),
     body: document.querySelector('body'),
-    backdrop: document.querySelector('.backdrop'),
+    backdrop: document.querySelector('.backdrop-modal-hidden'),
     container: document.getElementById('tui-pagination-container'),
     logoutBtn: document.querySelector('.logout-btn'),
     nawList: document.querySelector('.naw-list'),

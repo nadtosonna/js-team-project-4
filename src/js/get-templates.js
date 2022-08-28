@@ -1,3 +1,5 @@
+import sprite from '../images/symbol-defs.svg';
+
 const getGenresNames = (genresIds, genres) => {
   if (!genresIds || !genresIds.length) return '';
   let genresNames = [];
@@ -68,7 +70,7 @@ export const getModalTemplate = (movie, existsInLS) => {
     <div class="modal-contaner">
       <button class="modal-close" type="button">
         <svg class="modal-btn__icon" width="30" height="30">
-            <use href="images/modal-close.svg"></use>
+            <use href="${sprite}#cross"></use>
         </svg>
       </button>
       <img class="modal-img" src="${

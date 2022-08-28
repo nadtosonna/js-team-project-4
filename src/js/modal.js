@@ -3,7 +3,7 @@ import { getModalTemplate } from './get-templates';
 import { load, save } from './local-storage';
 import { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } from './common/keys';
 
-const { modal, moviesGallery, backdropREF } = getRefs();
+const { modal, moviesGallery, backdrop } = getRefs();
 
 moviesGallery.addEventListener('click', actionWithModalWindow);
 
@@ -126,15 +126,38 @@ const removeFromWatched = movieData => {
 // Close Modal By Escape
 const closeByEscape = e => {
   if (e.code === 'Escape') {
-    modal.classList.add('is-hidden');
+    backdrop.classList.add('backdrop-modal-hidden');
     window.removeEventListener('keydown', closeByEscape);
   }
 };
 
 const closeModal = () => {
-  modal.classList.add('is-hidden');
+  backdrop.classList.add('backdrop-modal-hidden');
   window.removeEventListener('keydown', closeByEscape);
   document
     .querySelector('.modal-close')
     .removeEventListener('click', closeModal);
 };
+
+moviesGallery.addEventListener('click', e => {
+  const movieNode = e.target.closest('.movies-gallery__item');
+
+  if (!movieNode) return;
+
+  backdrop.classList.remove('backdrop-modal-hidden');
+  const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
+  const existsInLS = isExistsInLS(movieData.id);
+
+  modal.classList.remove('is-hidden');
+  modal.innerHTML = getModalTemplate(movieData, existsInLS);
+
+  const queueBtn = document.querySelector('.modal-btn__accent');
+  // const watchBtn = document.querySelector('.modal-btn__addwatch')
+  const closeBtn = document.querySelector('.modal-close');
+
+  window.addEventListener('keydown', closeByEscape);
+  closeBtn.addEventListener('click', closeModal);
+  queueBtn.addEventListener('click', () => {
+    existsInLS ? removeFromQueue(movieData) : addToQueue(movieData);
+  });
+});
