@@ -13,8 +13,6 @@ const getGenresNames = (genresIds, genres) => {
   return genresNames[0];
 };
 
-// window.addEventListener('click', (e) => console.log(e.target, e.currentTarget))
-
 export const getCardTemplate = (movie, genres) => {
   const {
     original_name,
@@ -48,7 +46,9 @@ export const getCardTemplate = (movie, genres) => {
         <p class='movies-gallery__genre ellipsis'>
           ${correctGenres} | ${release_date?.split('-')[0] || '2077'}
         </p>
-        <span class='movies-gallery__rating'>${vote_average}</span>
+        <span class='movies-gallery__rating'>${Number(vote_average).toFixed(
+          1
+        )}</span>
       </div>
     </li>
   `;
@@ -81,13 +81,15 @@ export const getModalTemplate = (movie, existsInLS) => {
         <div class="modal-block__text">
             <h2 class="modal-title">${original_title || original_name}</h2>
             <ul class="modal-list__key">
-                <li class="modal-info">${vote_average} / ${vote_count}</li>
-                <li class="modal-info">${popularity}</li>
-                <li class="modal-info">${original_title}</li>
-                <li class="modal-info">${genres}</li>
+                <li class="modal-info">Vote / Votes</li>
+                <li class="modal-info">Popularity</li>
+                <li class="modal-info">Original Title</li>
+                <li class="modal-info">Genre</li>
             </ul>
             <ul class="modal-list__library">
-                <li class="modal-info__library">${vote_average} / ${vote_count}</li>
+                <li class="modal-info__library">${Number(vote_average).toFixed(
+                  1
+                )} / ${vote_count}</li>
                 <li class="modal-info__library">${popularity}</li>
                 <li class="modal-info__library">${original_title}</li>
                 <li class="modal-info__library">${genres}</li>
