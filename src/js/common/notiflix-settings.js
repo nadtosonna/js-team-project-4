@@ -29,7 +29,7 @@ export const authNotiflixSettings = {
   fontFamily: 'Roboto',
   fontSize: '16px',
   cssAnimationDuration: 800,
-  timeout: 5000,
+  timeout: 2500,
 
   // failure: {
   //   background: '#ff001b',
