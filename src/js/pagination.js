@@ -36,6 +36,10 @@ console.log(page);
 
 const { moviesGallery } = getRefs();
 
+function scrollTo() {
+  window.scrollTo({ top: 20, behavior: 'smooth' });
+};
+
 async function getPages(page) {
 
     try {
@@ -75,7 +79,8 @@ getPages(page);
     results.forEach(film => {
       html += getCardTemplate(film, genres);
     });
-    moviesGallery.innerHTML = html;
+          moviesGallery.innerHTML = html;
+          scrollTo();
       } catch (error) {
         console.log(error);
     }
