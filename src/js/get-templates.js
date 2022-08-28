@@ -1,3 +1,5 @@
+import sprite from '../images/symbol-defs.svg';
+
 const getGenresNames = (genresIds, genres) => {
   if (!genresIds || !genresIds.length) return '';
   let genresNames = [];
@@ -11,8 +13,6 @@ const getGenresNames = (genresIds, genres) => {
   console.log(genresNames[0]);
   return genresNames[0];
 };
-
-// window.addEventListener('click', (e) => console.log(e.target, e.currentTarget))
 
 export const getCardTemplate = (movie, genres) => {
   const {
@@ -47,13 +47,15 @@ export const getCardTemplate = (movie, genres) => {
         <p class='movies-gallery__genre ellipsis'>
           ${correctGenres} | ${release_date?.split('-')[0] || '2077'}
         </p>
-        <span class='movies-gallery__rating'>${vote_average}</span>
+        <span class='movies-gallery__rating'>${Number(vote_average).toFixed(
+          1
+        )}</span>
       </div>
     </li>
   `;
 };
 
-export const getModalTemplate = (movie, existsInLS) => {
+export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
   const {
     original_name,
     original_title,
@@ -70,7 +72,7 @@ export const getModalTemplate = (movie, existsInLS) => {
     <div class="modal-contaner">
       <button class="modal-close" type="button">
         <svg class="modal-btn__icon" width="30" height="30">
-            <use href="images/modal-close.svg"></use>
+            <use href="${sprite}#cross"></use>
         </svg>
       </button>
       <img class="modal-img" src="${
@@ -88,7 +90,9 @@ export const getModalTemplate = (movie, existsInLS) => {
                 <li class="modal-info">${genres}</li>
             </ul>
             <ul class="modal-list__library">
-                <li class="modal-info__library">${vote_average} / ${vote_count}</li>
+                <li class="modal-info__library">${Number(vote_average).toFixed(
+                  1
+                )} / ${vote_count}</li>
                 <li class="modal-info__library">${popularity}</li>
                 <li class="modal-info__library">${original_title || original_name || name}</li>
                 <li class="modal-info__library">${genres}</li>
@@ -96,9 +100,14 @@ export const getModalTemplate = (movie, existsInLS) => {
             <h3 class="modal-text__title">About</h3>
             <p>${overview}</p>
             <div class="modal-block__btn">
-                <button class="modal-btn__addwatch" type="button">add to watched</button>
-                <button class="modal-btn__accent" type="button">${
-                  existsInLS ? 'remove from queue' : 'add to queue'
+                   <button class="modal-btn__addwatch" type="button">${
+                     existsInWatchedLS
+                       ? 'remove from watched'
+                       : 'add to watched'
+                   }
+                   </button>
+                <button class="modal-btn__addqueue" type="button">${
+                  existsInQueueLS ? 'remove from queue' : 'add to queue'
                 }</button>
             </div>
         </div>
