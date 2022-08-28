@@ -1,4 +1,5 @@
 .header {
+  padding-top: 40px;
   height: 230px;
   margin: 0 auto;
   background-size: cover;
@@ -31,10 +32,12 @@
   color: var(--primary-color-white);
   display: flex;
   align-items: center;
+  text-shadow: 2 0px 12px rgba(255, 255, 255, 0.6);
 }
 
 .logo-link-hover {
   cursor: pointer;
+  text-shadow: 0 0px 30px var(--accent-color);
 }
 
 .logo-icon {
@@ -44,6 +47,7 @@
 .logo-link-active {
   color: var(--accent-color);
   stroke: var(--accent-color);
+  text-shadow: 0 0px 30px var(--accent-color);
 }
 
 .lodo-title {
@@ -73,15 +77,16 @@
   }
 }
 
-.header-container {
-  padding-top: 40px;
-}
-
 .naw-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 54px;
+}
+
+.naw-list-container {
+  display: flex;
+  align-items: flex-start;
 }
 
 .naw-list {
@@ -91,13 +96,28 @@
 
 .naw-list-item {
   &:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 25px;
   }
 }
 .naw-list-link {
   text-transform: uppercase;
   color: var(--primary-color-white);
   cursor: pointer;
+  &:active {
+    color: var(--accent-color);
+  }
+}
+
+.is-hidden-logout {
+  display: none;
+}
+
+.logout-btn {
+  margin-left: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--primary-color-white);
+  @include font(12px, 500, 14px);
   &:active {
     color: var(--accent-color);
   }
@@ -112,6 +132,7 @@
 }
 
 .search-form {
+  display: block;
   margin-top: 54px;
   position: relative;
 }
@@ -128,9 +149,10 @@
   font-family: inherit;
   @include font(14px, 400, 16px);
   &:focus {
-    border-color: var(--accent-color);
+    border-color: rgba(255, 0, 27, 0.8);
     border-width: 1px;
     fill: var(--accent-color);
+    box-shadow: 0 6px 8px rgba(255, 0, 27, 0.4);
   }
 }
 
@@ -165,7 +187,7 @@
 
 .header-btn:focus {
   background-color: #ff6b01;
-
+  box-shadow: 0 8px 43px rgba(255, 255, 255, 0.6);
   border-color: transparent;
   color: var(--primary-color-white);
 }
@@ -173,10 +195,6 @@
 @include breakpoints(tablet) {
   .header {
     height: 216px;
-  }
-
-  .header-container {
-    padding-top: 45px;
   }
 
   .home-header-bg {
@@ -292,6 +310,22 @@
   .naw-list-link {
     &:hover {
       color: var(--accent-color);
+      text-shadow: 0 0px 30px var(--accent-color);
     }
   }
+
+  .logout-btn {
+    &:hover {
+      color: var(--accent-color);
+      text-shadow: 0 0px 30px var(--accent-color);
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+  -webkit-transition-delay: 9999s;
 }

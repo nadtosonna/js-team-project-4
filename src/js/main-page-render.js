@@ -5,7 +5,7 @@ import { getCardTemplate } from './get-templates';
 
 export let page = 1;
 
-const { moviesGallery } = getRefs();
+const { moviesGallery, trendingBtn } = getRefs();
 
 export async function getGenresList() {
   const { genres } = await fetchGenresList();
@@ -16,6 +16,7 @@ export async function getGenresList() {
 }
 
 export async function getTrendingMovies(page) {
+  trendingBtn.classList.add('btn-tab-active');
   try {
     // showLoader();
     const { results } = await fetchTrendingMovies(page);
