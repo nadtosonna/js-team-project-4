@@ -13,6 +13,7 @@ export default function getRefs() {
     modal: document.querySelector('.modal'),
     logoIcon: document.querySelector('.logo-icon'),
     closeModalBtn: document.querySelector('.modal-btn'),
+    modalContainerBtn: document.querySelector('.modal-block__btn'),
     watchedBtn: document.querySelector('.modal-btn__addwatch'),
     queueBtn: document.querySelector('.modal-btn__accent'),
     queueBtn: document.querySelector('.modal-btn__addqueue'),

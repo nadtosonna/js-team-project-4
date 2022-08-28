@@ -7,120 +7,107 @@ const { modal, moviesGallery, backdrop } = getRefs();
 
 moviesGallery.addEventListener('click', actionWithModalWindow);
 
+const MovieAction = {
+  Queue: {
+    storageKey: QUEUE_STORAGE_KEY,
+    querySelector: '.modal-btn__addqueue',
+    addText: 'add to queue',
+    removeText: 'remove from queue',
+  },
+  Watch: {
+    storageKey: WATCHED_STORAGE_KEY,
+    querySelector: '.modal-btn__addwatch',
+    addText: 'add to watched',
+    removeText: 'remove from watched',
+  },
+};
+
 function actionWithModalWindow(e) {
   const movieNode = e.target.closest('.movies-gallery__item');
 
   if (!movieNode) return;
 
+  backdrop.classList.remove('backdrop-modal-hidden');
   const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
-  const existsInLS = isExistsInLS(movieData.id);
-  // const filmExistsInLS = isFilmExistsInLS(movieData.id);
+  const existsInQueueLS = isExistsInLS(QUEUE_STORAGE_KEY, movieData.id);
+  const existsInWatchedLS = isExistsInLS(WATCHED_STORAGE_KEY, movieData.id);
 
   modal.classList.remove('is-hidden');
-  modal.innerHTML = getModalTemplate(movieData, existsInLS);
+  modal.innerHTML = getModalTemplate(
+    movieData,
+    existsInQueueLS,
+    existsInWatchedLS
+  );
 
-  const queueBtn = document.querySelector('.modal-btn__accent');
+  const queueBtn = document.querySelector('.modal-btn__addqueue');
   const watchBtn = document.querySelector('.modal-btn__addwatch');
   const closeBtn = document.querySelector('.modal-close');
+  const container = document.querySelector('.modal-block__btn');
 
+  const queueAction = MovieAction.Queue;
+  const watchAction = MovieAction.Watch;
+
+  container.addEventListener('click', onActiveClick);
   window.addEventListener('keydown', closeByEscape);
   closeBtn.addEventListener('click', closeModal);
   queueBtn.addEventListener('click', () => {
-    existsInLS ? removeFromQueue(movieData) : addToQueue(movieData);
+    existsInQueueLS
+      ? removeFromAction(queueAction, movieData)
+      : addToAction(queueAction, movieData);
   });
   watchBtn.addEventListener('click', () => {
-    existsInLS ? removeFromWatched(movieData) : addToWatched(movieData);
+    existsInWatchedLS
+      ? removeFromAction(watchAction, movieData)
+      : addToAction(watchAction, movieData);
   });
 }
 
-// Button Queue
-function getQueueButton(text) {
-  const btn = document.createElement('button');
-  btn.classList.add('modal-btn__accent');
-  btn.innerHTML = text;
-  return btn;
-}
+const updateQueryText = (selector, text) => {
+  const querySelector = document.querySelector(selector);
+  querySelector.innerHTML = text;
+  return querySelector;
+};
 
-const addToQueue = movieData => {
-  document.querySelector('.modal-btn__accent').remove();
-  document
-    .querySelector('.modal-block__btn')
-    .append(getQueueButton('remove from queue'));
-  document
-    .querySelector('.modal-btn__accent')
-    .addEventListener('click', () => removeFromQueue(movieData));
+const addToAction = (action, movieData) => {
+  const querySelector = action.querySelector;
+  const storageKey = action.storageKey;
+  const removeText = action.removeText;
 
-  let data = load(QUEUE_STORAGE_KEY);
+  updateQueryText(querySelector, removeText);
+  document
+    .querySelector(querySelector)
+    .addEventListener('click', () => removeFromAction(action, movieData));
+
+  let data = load(storageKey);
   if (!data) {
     data = [];
   }
   data.push(movieData);
-  save(QUEUE_STORAGE_KEY, data);
+  save(storageKey, data);
 };
 
-const removeFromQueue = movieData => {
-  document.querySelector('.modal-btn__accent').remove();
-  document
-    .querySelector('.modal-block__btn')
-    .append(getQueueButton('add to queue'));
-  document
-    .querySelector('.modal-btn__accent')
-    .addEventListener('click', () => addToQueue(movieData));
+const removeFromAction = (action, movieData) => {
+  const querySelector = action.querySelector;
+  const storageKey = action.storageKey;
+  const addText = action.addText;
 
-  const data = load(QUEUE_STORAGE_KEY);
+  updateQueryText(querySelector, addText);
+  document
+    .querySelector(querySelector)
+    .addEventListener('click', () => addToAction(action, movieData));
+
+  const data = load(storageKey);
   save(
-    QUEUE_STORAGE_KEY,
+    storageKey,
     data.filter(movie => movie.id !== movieData.id)
   );
 };
 
-const isExistsInLS = id => {
-  let data = load(QUEUE_STORAGE_KEY);
-  let dataWatched = load(WATCHED_STORAGE_KEY);
-  if (data && dataWatched) {
+const isExistsInLS = (storageKey, id) => {
+  const data = load(storageKey);
+  if (data) {
     return Boolean(data.find(movie => movie.id === id));
   }
-  return false;
-};
-
-// Button Watched
-function getWatchedButton(text) {
-  const btn = document.createElement('button');
-  btn.classList.add('modal-btn__addwatch');
-  btn.innerHTML = text;
-  return btn;
-}
-const addToWatched = movieData => {
-  document.querySelector('.modal-btn__addwatch').remove();
-  document
-    .querySelector('.modal-block__btn')
-    .appendChild(getWatchedButton('remove from watched'));
-  document
-    .querySelector('.modal-btn__addwatch')
-    .addEventListener('click', () => removeFromWatched(movieData));
-
-  let data = load(WATCHED_STORAGE_KEY);
-  if (!data) {
-    data = [];
-  }
-  data.push(movieData);
-  save(WATCHED_STORAGE_KEY, data);
-};
-
-const removeFromWatched = movieData => {
-  document.querySelector('.modal-btn__addwatch').remove();
-  document
-    .querySelector('.modal-block__btn')
-    .append(getWatchedButton('add to watched'));
-  document
-    .querySelector('.modal-btn__addwatch')
-    .addEventListener('click', () => addToWatched(movieData));
-
-  const data = load(WATCHED_STORAGE_KEY);
-  save(
-    WATCHED_STORAGE_KEY,
-    data.filter(movie => movie.id !== movieData.id)
-  );
 };
 
 // Close Modal By Escape
@@ -139,25 +126,11 @@ const closeModal = () => {
     .removeEventListener('click', closeModal);
 };
 
-moviesGallery.addEventListener('click', e => {
-  const movieNode = e.target.closest('.movies-gallery__item');
-
-  if (!movieNode) return;
-
-  backdrop.classList.remove('backdrop-modal-hidden');
-  const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
-  const existsInLS = isExistsInLS(movieData.id);
-
-  modal.classList.remove('is-hidden');
-  modal.innerHTML = getModalTemplate(movieData, existsInLS);
-
-  const queueBtn = document.querySelector('.modal-btn__accent');
-  // const watchBtn = document.querySelector('.modal-btn__addwatch')
-  const closeBtn = document.querySelector('.modal-close');
-
-  window.addEventListener('keydown', closeByEscape);
-  closeBtn.addEventListener('click', closeModal);
-  queueBtn.addEventListener('click', () => {
-    existsInLS ? removeFromQueue(movieData) : addToQueue(movieData);
-  });
-});
+// Change color on Click
+const onActiveClick = e => {
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  e.target.classList.toggle('modal-btn__accent');
+  console.log(e.target.nodeName);
+};
