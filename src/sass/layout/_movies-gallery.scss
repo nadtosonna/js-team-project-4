@@ -121,6 +121,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 15px;
+
+  @include breakpoints(tablet) {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+  @include breakpoints(desktop) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 }
 .filter-btn-item {
   margin-left: auto;
@@ -129,7 +136,6 @@
 
 .button-filter {
     display: block;
-    min-width: 110px;
     height: 40px;
     text-transform: uppercase;
     text-align: center;
@@ -161,7 +167,6 @@
   box-shadow: none;
 }
 .filter-input {
-      min-width: 110px;
         height: 40px;
         text-transform: uppercase;
         text-align: center;
@@ -170,4 +175,11 @@
         color: var(--text-color-grey);
         font-weight: 500;
         cursor: pointer;
+}
+.filter {
+width: 120px;
+
+@include breakpoints(tablet) {
+    width: 160px;
+  }
 }

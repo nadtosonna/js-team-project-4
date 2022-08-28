@@ -23,7 +23,7 @@ export default function getRefs() {
     tvBtn: document.querySelector('.tv-btn'),
     topRatedBtn: document.querySelector('.top-rated-btn'),
     upcomingBtn: document.querySelector('.upcoming-btn'),
-    btnFilter: document.querySelector('.filter-btn'),
+    // btnFilter: document.querySelector('.filter-btn'),
     yearFilter: document.querySelector('#yearFilter'),
     genreFilter: document.querySelector('#genreFilter'),
     filterInput: document.querySelectorAll('.filter-input'),

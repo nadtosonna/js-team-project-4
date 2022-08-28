@@ -8,6 +8,7 @@ const getGenresNames = (genresIds, genres) => {
   if (genresNames.length > 2)
     return `${genresNames[0]}, ${genresNames[1]}, Other`;
   if (genresNames.length === 2) return `${genresNames[0]}, ${genresNames[1]}`;
+  console.log(genresNames[0]);
   return genresNames[0];
 };
 
@@ -56,6 +57,7 @@ export const getModalTemplate = (movie, existsInLS) => {
   const {
     original_name,
     original_title,
+    name,
     poster_path,
     genres,
     popularity,
@@ -75,19 +77,20 @@ export const getModalTemplate = (movie, existsInLS) => {
         poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : 'images/no-poster-available.jpeg'
-      }" alt="${original_title || original_name}" />
+    }" alt="${original_title || original_name || name}"
+      loading='lazy' />
         <div class="modal-block__text">
-            <h2 class="modal-title">${original_title || original_name}</h2>
+            <h2 class="modal-title">${original_title || original_name || name}</h2>
             <ul class="modal-list__key">
                 <li class="modal-info">${vote_average} / ${vote_count}</li>
                 <li class="modal-info">${popularity}</li>
-                <li class="modal-info">${original_title}</li>
+                <li class="modal-info">${original_title || original_name || name}</li>
                 <li class="modal-info">${genres}</li>
             </ul>
             <ul class="modal-list__library">
                 <li class="modal-info__library">${vote_average} / ${vote_count}</li>
                 <li class="modal-info__library">${popularity}</li>
-                <li class="modal-info__library">${original_title}</li>
+                <li class="modal-info__library">${original_title || original_name || name}</li>
                 <li class="modal-info__library">${genres}</li>
             </ul>
             <h3 class="modal-text__title">About</h3>
