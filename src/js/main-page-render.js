@@ -34,4 +34,4 @@ export async function getTrendingMovies(page) {
   }
 }
 
-getTrendingMovies(page);
+// getTrendingMovies(page);
