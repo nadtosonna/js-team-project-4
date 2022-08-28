@@ -4,14 +4,15 @@ const refs = getRefs();
 
 export function addEmptyTemplate(keyName) {
   refs.moviesGallery.innerHTML = '';
+  refs.moviesGalleryContainer.classList.add('visually-hidden');
   if (localStorage.getItem(keyName) !== null) {
     return;
   }
 
-  refs.moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
+  refs.emptyCard.insertAdjacentHTML('beforeend', markupEmptyTemplate());
 }
 
-function markupEmptyTemplate() {
+export function markupEmptyTemplate() {
   return `
 <section class="empty-template">
   <div class="container">
@@ -25,12 +26,10 @@ function markupEmptyTemplate() {
         Oops!<br />
         List don\`t have movies
       </p>
-      <p class="empty-template__text">
+      <!-- <p class="empty-template__text">
         visit home <a class="empty-template__link" href="#">page</a>
-      </p>
+      </p> -->
     </div>
   </div>
 </section>`;
 }
-
-refs.library.addEventListener('click', addEmptyTemplate);
