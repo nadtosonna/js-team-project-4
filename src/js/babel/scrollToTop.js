@@ -15,9 +15,9 @@ const sttScroll = () => {
 const sttClick = () => {
   sttElem.addEventListener('click', () => {
     const docHeight = window.scrollY;
-    let progress = 2;
+    let progress = 0;
     let position = docHeight;
-    const speed = 25; // When increasing this value. The scrolling speed will increase
+    const speed = 5; // When increasing this value. The scrolling speed will increase
 
     sttElem.style.pointerEvents = 'none';
 
