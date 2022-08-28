@@ -1,14 +1,11 @@
 import getRefs from './common/refs';
 import { fetchTv, fetchTop, fetchUpcoming, fetchFiltered } from "./api/fetchMovies";
-import { getCardTemplate } from './get-templates';
+import { getCardTemplate, getGenresNames } from './get-templates';
 import { getGenresList, getTrendingMovies, page } from './main-page-render';
 
 const { trendingBtn, tvBtn, topRatedBtn, upcomingBtn, moviesGallery, searchForm, yearFilter, genreFilter, filterInput } = getRefs();
 
 chooseYear();
-
-let genrePicked = '';
-let yearPicked = '';
 
 trendingBtn.addEventListener('click', onTrendingClick);
 tvBtn.addEventListener('click', onTvClick);
@@ -103,24 +100,22 @@ function chooseYear() {
 
 filterInput.forEach(item => {
   item.addEventListener('change', event => {
-    yearPicked = yearFilter.value;
-    genrePicked = genreFilter.value;
-      console.log(genrePicked);
-      console.log(yearPicked);
-      renderFilteredList(yearFilter.value);
+    year = yearFilter.value;
+    genre = genreFilter.value;
+    renderFilteredList(genre, year);
   });
 });
 
-async function renderFilteredList(genre, year) {
-    try {
-        // const array = await getGenresList();
-        // console.log(array);
+async function renderFilteredList(genre, year, page) {
+  try {
+    if (page === 1) {
+      moviesGallery.innerHTML = '';
+      }
     const { results, total_results: totalResults } = await fetchFiltered(genre, year);
     
-        console.log(results);
     // let filteredUI = '';
-    //     results.forEach(film => {
-    //   filteredUI += getCardTemplate(film);
+    // results.forEach(result => {
+    //   filteredUI += getCardTemplate(result);
     // });
     // moviesGallery.innerHTML = filteredUI;
 
