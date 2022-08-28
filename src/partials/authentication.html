@@ -1,9 +1,12 @@
 <div class="auth-backdrop">
   <div class="auth-form-container">
+    <svg class="auth-form-close-icon" width="22" height="22">
+      <use href="images/symbol-defs.svg#cross"></use>
+    </svg>
     <form class="auth-form" data-id="auth-form">
       <label class="auth-form-fild">
         <input
-          class="auth-form-input"
+          class="auth-form-input auth-form-mail"
           type="email"
           placeholder="mail"
           name="mail"
@@ -12,7 +15,7 @@
       </label>
       <label class="auth-form-fild">
         <input
-          class="auth-form-input"
+          class="auth-form-input auth-form-password"
           type="password"
           placeholder="Password"
           data-id="auth-form-password"

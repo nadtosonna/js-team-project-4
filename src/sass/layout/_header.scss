@@ -3,27 +3,17 @@
   height: 230px;
   margin: 0 auto;
   background-size: cover;
-  background-position: 50% bottom;
+  background-position: bottom;
   background-repeat: no-repeat;
 }
 
 .home-header-bg {
-  background-image: linear-gradient(
-      to right,
-      rgba(#000000, 0.56),
-      rgba(#000000, 0.56)
-    ),
-    url(../images/header/header-bg/home-header-bg-mobile.jpg);
+  background-image: url(../images/header/header-bg/home-header-bg-mobile.jpg);
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: linear-gradient(
-        to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
-      ),
-      url(../images/header/header-bg/home-header-bg-mobile@2x.jpg);
+    background-image: url(../images/header/header-bg/home-header-bg-mobile@2x.jpg);
   }
 }
 
@@ -84,6 +74,11 @@
   margin-bottom: 54px;
 }
 
+.naw-list-container {
+  display: flex;
+  align-items: flex-start;
+}
+
 .naw-list {
   @include font(12px, 500, 14px);
   display: flex;
@@ -91,13 +86,28 @@
 
 .naw-list-item {
   &:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 25px;
   }
 }
 .naw-list-link {
   text-transform: uppercase;
   color: var(--primary-color-white);
   cursor: pointer;
+  &:active {
+    color: var(--accent-color);
+  }
+}
+
+.is-hidden-logout {
+  display: none;
+}
+
+.logout-btn {
+  margin-left: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--primary-color-white);
+  @include font(12px, 500, 14px);
   &:active {
     color: var(--accent-color);
   }
@@ -112,6 +122,7 @@
 }
 
 .search-form {
+  display: block;
   margin-top: 54px;
   position: relative;
 }
@@ -177,33 +188,20 @@
   }
 
   .home-header-bg {
-    background-image: linear-gradient(
-        to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
-      ),
-      url(../images/header/header-bg/home-header-bg-tablet.jpg);
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    background-image: url(../images/header/header-bg/home-header-bg-tablet.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          to right,
-          rgba(#000000, 0.56),
-          rgba(#000000, 0.56)
-        ),
-        url(../images/header/header-bg/home-header-bg-tablet@2x.jpg);
+      background-image: url(../images/header/header-bg/home-header-bg-tablet@2x.jpg);
     }
   }
 
   .library-header-bg {
     background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
+        rgba(#000000, 0.556),
+        rgba(#000000, 0.556)
       ),
       url(../images/header/header-bg/library-header-bg-tablet.jpg);
 
@@ -212,8 +210,8 @@
       (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
-          rgba(#000000, 0.56),
-          rgba(#000000, 0.56)
+          rgba(#000000, 0.556),
+          rgba(#000000, 0.556)
         ),
         url(../images/header/header-bg/library-header-bg-tablet@2x.jpg);
     }
@@ -235,32 +233,19 @@
 
 @include breakpoints(desktop) {
   .home-header-bg {
-    background-image: linear-gradient(
-        to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
-      ),
-      url(../images/header/header-bg/home-header-bg-desktop.jpg);
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    background-image: url(../images/header/header-bg/home-header-bg-desktop.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          to right,
-          rgba(#000000, 0.56),
-          rgba(#000000, 0.56)
-        ),
-        url(../images/header/header-bg/home-header-bg-desktop@2x.jpg);
+      background-image: url(../images/header/header-bg/home-header-bg-desktop@2x.jpg);
     }
   }
   .library-header-bg {
     background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
+        rgba(#000000, 0.5556),
+        rgba(#000000, 0.5556)
       ),
       url(../images/header/header-bg/library-header-bg-desktop.jpg);
 
@@ -269,8 +254,8 @@
       (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
-          rgba(#000000, 0.56),
-          rgba(#000000, 0.56)
+          rgba(#000000, 0.5556),
+          rgba(#000000, 0.5556)
         ),
         url(../images/header/header-bg/library-header-bg-desktop@2x.jpg);
     }
@@ -280,6 +265,13 @@
     width: 396px;
   }
 
+  .header-btn:hover {
+    background-color: #ff6b01;
+    box-shadow: 0 8px 43px rgba(255, 255, 255, 0.6);
+    border-color: transparent;
+    color: var(--primary-color-white);
+  }
+
   .logo-link-hover {
     cursor: pointer;
     color: var(--accent-color);
@@ -287,6 +279,13 @@
   }
 
   .naw-list-link {
+    &:hover {
+      color: var(--accent-color);
+      text-shadow: 0 0px 30px var(--accent-color);
+    }
+  }
+
+  .logout-btn {
     &:hover {
       color: var(--accent-color);
       text-shadow: 0 0px 30px var(--accent-color);

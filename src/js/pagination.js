@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 import getRefs from './common/refs';
-import { fetchTrendingMovies } from './api/fetchMovies';
+import { fetchTrendingMovies, fetchMovies } from './api/fetchMovies';
 import { getGenresList, getTrendingMovies } from './main-page-render.js';
 import { getCardTemplate } from './get-templates.js';
 
@@ -37,50 +37,49 @@ console.log(page);
 const { moviesGallery } = getRefs();
 
 async function getPages(page) {
-  try {
-    const { total_pages } = await fetchTrendingMovies(page);
-    console.log(total_pages);
-    if (total_pages.length === 0) {
-      container.classList.add('is-hidden');
-      return;
+
+    try {
+        const pageMovies = await fetchTrendingMovies(page);
+        const { results } = await fetchTrendingMovies(page);
+        const genres = await getGenresList();
+        // const getPagetoMovies  =  pageMovies.results;
+        let totalPagesMovies = pageMovies.total_pages;
+      
+        if (totalPagesMovies.length === 0) {
+            container.classList.add('is-hidden');
+            return;
+        }
+
+        pagination.reset(totalPagesMovies);
+      
+        let html = '';
+        results.forEach(film => {
+        html += getCardTemplate(film, genres);
+    });
+        moviesGallery.innerHTML = html;
+     
+        } catch (error) {
+        console.log(error);
     }
+}
+getPages(page);
 
-    pagination.reset(total_pages);
-
-    const { results } = await fetchTrendingMovies(page);
+ async function  movePagination(event) {
+      try {
+    const pageMovies = await fetchTrendingMovies(page);
+    pageMovies.page = event.page;
+    const currentPage = pageMovies.page;
+    const { results } = await fetchTrendingMovies(currentPage);
     const genres = await getGenresList();
-
     let html = '';
     results.forEach(film => {
       html += getCardTemplate(film, genres);
     });
     moviesGallery.innerHTML = html;
-    container.classList.remove('is-hidden');
-  } catch (error) {
-    console.log(error);
-  }
+      } catch (error) {
+        console.log(error);
+    }
 }
-getPages(page);
 
-const callPage = event => {
-  const currentPage = event.page;
-  console.log(currentPage);
+pagination.on('afterMove', movePagination);
 
-  const page = getPages(currentPage);
-
-  // const getMarket = getCardTemplate({});
-  // moviesGallery.insertAdjacentHTML('beforeend', getMarket);
-  // console.log(getMarket)
-
-  //  const { results } = fetchTrendingMovies(page);
-  // const genres = getGenresList();
-  // console.log(results);
-  // console.log(genres);
-  //     let html = '';
-  // results.forEach(film => {
-  //     html += getCardTemplate(film, genres);
-  // });
-  // moviesGallery.innerHTML = html;
-};
-
-pagination.on('afterMove', callPage);
