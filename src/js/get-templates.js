@@ -54,7 +54,7 @@ export const getCardTemplate = (movie, genres) => {
   `;
 };
 
-export const getModalTemplate = (movie, existsInLS) => {
+export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
   const {
     original_name,
     original_title,
@@ -97,9 +97,14 @@ export const getModalTemplate = (movie, existsInLS) => {
             <h3 class="modal-text__title">About</h3>
             <p>${overview}</p>
             <div class="modal-block__btn">
-                <button class="modal-btn__addwatch" type="button">add to watched</button>
-                <button class="modal-btn__accent" type="button">${
-                  existsInLS ? 'remove from queue' : 'add to queue'
+                   <button class="modal-btn__addwatch" type="button">${
+                     existsInWatchedLS
+                       ? 'remove from watched'
+                       : 'add to watched'
+                   }
+                   </button>
+                <button class="modal-btn__addqueue" type="button">${
+                  existsInQueueLS ? 'remove from queue' : 'add to queue'
                 }</button>
             </div>
         </div>
