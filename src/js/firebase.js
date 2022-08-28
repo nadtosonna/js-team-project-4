@@ -10,6 +10,8 @@ import {
   signOut,
 } from 'firebase/auth';
 import { onClickLibrary } from './make-header';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { authNotiflixSettings } from './common/notiflix-settings';
 
 // console.log(onClickLibrary(e));
 
@@ -21,6 +23,8 @@ const {
   logoIcon,
   library,
   authBackdrop,
+  nawList,
+  logoutBtn,
 } = getRefs();
 
 // import {} from './ui';
@@ -42,8 +46,8 @@ const firebaseConfig = {
 
 const authForm = document.querySelector('.auth-form');
 
-const signInBtn = authForm.elements.signIn;
-const registerBtn = authForm.elements.register;
+const signInBtn = document.querySelector('.sign-in');
+const registerBtn = document.querySelector('.register');
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -61,11 +65,14 @@ async function loginEmailPassword(e) {
       loginEmail,
       loginPassword
     );
+    logoutBtn.classList.remove('is-hidden-logout');
     authBackdrop.classList.add('auth-form-hidden');
     document.body.classList.toggle('body-overflow');
     console.log(userCredential.user);
+    Notify.success(`successful`, authNotiflixSettings);
+    removeInput();
   } catch (error) {
-    console.log(error);
+    Notify.failure(`${error.message}`, authNotiflixSettings);
   }
 }
 
@@ -73,36 +80,44 @@ async function createAcount(e) {
   e.preventDefault();
   const loginEmail = authForm.elements.mail.value;
   const loginPassword = authForm.elements.password.value;
-  console.log(loginEmail);
-  console.log(loginPassword);
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      loginEmail,
-      loginPassword
-    );
-    console.log(userCredential.user);
+    await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
+    Notify.success(`Registration was successful! `, authNotiflixSettings);
+    removeInput();
+    signOut(auth);
   } catch (error) {
-    console.log(error);
-    // showLoginError(error);
+    Notify.failure(`${error.message}`, authNotiflixSettings);
   }
 }
 
-export async function monitorAuthState() {
+export function monitorAuthState() {
   onAuthStateChanged(auth, user => {
     if (user) {
-      console.log('user', user);
-      const userId = user.uid;
-      //   console.log(userId);
-      return userId;
-    } else {
+      logoutBtn.classList.remove('is-hidden-logout');
+      return;
+    }
+
+    if (library.classList.contains('current')) {
       authBackdrop.classList.remove('auth-form-hidden');
       document.body.classList.toggle('body-overflow');
-      console.log('no user');
     }
+    console.log('no user');
   });
 }
 
+monitorAuthState();
 signInBtn.addEventListener('click', loginEmailPassword);
 registerBtn.addEventListener('click', createAcount);
+
+logoutBtn.addEventListener('click', e => {
+  signOut(auth);
+  logoutBtn.classList.add('is-hidden-logout');
+});
+
+function removeInput() {
+  const mailInput = document.querySelector('.auth-form-mail');
+  const passwordInput = document.querySelector('.auth-form-password');
+  mailInput.value = '';
+  passwordInput.value = '';
+}

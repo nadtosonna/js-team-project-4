@@ -36,5 +36,8 @@ export default function getRefs() {
     body: document.querySelector('body'),
     backdrop: document.querySelector('.backdrop'),
     container: document.getElementById('tui-pagination-container'),
+    logoutBtn: document.querySelector('.logout-btn'),
+    nawList: document.querySelector('.naw-list'),
+    searchFormInput: document.querySelector('.search-form__input'),
   };
 }

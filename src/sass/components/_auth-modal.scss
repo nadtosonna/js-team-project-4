@@ -60,6 +60,11 @@
   }
 }
 
+.auth-form-mail::before {
+  content: 'pdfskladfsjlkadsf;lkafds';
+  color: red;
+}
+
 ::placeholder {
   color: rgb(255, 255, 255);
 }
@@ -71,8 +76,7 @@
   border-radius: 5px;
   color: inherit;
   width: 100%;
-  &:hover,
-  &:focus {
+  &:active {
     border-color: var(--accent-color);
     background-color: var(--accent-color);
   }
@@ -83,4 +87,8 @@
 }
 
 @include breakpoints(tablet) {
+}
+
+.notiflix-confirm {
+  position: absolute;
 }

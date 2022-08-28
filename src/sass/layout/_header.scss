@@ -84,6 +84,11 @@
   margin-bottom: 54px;
 }
 
+.naw-list-container {
+  display: flex;
+  align-items: flex-start;
+}
+
 .naw-list {
   @include font(12px, 500, 14px);
   display: flex;
@@ -91,13 +96,28 @@
 
 .naw-list-item {
   &:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 25px;
   }
 }
 .naw-list-link {
   text-transform: uppercase;
   color: var(--primary-color-white);
   cursor: pointer;
+  &:active {
+    color: var(--accent-color);
+  }
+}
+
+.is-hidden-logout {
+  display: none;
+}
+
+.logout-btn {
+  margin-left: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--primary-color-white);
+  @include font(12px, 500, 14px);
   &:active {
     color: var(--accent-color);
   }
@@ -112,6 +132,7 @@
 }
 
 .search-form {
+  display: block;
   margin-top: 54px;
   position: relative;
 }
@@ -287,6 +308,13 @@
   }
 
   .naw-list-link {
+    &:hover {
+      color: var(--accent-color);
+      text-shadow: 0 0px 30px var(--accent-color);
+    }
+  }
+
+  .logout-btn {
     &:hover {
       color: var(--accent-color);
       text-shadow: 0 0px 30px var(--accent-color);
