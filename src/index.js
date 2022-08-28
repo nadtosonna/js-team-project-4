@@ -11,3 +11,4 @@ import './js/local-storage';
 import './js/firebase';
 import './js/auth-modal';
 import './js/pagination';
+import './js/my-library-render';
