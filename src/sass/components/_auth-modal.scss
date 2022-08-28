@@ -86,9 +86,6 @@
   margin-bottom: 30px;
 }
 
-@include breakpoints(tablet) {
-}
-
 .notiflix-confirm {
   position: absolute;
 }
@@ -105,5 +102,14 @@
   &:hover {
     fill: var(--accent-color);
     border-color: var(--accent-color);
+  }
+}
+
+@include breakpoints(desktop) {
+  .auth-form-btn {
+    &:hover {
+      border-color: var(--accent-color);
+      background-color: var(--accent-color);
+    }
   }
 }

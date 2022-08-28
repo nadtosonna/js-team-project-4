@@ -50,8 +50,8 @@
 .library-header-bg {
   background-image: linear-gradient(
       to right,
-      rgba(#000000, 0.4),
-      rgba(#000000, 0.4)
+      rgba(#000000, 0.56),
+      rgba(#000000, 0.56)
     ),
     url(../images/header/header-bg/library-header-bg-mobile.jpg);
 
@@ -60,8 +60,8 @@
     (min-resolution: 2dppx) {
     background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.4),
-        rgba(#000000, 0.4)
+        rgba(#000000, 0.56),
+        rgba(#000000, 0.56)
       ),
       url(../images/header/header-bg/library-header-bg-mobile@2x.jpg);
   }
@@ -200,8 +200,8 @@
   .library-header-bg {
     background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.4),
-        rgba(#000000, 0.4)
+        rgba(#000000, 0.556),
+        rgba(#000000, 0.556)
       ),
       url(../images/header/header-bg/library-header-bg-tablet.jpg);
 
@@ -210,8 +210,8 @@
       (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
-          rgba(#000000, 0.4),
-          rgba(#000000, 0.4)
+          rgba(#000000, 0.556),
+          rgba(#000000, 0.556)
         ),
         url(../images/header/header-bg/library-header-bg-tablet@2x.jpg);
     }
@@ -244,8 +244,8 @@
   .library-header-bg {
     background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.4),
-        rgba(#000000, 0.4)
+        rgba(#000000, 0.5556),
+        rgba(#000000, 0.5556)
       ),
       url(../images/header/header-bg/library-header-bg-desktop.jpg);
 
@@ -254,8 +254,8 @@
       (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
-          rgba(#000000, 0.4),
-          rgba(#000000, 0.4)
+          rgba(#000000, 0.5556),
+          rgba(#000000, 0.5556)
         ),
         url(../images/header/header-bg/library-header-bg-desktop@2x.jpg);
     }
@@ -263,6 +263,13 @@
 
   .search-form {
     width: 396px;
+  }
+
+  .header-btn:hover {
+    background-color: #ff6b01;
+    box-shadow: 0 8px 43px rgba(255, 255, 255, 0.6);
+    border-color: transparent;
+    color: var(--primary-color-white);
   }
 
   .logo-link-hover {
