@@ -1,0 +1,49 @@
+.stt {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    
+     @media screen and (max-width:320px) {
+      width: 35px;
+      height: 35px;    
+    }
+  
+
+    border-radius: 15%;
+    border: 1px solid var(--accent-color);
+    background-color: var(--primary-color-white);
+    color: var(--accent-color);
+    // box-shadow: 0px 0px 20px -3px rgba(245, 132, 47, 0.67);
+    font-size: 22px;
+    transition: background-color 0.5s linear;
+
+  }
+
+  .stt__active {
+    visibility: visible;
+    opacity: 0.5;
+  }
+
+.stt:hover {
+      border: 1px solid var(--primary-color-white);
+      background-color: var(--accent-color);
+      color: var(--primary-color-white);
+      box-shadow: 0px 0px 50px 4px rgba(245, 132, 47, 0.67);
+}
+
+
+  .btnUpText {
+    align-items: center;
+    text-align: center;
+position: fixed;
+bottom: 30px;
+right: 30px;
+}
+  
