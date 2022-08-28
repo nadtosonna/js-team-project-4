@@ -86,7 +86,6 @@ getPages(page);
     }
 }
 
-
   //  const { results } = fetchTrendingMovies(page);
   // const genres = getGenresList();
   // console.log(results);
@@ -96,7 +95,6 @@ getPages(page);
   //     html += getCardTemplate(film, genres);
   // });
   // moviesGallery.innerHTML = html;
-};
 
 pagination.on('afterMove', movePagination);
 
