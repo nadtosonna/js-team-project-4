@@ -3,7 +3,7 @@ import { getModalTemplate } from './get-templates';
 import { load, save } from './local-storage';
 import { QUEUE_STORAGE_KEY } from './common/keys';
 
-const { modal, moviesGallery, backdropREF } = getRefs();
+const { modal, moviesGallery, backdrop } = getRefs();
 
 function getQueueButton(text) {
   const btn = document.createElement('button');
@@ -55,13 +55,13 @@ const isExistsInLS = id => {
 
 const closeByEscape = e => {
   if (e.code === 'Escape') {
-    modal.classList.add('is-hidden');
+    backdrop.classList.add('backdrop-modal-hidden');
     window.removeEventListener('keydown', closeByEscape);
   }
 };
 
 const closeModal = () => {
-  modal.classList.add('is-hidden');
+  backdrop.classList.add('backdrop-modal-hidden');
   window.removeEventListener('keydown', closeByEscape);
   document
     .querySelector('.modal-close')
@@ -73,6 +73,7 @@ moviesGallery.addEventListener('click', e => {
 
   if (!movieNode) return;
 
+  backdrop.classList.remove('backdrop-modal-hidden');
   const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
   const existsInLS = isExistsInLS(movieData.id);
 

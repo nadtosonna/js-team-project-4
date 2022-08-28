@@ -57,7 +57,6 @@ async function loginEmailPassword(e) {
   e.preventDefault();
   const loginEmail = authForm.elements.mail.value;
   const loginPassword = authForm.elements.password.value;
-  console.log(loginEmail);
 
   try {
     const userCredential = await signInWithEmailAndPassword(
