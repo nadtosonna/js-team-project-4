@@ -41,12 +41,9 @@ async function getPages(page) {
     try {
         const pageMovies = await fetchTrendingMovies(page);
         const { results } = await fetchTrendingMovies(page);
-
-        const getPagetoMovies  =  pageMovies.results;
+        const genres = await getGenresList();
+        // const getPagetoMovies  =  pageMovies.results;
         let totalPagesMovies = pageMovies.total_pages;
-
-console.log(getPagetoMovies);
-        console.log(totalPagesMovies);
       
         if (totalPagesMovies.length === 0) {
             container.classList.add('is-hidden');
@@ -54,8 +51,12 @@ console.log(getPagetoMovies);
         }
 
         pagination.reset(totalPagesMovies);
-        getCardTemplate(results);
-        getTrendingMovies(page);
+      
+        let html = '';
+        results.forEach(film => {
+        html += getCardTemplate(film, genres);
+    });
+        moviesGallery.innerHTML = html;
      
         } catch (error) {
         console.log(error);
@@ -65,36 +66,20 @@ getPages(page);
 
  async function  movePagination(event) {
       try {
-        // const currentPage = event.page;
-         const pageMovies = await fetchTrendingMovies(page);
-        pageMovies.page = event.page;
-      
-        console.log(pageMovies.page)
+    const pageMovies = await fetchTrendingMovies(page);
+    pageMovies.page = event.page;
     const currentPage = pageMovies.page;
-    console.log(currentPage);
-
-        const { results } = await fetchTrendingMovies(currentPage);
-        console.log(results);
-
-        getPages(currentPage);
-        
-        // moviesGallery.innerHTML = '';
-        getCardTemplate(results);
-        // getTrendingMovies(page);
-    } catch (error) {
+    const { results } = await fetchTrendingMovies(currentPage);
+    const genres = await getGenresList();
+    let html = '';
+    results.forEach(film => {
+      html += getCardTemplate(film, genres);
+    });
+    moviesGallery.innerHTML = html;
+      } catch (error) {
         console.log(error);
     }
 }
-
-  //  const { results } = fetchTrendingMovies(page);
-  // const genres = getGenresList();
-  // console.log(results);
-  // console.log(genres);
-  //     let html = '';
-  // results.forEach(film => {
-  //     html += getCardTemplate(film, genres);
-  // });
-  // moviesGallery.innerHTML = html;
 
 pagination.on('afterMove', movePagination);
 
