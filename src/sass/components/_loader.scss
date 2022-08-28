@@ -3,12 +3,21 @@
     height: 100%;
     position: fixed;
     top: 0;
-    z-index: 100;
-    background: transparent;
-    transition: 2000ms;
+    left: 0;
+    z-index: 33;
+    background: var(--primary-color-white);
+    opacity: 0.9;
+    transition: 1000ms;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 1s all;
+    visibility: visible;
+
+    &.done {
+        opacity: 0;
+        visibility: hidden;
+    }
 
 }
 
@@ -19,7 +28,7 @@
     height: 50px;
     border-radius: 50%;
     background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
-    animation: animate 2s linear infinite;
+    animation: animate 1s linear infinite;
 
     @include breakpoints(tablet) {
         width: 150px;

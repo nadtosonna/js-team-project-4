@@ -1,0 +1,94 @@
+.auth-backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 20px;
+}
+
+.body-overflow {
+  overflow: hidden;
+}
+
+.auth-form-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.auth-form-container {
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+  padding: 40px 20px;
+}
+
+.auth-form-fild {
+  background-color: transparent;
+  display: block;
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.auth-form-input {
+  display: block;
+  height: 35px;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-bottom: 1px solid white;
+
+  @include font(14px, 400, 16px);
+  &:focus {
+    border-color: rgba(255, 0, 27, 0.8);
+    border-width: 1px;
+    fill: var(--accent-color);
+    box-shadow: 0 6px 8px rgba(255, 0, 27, 0.4);
+  }
+}
+
+.auth-form-mail::before {
+  content: 'pdfskladfsjlkadsf;lkafds';
+  color: red;
+}
+
+::placeholder {
+  color: rgb(255, 255, 255);
+}
+
+.auth-form-btn {
+  padding: 10px;
+  display: block;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: inherit;
+  width: 100%;
+  &:active {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+  }
+}
+
+.auth-form-btn.register {
+  margin-bottom: 30px;
+}
+
+@include breakpoints(tablet) {
+}
+
+.notiflix-confirm {
+  position: absolute;
+}

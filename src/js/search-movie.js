@@ -6,28 +6,36 @@ import { getCardTemplate } from './get-templates';
 import { getGenresList } from './main-page-render';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notiflixSettings } from './common/notiflix-settings';
+import { goHomePage } from './make-header';
 
 const DEBOUNCE_DELAY = 300;
 const { moviesGallery } = getRefs();
 
 const debounce = require('lodash.debounce');
 export function addSearchListener() {
-  const { searchForm } = getRefs();
-  searchForm.addEventListener('input', debounce(searchMovies, DEBOUNCE_DELAY));
+  const { searchFormInput } = getRefs();
+  searchFormInput.addEventListener(
+    'input',
+    debounce(searchMovies, DEBOUNCE_DELAY)
+  );
 }
 
 async function searchMovies(event) {
+  event.preventDefault();
   const searchQuery = event.target.value.trim();
 
-  if (searchQuery === '') return;
+  if (searchQuery === '') {
+    goHomePage();
+    return;
+  }
 
   try {
-    showLoader();
+    // showLoader();
     const { results, total_results: totalResults } = await fetchMovies(
       searchQuery
     );
     const genres = await getGenresList();
-    hideLoader();
+    // hideLoader();
 
     if (totalResults === 0) {
       Notify.failure(
