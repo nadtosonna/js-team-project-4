@@ -71,9 +71,9 @@ function onClickLogoLink(e) {
   logoIcon.classList.remove('logo-link-hover');
 }
 
-function searchMovies(e) {
-  console.log(e.currentTarget.elements.search.value);
-}
+// function searchMovies(e) {
+//   console.log(e.currentTarget.elements.search.value);
+// }
 
 function addHeaderSearchForm() {
   const { searchForm, headerBtnList } = getRefs();
@@ -134,8 +134,8 @@ export function goHomePage() {
   emptyCard.innerHTML = '';
 
   addHeaderSearchForm();
-  const searchForm = getRefs().searchForm;
-  searchForm.addEventListener('input', searchMovies);
+  // const searchForm = getRefs().searchForm;
+  // searchForm.addEventListener('input', searchMovies);
   removeLogoHover();
   removeLogoActive();
   getTrendingMovies(page);
