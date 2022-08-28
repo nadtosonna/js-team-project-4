@@ -16,7 +16,6 @@ const {
   logoLink,
   logoIcon,
   library,
-  authBackdrop,
   moviesGalleryContainer,
   emptyCard,
   btnFilter,
@@ -58,10 +57,6 @@ function onClickHome(e) {
     return;
   }
   goHomePage(e);
-  removeLogoHover();
-  removeLogoActive();
-  getTrendingMovies(page);
-  addSearchListener();
 }
 
 function onClickLogoLink(e) {
@@ -72,10 +67,6 @@ function onClickLogoLink(e) {
     return;
   }
   goHomePage();
-  removeLogoHover();
-  removeLogoActive();
-  getTrendingMovies(page);
-  addSearchListener();
   logoLink.classList.remove('logo-link-hover');
   logoIcon.classList.remove('logo-link-hover');
 }
@@ -112,17 +103,17 @@ function addHeaderBtnList() {
 
 function markupHeaderSearchForm() {
   return `
-    <form class="search-form" data-id = "search-form">
-    <label class="search-form__field">
+    <label class="search-form">
     <input class="search-form__input" type="text" name="search" placeholder = 'Movie search' />
-    </label>
-    <img
+     <img
         class="search-icon"
         src="${search}"
         width="12"
         height="12"
         alt="logo icon"
-      />`;
+      />
+    </label>
+   `;
 }
 
 function markupHeaderBtnList() {
@@ -132,7 +123,7 @@ function markupHeaderBtnList() {
 </div>`;
 }
 
-function goHomePage() {
+export function goHomePage() {
   library.classList.remove('current');
   home.classList.add('current');
   header.classList.add('home-header-bg');
@@ -145,6 +136,10 @@ function goHomePage() {
   addHeaderSearchForm();
   const searchForm = getRefs().searchForm;
   searchForm.addEventListener('input', searchMovies);
+  removeLogoHover();
+  removeLogoActive();
+  getTrendingMovies(page);
+  addSearchListener();
 }
 
 function chandeLogoLink() {
