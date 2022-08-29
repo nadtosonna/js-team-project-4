@@ -10,7 +10,6 @@ const getGenresNames = (genresIds, genres) => {
   if (genresNames.length > 2)
     return `${genresNames[0]}, ${genresNames[1]}, Other`;
   if (genresNames.length === 2) return `${genresNames[0]}, ${genresNames[1]}`;
-  console.log(genresNames[0]);
   return genresNames[0];
 };
 
@@ -35,7 +34,7 @@ export const getCardTemplate = (movie, genres) => {
           src='${
             poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : 'images/no-poster-available.jpeg'
+              : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
           }'
           alt='${original_title || original_name}'
           loading='lazy'
@@ -78,7 +77,7 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
       <img class="modal-img" src="${
         poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
-          : 'images/no-poster-available.jpeg'
+          : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
     }" alt="${original_title || original_name || name}"
       loading='lazy' />
         <div class="modal-block__text">

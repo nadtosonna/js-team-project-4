@@ -5,8 +5,6 @@ import { getGenresList, getTrendingMovies, page } from './main-page-render';
 
 const { trendingBtn, tvBtn, topRatedBtn, upcomingBtn, moviesGallery, searchForm, yearFilter, genreFilter, filterInput } = getRefs();
 
-chooseYear();
-
 trendingBtn.addEventListener('click', onTrendingClick);
 tvBtn.addEventListener('click', onTvClick);
 topRatedBtn.addEventListener('click', onTopClick);
@@ -81,45 +79,4 @@ async function onTrendingClick() {
     tvBtn.classList.remove('btn-tab-active');
 
     getTrendingMovies(page);
-}
-
-function chooseYear() {
-  let startYear = 1950;
-  let endYear = new Date().getFullYear();
-  let years = [];
-
-  yearFilter.insertAdjacentHTML(
-    'beforeend',
-    '<option value="">Choose year</option>',
-  );
-  for (let i = endYear; i > startYear; i--) {
-    years.push(`<option value="${i}">${i}</option>`);
-  }
-  yearFilter.insertAdjacentHTML('beforeend', years);
-}
-
-filterInput.forEach(item => {
-  item.addEventListener('change', event => {
-    year = yearFilter.value;
-    genre = genreFilter.value;
-    renderFilteredList(genre, year);
-  });
-});
-
-async function renderFilteredList(genre, year, page) {
-  try {
-    if (page === 1) {
-      moviesGallery.innerHTML = '';
-      }
-    const { results, total_results: totalResults } = await fetchFiltered(genre, year);
-    
-    // let filteredUI = '';
-    // results.forEach(result => {
-    //   filteredUI += getCardTemplate(result);
-    // });
-    // moviesGallery.innerHTML = filteredUI;
-
-    } catch (error) {
-        console.log(error);
-    }
 }
