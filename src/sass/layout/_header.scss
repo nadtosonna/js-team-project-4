@@ -175,7 +175,7 @@
   cursor: pointer;
 }
 
-.header-btn:focus {
+.header-btn:focus, .accent-btn {
   background-color: #ff6b01;
   box-shadow: 0 8px 43px rgba(255, 255, 255, 0.6);
   border-color: transparent;
