@@ -30,12 +30,10 @@ async function searchMovies(event) {
   }
 
   try {
-    // showLoader();
     const { results, total_results: totalResults } = await fetchMovies(
       searchQuery
     );
     const genres = await getGenresList();
-    // hideLoader();
 
     if (totalResults === 0) {
       Notify.failure(
