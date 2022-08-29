@@ -124,7 +124,6 @@
 }
 .filter-btn-list {
   display: flex;
-  flex-wrap: wrap;
 }
 .filter-btn-item {
   margin-left: auto;
@@ -150,7 +149,7 @@
   display: block;
   margin-top: 20px;
   margin-left: 20px;
-  min-width: 120px;
+  min-width: 65px;
   height: 40px;
   text-transform: uppercase;
   text-align: center;
