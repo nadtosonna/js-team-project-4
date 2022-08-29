@@ -10,6 +10,7 @@
     padding-bottom: 60px;
   }
   @include breakpoints(desktop) {
+    margin-left: -16px;
   }
 
   &__list {
@@ -34,12 +35,12 @@
     border-radius: 5px;
     @include breakpoints(tablet) {
       contain: content;
-      width: calc(100% / 2 - 32px);
+      max-width: 320px;
       margin-bottom: 32px;
       margin-left: 32px;
     }
     @include breakpoints(desktop) {
-      width: calc(100% / 3 - 16px);
+      max-width: 390px;
       margin: 16px 0;
       margin-left: 15px;
     }
@@ -116,11 +117,10 @@
   margin-bottom: 20px;
   margin-top: -20px;
   margin-left: -20px;
-      
+
   @include breakpoints(tablet) {
     margin-bottom: 30px;
-    }
-  
+  }
 }
 .filter-btn-list {
   display: flex;
@@ -145,7 +145,6 @@
 //     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 //   }
 // }
-
 
 .button-filter {
   display: block;
