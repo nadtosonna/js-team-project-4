@@ -40,5 +40,6 @@ export default function getRefs() {
     logoutBtn: document.querySelector('.logout-btn'),
     nawList: document.querySelector('.naw-list'),
     searchFormInput: document.querySelector('.search-form__input'),
+    moviesGalleryItem: document.querySelector('.movies-gallery__item'),
   };
 }

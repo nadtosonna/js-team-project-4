@@ -45,7 +45,7 @@ export function onClickLibrary(e) {
   header.classList.add('library-header-bg');
   btnFilter.classList.add('visually-hidden');
   container.classList.add('is-hidden');
-  addEmptyTemplate();
+  // addEmptyTemplate();
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
