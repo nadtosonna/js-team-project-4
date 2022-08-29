@@ -58,6 +58,7 @@ function actionWithModalWindow(e) {
   container.addEventListener('click', onActiveClick);
   window.addEventListener('keydown', closeByEscape);
   closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeInBackdrop);
   queueBtn.addEventListener('click', () => {
     existsInQueueLS
       ? removeFromAction(queueAction, movieData)
@@ -133,6 +134,14 @@ const closeModal = () => {
     .querySelector('.modal-close')
     .removeEventListener('click', closeModal);
 };
+
+// Close modal in backdrop
+const closeInBackdrop = e => {
+  if (e.target !== backdrop) {
+    return
+  }
+  backdrop.classList.add('backdrop-modal-hidden');
+}
 
 // Change color on Click
 const onActiveClick = e => {
