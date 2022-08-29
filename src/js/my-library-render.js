@@ -1,26 +1,27 @@
 import getRefs from './common/refs';
-import { markupEmptyTemplate, addEmptyTemplate } from './make-empty-template-my-library'
+import { markupEmptyTemplate } from './make-empty-template-my-library'
 
-const { moviesGallery, moviesGalleryContainer, library } = getRefs();
+const { moviesGallery, moviesGalleryContainer, moviesGalleryItem, library } = getRefs();
 
 function reduceWatcedFilms(array) {
     return array.reduce((acc, film) => acc + getCardTemplate(film), "");
 }
 
-function renderWatcedFilms(array) {
+function renderWatchedFilms(array) {
     return moviesGallery.insertAdjacentHTML("afterbegin", reduceWatcedFilms(array));
 }
 
 library.addEventListener("click", onMyLibraryClick);
 
 function onMyLibraryClick() {
+  // moviesGallery.style.gap = "32px 16px";
+  // moviesGalleryItem.style.width = "calc((100%-32px)/3)";
     moviesGallery.innerHTML = "";
     const myLibraryQueue = JSON.parse(localStorage.getItem("movies-in-queue"));
-    
-    if (myLibraryQueue) {
+    const myLibraryWatched = JSON.parse(localStorage.getItem("movies-watched"));
+    if (myLibraryWatched) {
         moviesGalleryContainer.classList.remove('visually-hidden');
-        // addEmptyTemplate("movies-in-queue")
-        renderWatcedFilms(myLibraryQueue);
+        renderWatchedFilms(myLibraryWatched);
     } else {
         moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
     }
@@ -29,8 +30,7 @@ function onMyLibraryClick() {
         .addEventListener("click", onQueueBtnClick => {
             moviesGallery.innerHTML = "";
             if (myLibraryQueue) {
-                // addEmptyTemplate("movies-in-queue")
-                renderWatcedFilms(myLibraryQueue);
+                renderWatchedFilms(myLibraryQueue);
             } else {
                 moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
             }
@@ -39,9 +39,8 @@ function onMyLibraryClick() {
     const watchedBtn = document.querySelector("[data-name=Watched]")
         .addEventListener("click", onWatchedBtnClick => {
             moviesGallery.innerHTML = "";
-            if (myLibraryQueue) {
-                // addEmptyTemplate("movies-in-queue")
-                renderWatcedFilms(myLibraryQueue);
+            if (myLibraryWatched) {
+                renderWatchedFilms(myLibraryWatched);
             } else {
                 moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
             }
