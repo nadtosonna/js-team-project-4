@@ -15,20 +15,19 @@ const getGenresNames = (genresIds, genres) => {
 
 export const getCardTemplate = (movie, genres) => {
   const {
+    title,
     original_name,
     original_title,
     poster_path,
     genre_ids,
     vote_average,
     release_date,
+    id,
   } = movie;
   const correctGenres = getGenresNames(genre_ids, genres);
-
+  // console.log(id);
   return `
-    <li class='movies-gallery__item' data-movie='${JSON.stringify({
-      ...movie,
-      genres: correctGenres,
-    })}'>
+    <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
         <img
           src='${
@@ -56,6 +55,7 @@ export const getCardTemplate = (movie, genres) => {
 
 export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
   const {
+    title,
     original_name,
     original_title,
     name,
@@ -66,8 +66,9 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
     vote_count,
     overview,
   } = movie;
-
+  const genresArr = genres.map(({ name }) => name);
   return `
+  <div class="modal container" data-modal>
     <div class="modal-contaner">
       <button class="modal-close" type="button">
         <svg class="modal-btn__icon" width="30" height="30">
@@ -78,23 +79,35 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
         poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-    }" alt="${original_title || original_name || name}"
+      }" alt="${title}"
       loading='lazy' />
         <div class="modal-block__text">
-            <h2 class="modal-title">${original_title || original_name || name}</h2>
+            <h2 class="modal-title">${title}</h2>
             <ul class="modal-list__key">
                 <li class="modal-info">Vote / Votes</li>
+                <li class="modal-info modal-info__library">${Number(
+                  vote_average
+                ).toFixed(1)} / ${vote_count}</li>
+            </ul>
+              <ul class="modal-list__key">
                 <li class="modal-info">Popularity</li>
+                <li class="modal-info modal-info__library">${popularity}</li>
+            </ul>
+              <ul class="modal-list__key">
                 <li class="modal-info">Original Title</li>
+                  <li class="modal-info modal-info__library">${title.toUpperCase()}</li>
+            </ul>
+              <ul class="modal-list__key">
                 <li class="modal-info">Genre</li>
+                <li class="modal-info modal-info__library">${genresArr.join(
+                  ', '
+                )}</li>
             </ul>
             <ul class="modal-list__library">
-                <li class="modal-info__library">${Number(vote_average).toFixed(
-                  1
-                )} / ${vote_count}</li>
-                <li class="modal-info__library">${popularity}</li>
-                <li class="modal-info__library">${original_title || original_name || name}</li>
-                <li class="modal-info__library">${genres}</li>
+                
+                
+              
+                
             </ul>
             <h3 class="modal-text__title">About</h3>
             <p>${overview}</p>
@@ -113,3 +126,50 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
     </div>
   `;
 };
+
+// export function secondModalMarkup() {
+//   return `<div class="modal container" data-modal>
+//     <div class="modal-contaner">
+//       <button class="modal-btn" type="button" data-modal-close>
+//         <svg class="modal-btn__icon" width="30" height="30">
+//            <use href="${sprite}#cross"></use>
+//         </svg>
+//       </button>
+//       <img class="modal-img" src="images/modal-img.jpg" alt="movies img" />
+//       <div class="modal-block__text">
+//         <h2 class="modal-title">A FISTFUL OF LEAD</h2>
+//         <ul class="modal-list__key">
+//           <li class="modal-info">Vote / Votes</li>
+//           <li class="modal-info">Popularity</li>
+//           <li class="modal-info">Original Title</li>
+//           <li class="modal-info">Genre</li>
+//         </ul>
+//         <ul class="modal-list__library">
+//           <li class="modal-info__library">Vote / Votes</li>
+//           <li class="modal-info__library">Popularity</li>
+//           <li class="modal-info__library">Original Title</li>
+//           <li class="modal-info__library">Genre</li>
+//         </ul>
+//         <h3 class="modal-text__title">About</h3>
+//         <p>
+//           Four of the West’s most infamous outlaws assemble to steal a huge
+//           stash of gold from the most corrupt settlement of the gold rush towns.
+//           But not all goes to plan one is killed and the other three escapes
+//           with bags of gold hide out in the abandoned gold mine where they
+//           happen across another gang of three – who themselves were planning to
+//           hit the very same bank! As tensions rise, things go from bad to worse
+//           as they realise the bags of gold are filled with lead... they’ve been
+//           double crossed – but by who and how?
+//         </p>
+//         <div class="modal-block__btn">
+//           <button class="modal-btn__addwatch" type="button" data-modal>
+//             add to watched
+//           </button>
+//           <button class="modal-btn__accent" type="button" data-modal>
+//             add to queue
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>`;
+// }

@@ -5,7 +5,7 @@ import { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } from './common/keys';
 
 const { modal, moviesGallery, backdrop } = getRefs();
 
-moviesGallery.addEventListener('click', actionWithModalWindow);
+// moviesGallery.addEventListener('click', actionWithModalWindow);
 
 const MovieAction = {
   Queue: {
@@ -22,22 +22,23 @@ const MovieAction = {
   },
 };
 
-function actionWithModalWindow(e) {
-  const movieNode = e.target.closest('.movies-gallery__item');
+export function actionWithModalWindow(movieData) {
+  //   const movieNode = e.target.closest('.movies-gallery__item');
 
-  if (!movieNode) return;
+  //   if (!movieNode) return;
 
-  backdrop.classList.remove('backdrop-modal-hidden');
-  const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
+  //   backdrop.classList.remove('backdrop-modal-hidden');
+  //   const movieData = JSON.parse(movieNode.getAttribute('data-movie'));
+
   const existsInQueueLS = isExistsInLS(QUEUE_STORAGE_KEY, movieData.id);
   const existsInWatchedLS = isExistsInLS(WATCHED_STORAGE_KEY, movieData.id);
 
-  modal.classList.remove('is-hidden');
-  modal.innerHTML = getModalTemplate(
-    movieData,
-    existsInQueueLS,
-    existsInWatchedLS
-  );
+  //
+  //   modal.innerHTML = getModalTemplate(
+  //     movieData,
+  //     existsInQueueLS,
+  //     existsInWatchedLS
+  //   );
 
   const queueBtn = document.querySelector('.modal-btn__addqueue');
   const watchBtn = document.querySelector('.modal-btn__addwatch');

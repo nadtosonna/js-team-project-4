@@ -4,7 +4,7 @@ import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
-import { clearBtnFilter } from "./button-filter";
+import { clearBtnFilter } from './button-filter';
 
 console.log(addEmptyTemplate);
 
@@ -21,6 +21,10 @@ const {
   emptyCard,
   btnFilter,
   container,
+  moviesGallery,
+  modal,
+  backdrop,
+  closeModalBtn,
 } = getRefs();
 
 addHeaderSearchForm();
@@ -45,7 +49,7 @@ export function onClickLibrary(e) {
   header.classList.remove('home-header-bg');
   header.classList.add('library-header-bg');
   btnFilter.classList.add('visually-hidden');
-  container.classList.add('is-hidden');
+  // container.classList.add('is-hidden');
   // addEmptyTemplate();
   addHeaderBtnList();
   addLogoHover();
