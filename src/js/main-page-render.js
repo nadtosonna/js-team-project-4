@@ -18,7 +18,6 @@ export async function getGenresList() {
 export async function getTrendingMovies(page) {
   trendingBtn.classList.add('btn-tab-active');
   try {
-    // showLoader();
     const { results } = await fetchTrendingMovies(page);
     const genres = await getGenresList();
 
@@ -28,7 +27,6 @@ export async function getTrendingMovies(page) {
     });
     moviesGallery.innerHTML = html;
 
-    // hideLoader();
   } catch (error) {
     console.log(error);
   }

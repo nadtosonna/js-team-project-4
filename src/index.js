@@ -1,4 +1,4 @@
-// import './js/close-modal';
+import './sass/index.scss';
 import './js/modal';
 import './js/main-page-render';
 import './js/make-header.js';
@@ -12,3 +12,4 @@ import './js/firebase';
 import './js/auth-modal';
 import './js/pagination';
 import './js/my-library-render';
+// import './js/close-modal';
