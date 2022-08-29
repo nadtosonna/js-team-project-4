@@ -12,3 +12,5 @@ import './js/firebase';
 import './js/auth-modal';
 import './js/pagination';
 import './js/my-library-render';
+import './js/close-modal';
+import './js/moviesById';

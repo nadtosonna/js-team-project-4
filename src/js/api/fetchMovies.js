@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_KEY } from '../common/keys';
 
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie';
-const TRENDING_URL = 'https://api.themoviedb.org/3/trending/all/day';
+const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/day';
 const TRENDING_TV_URL = 'https://api.themoviedb.org/3/trending/tv/day';
 const MOVIE_ID_URL = 'https://api.themoviedb.org/3/movie/';
 const TOP_URL = 'https://api.themoviedb.org/3/movie/top_rated';
@@ -43,9 +43,9 @@ export async function fetchMovies(query, page) {
 export async function fetchMoviesByID(id) {
   try {
     const { data } = await axios.get(
-      `${MOVIE_ID_URL}${id}?api_key=${API_KEY}&language=en-US`
+      `${MOVIE_ID_URL}${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`
     );
-       return data;
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -86,11 +86,13 @@ export async function fetchTop(page) {
 
 export async function fetchUpcoming(page) {
   try {
-    const { data } = await axios.get(`${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`);
+    const { data } = await axios.get(
+      `${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
+    );
     return data;
   } catch (error) {
     console.log(error);
-  } 
+  }
 }
 
 export async function fetchTrailer(id) {
@@ -107,7 +109,9 @@ export async function fetchTrailer(id) {
 
 export async function fetchFiltered(genre, year, page) {
   try {
-    const { data } = await axios.get(`${FILTER_URL}?api_key=${API_KEY}&with_genres=${genre}&primary_release_year=${year}&language=en-US&page=${page}&include_adult=false`);
+    const { data } = await axios.get(
+      `${FILTER_URL}?api_key=${API_KEY}&with_genres=${genre}&primary_release_year=${year}&language=en-US&page=${page}&include_adult=false`
+    );
     return data;
   } catch (error) {
     console.log(error);
