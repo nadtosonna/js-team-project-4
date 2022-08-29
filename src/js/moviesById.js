@@ -1,7 +1,10 @@
+import getRefs from './common/refs';
 import { fetchTrailer, fetchMoviesByID } from './api/fetchMovies';
 import { getModalTemplate, secondModalMarkup } from './get-templates';
 import { onCloseCardModal } from './close-modal';
 import { actionWithModalWindow } from './modal';
+
+const { moviesGallery, backdrop } = getRefs();
 
 moviesGallery.addEventListener('click', e => {
   if (e.target.nodeName === 'UL') {
@@ -10,12 +13,11 @@ moviesGallery.addEventListener('click', e => {
 
   const movieId = e.target.closest('.movies-gallery__item').dataset.id;
 
-  getMoviesById(movieId);
+  getMovieById(movieId);
 });
-async function getMoviesById(movieId) {
+async function getMovieById(movieId) {
   try {
     const moviesInfo = await fetchMoviesByID(movieId);
-    console.log('moviesInfo', moviesInfo);
 
     backdrop.innerHTML = getModalTemplate(moviesInfo);
     backdrop.classList.remove('backdrop-modal-hidden');
