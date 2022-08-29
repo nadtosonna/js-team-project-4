@@ -48,6 +48,14 @@ export function actionWithModalWindow(movieData) {
   const queueAction = MovieAction.Queue;
   const watchAction = MovieAction.Watch;
 
+  if (existsInQueueLS) {
+    queueBtn.classList.add('modal-btn__accent');
+  }
+
+  if (existsInWatchedLS) {
+    watchBtn.classList.add('modal-btn__accent');
+  }
+
   container.addEventListener('click', onActiveClick);
   window.addEventListener('keydown', closeByEscape);
   closeBtn.addEventListener('click', closeModal);
@@ -133,5 +141,4 @@ const onActiveClick = e => {
     return;
   }
   e.target.classList.toggle('modal-btn__accent');
-  console.log(e.target.nodeName);
 };

@@ -1,7 +1,7 @@
 import getRefs from './common/refs';
-import { markupEmptyTemplate } from './make-empty-template-my-library'
+import { markupEmptyTemplate } from './make-empty-template-my-library';
 
-const { moviesGallery, moviesGalleryContainer, moviesGalleryItem, library } = getRefs();
+const { moviesGallery, moviesGalleryContainer, library } = getRefs();
 
 function reduceWatcedFilms(array) {
     return array.reduce((acc, film) => acc + getCardTemplate(film), "");
@@ -14,11 +14,17 @@ function renderWatchedFilms(array) {
 library.addEventListener("click", onMyLibraryClick);
 
 function onMyLibraryClick() {
-  // moviesGallery.style.gap = "32px 16px";
-  // moviesGalleryItem.style.width = "calc((100%-32px)/3)";
+
+    const watchedBtn = document.querySelector("[data-name=Watched]");
+    const queueBtn = document.querySelector("[data-name=queue]");
+  
+    watchedBtn.classList.add("accent-btn");
+    queueBtn.classList.remove("accent-btn");
+  
     moviesGallery.innerHTML = "";
     const myLibraryQueue = JSON.parse(localStorage.getItem("movies-in-queue"));
     const myLibraryWatched = JSON.parse(localStorage.getItem("movies-watched"));
+  
     if (myLibraryWatched) {
         moviesGalleryContainer.classList.remove('visually-hidden');
         renderWatchedFilms(myLibraryWatched);
@@ -26,25 +32,27 @@ function onMyLibraryClick() {
         moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
     }
 
-    const queueBtn = document.querySelector("[data-name=queue]")
-        .addEventListener("click", onQueueBtnClick => {
-            moviesGallery.innerHTML = "";
-            if (myLibraryQueue) {
-                renderWatchedFilms(myLibraryQueue);
-            } else {
-                moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
-            }
-        });
-
-    const watchedBtn = document.querySelector("[data-name=Watched]")
-        .addEventListener("click", onWatchedBtnClick => {
-            moviesGallery.innerHTML = "";
-            if (myLibraryWatched) {
-                renderWatchedFilms(myLibraryWatched);
-            } else {
-                moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
-            }
-        });
+    watchedBtn.addEventListener("click", onWatchedBtnClick => {
+        queueBtn.classList.remove("accent-btn");
+        watchedBtn.classList.add("accent-btn");
+        moviesGallery.innerHTML = "";
+        if (myLibraryWatched) {
+            renderWatchedFilms(myLibraryWatched);
+        } else {
+            moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
+        }
+    });
+      
+    queueBtn.addEventListener("click", onQueueBtnClick => {
+        watchedBtn.classList.remove("accent-btn");
+        queueBtn.classList.add("accent-btn");
+        moviesGallery.innerHTML = "";
+        if (myLibraryQueue) {
+            renderWatchedFilms(myLibraryQueue);
+        } else {
+            moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
+        }
+    });
 }
 
 const getCardTemplate = (movie) => {

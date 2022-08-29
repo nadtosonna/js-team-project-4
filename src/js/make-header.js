@@ -4,10 +4,7 @@ import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
-import { fetchTrailer, fetchMoviesByID } from './api/fetchMovies';
-import { getModalTemplate, secondModalMarkup } from './get-templates';
-import { onCloseCardModal } from './close-modal';
-import { actionWithModalWindow } from './modal';
+import { clearBtnFilter } from './button-filter';
 
 console.log(addEmptyTemplate);
 
@@ -57,6 +54,7 @@ export function onClickLibrary(e) {
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
+  clearBtnFilter();
 }
 
 function onClickHome(e) {
@@ -207,29 +205,3 @@ function onTouchend() {
   logoLink.classList.remove('logo-link-active');
   logoIcon.classList.remove('logo-link-active');
 }
-
-// moviesGallery.addEventListener('click', e => {
-//   if (e.target.nodeName === 'UL') {
-//     return;
-//   }
-
-//   const movieId = e.target.closest('.movies-gallery__item').dataset.id;
-
-//   getMoviesById(movieId);
-// });
-// async function getMoviesById(movieId) {
-//   try {
-//     const moviesInfo = await fetchMoviesByID(movieId);
-//     console.log('moviesInfo', moviesInfo);
-
-//     backdrop.innerHTML = getModalTemplate(moviesInfo);
-//     backdrop.classList.remove('backdrop-modal-hidden');
-//     actionWithModalWindow(moviesInfo);
-//     onCloseCardModal();
-//   } catch (error) {
-//     backdrop.classList.remove('backdrop-modal-hidden');
-//     backdrop.innerHTML = secondModalMarkup();
-//     onCloseCardModal();
-//     console.log(error.message);
-//   }
-// }

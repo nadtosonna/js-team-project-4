@@ -3,11 +3,9 @@ import { API_KEY } from '../common/keys';
 
 const SEARCH_URL = 'https://api.themoviedb.org/3/search/movie';
 const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/day';
-const TRENDING_TV_URL = 'https://api.themoviedb.org/3/trending/tv/day';
 const MOVIE_ID_URL = 'https://api.themoviedb.org/3/movie/';
 const TOP_URL = 'https://api.themoviedb.org/3/movie/top_rated';
 const UPCOMING_URL = 'https://api.themoviedb.org/3/movie/upcoming';
-const FILTER_URL = 'https://api.themoviedb.org/3/discover/movie';
 const GENRES_LIST = 'https://api.themoviedb.org/3/genre';
 
 export async function fetchTrendingMovies(page) {
@@ -51,32 +49,32 @@ export async function fetchMoviesByID(id) {
   }
 }
 
-export async function fetchGenresList() {
-  try {
-    const { data } = await axios.get(
-      `${GENRES_LIST}/movie/list?api_key=${API_KEY}&language=en-US`
-    );
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function fetchTv(page) {
-  try {
-    const { data } = await axios.get(
-      `${TRENDING_TV_URL}?api_key=${API_KEY}&language=en-US&${page}`
-    );
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function fetchTop(page) {
   try {
     const { data } = await axios.get(
       `${TOP_URL}?api_key=${API_KEY}&language=en-US&${page}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchUpcoming(page) {
+  try {
+    const { data } = await axios.get(
+      `${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchGenresList() {
+  try {
+    const { data } = await axios.get(
+      `${GENRES_LIST}/movie/list?api_key=${API_KEY}&language=en-US`
     );
     return data;
   } catch (error) {
@@ -102,17 +100,6 @@ export async function fetchTrailer(id) {
     );
     return data;
     // return data.results;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function fetchFiltered(genre, year, page) {
-  try {
-    const { data } = await axios.get(
-      `${FILTER_URL}?api_key=${API_KEY}&with_genres=${genre}&primary_release_year=${year}&language=en-US&page=${page}&include_adult=false`
-    );
-    return data;
   } catch (error) {
     console.log(error);
   }

@@ -1,4 +1,4 @@
-// import './js/close-modal';
+import './sass/index.scss';
 import './js/modal';
 import './js/main-page-render';
 import './js/make-header.js';
