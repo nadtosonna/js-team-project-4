@@ -4,6 +4,7 @@ import search from '../images/header/search.svg';
 import { page, getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
+import { clearBtnFilter } from "./button-filter";
 
 console.log(addEmptyTemplate);
 
@@ -49,6 +50,7 @@ export function onClickLibrary(e) {
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();
+  clearBtnFilter();
 }
 
 function onClickHome(e) {
