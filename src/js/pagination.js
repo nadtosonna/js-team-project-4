@@ -30,7 +30,7 @@ const options = {
   },
 };
 
-const pagination = new Pagination(container, options);
+export const pagination = new Pagination(container, options);
 const page = pagination.getCurrentPage();
 console.log(page);
 
@@ -44,47 +44,38 @@ async function getPages(page) {
 
     try {
         const pageMovies = await fetchTrendingMovies(page);
-        const { results } = await fetchTrendingMovies(page);
-        const genres = await getGenresList();
-        // const getPagetoMovies  =  pageMovies.results;
+        // const { results } = await fetchTrendingMovies(page);
+        // const genres = await getGenresList();
+        // const getPagetoMovies = pageMovies.results;
+    
         let totalPagesMovies = pageMovies.total_pages;
       
         if (totalPagesMovies.length === 0) {
             container.classList.add('is-hidden');
             return;
         }
-
-        pagination.reset(totalPagesMovies);
-      
-        let html = '';
-        results.forEach(film => {
-        html += getCardTemplate(film, genres);
-    });
-        moviesGallery.innerHTML = html;
-     
+            moviesGallery.innerHTML = '';
+            pagination.reset(totalPagesMovies);
+            getTrendingMovies(page);
+        // }
         } catch (error) {
-        console.log(error);
+            console.log(error);
+        }
     }
-}
+
 getPages(page);
 
  async function  movePagination(event) {
       try {
     const pageMovies = await fetchTrendingMovies(page);
     pageMovies.page = event.page;
-    const currentPage = pageMovies.page;
-    const { results } = await fetchTrendingMovies(currentPage);
-    const genres = await getGenresList();
-    let html = '';
-    results.forEach(film => {
-      html += getCardTemplate(film, genres);
-    });
-          moviesGallery.innerHTML = html;
+          const currentPage = pageMovies.page;
+           getTrendingMovies(currentPage);
           scrollTo();
-      } catch (error) {
+      }
+      catch (error) {
         console.log(error);
     }
 }
 
 pagination.on('afterMove', movePagination);
-
