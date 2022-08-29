@@ -1,7 +1,8 @@
 import getRefs from './common/refs';
-import { fetchTop, fetchUpcoming } from "./api/fetchMovies";
+import { fetchTop, fetchUpcoming, fetchTrendingMovies} from "./api/fetchMovies";
 import { getCardTemplate, getGenresNames } from './get-templates';
 import { getGenresList, getTrendingMovies, page } from './main-page-render';
+import { pagination } from './pagination';
 
 const { trendingBtn, topRatedBtn, upcomingBtn, moviesGallery, searchForm, yearFilter, genreFilter, filterInput } = getRefs();
 
@@ -17,6 +18,12 @@ async function onTopClick() {
     try {
     const { results, total_results: totalResults } = await fetchTop();
     const genres = await getGenresList();
+      
+      const pageMovies = await fetchTrendingMovies(page);
+      let totalPagesMovies = pageMovies.total_pages;
+      console.log(totalPagesMovies)
+      moviesGallery.innerHTML = '';
+      pagination.reset(totalPagesMovies);
 
     let topUI = '';
     results.forEach(film => {
@@ -37,6 +44,11 @@ async function onUpcomingClick() {
     try {
     const { results, total_results: totalResults } = await fetchUpcoming();
     const genres = await getGenresList();
+      
+    let totalPagesMovies = pageMovies.total_pages;
+    console.log(totalPagesMovies)
+    moviesGallery.innerHTML = '';
+    pagination.reset(totalPagesMovies);
 
     let upcomingUI = '';
     results.forEach(film => {
@@ -53,6 +65,11 @@ async function onTrendingClick() {
     trendingBtn.classList.add('btn-tab-active');
     upcomingBtn.classList.remove('btn-tab-active');
     topRatedBtn.classList.remove('btn-tab-active');
+  
+    let totalPagesMovies = pageMovies.total_pages;
+    console.log(totalPagesMovies)
+    moviesGallery.innerHTML = '';
+    pagination.reset(totalPagesMovies);
 
     getTrendingMovies(page);
 }
