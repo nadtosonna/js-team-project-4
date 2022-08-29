@@ -82,16 +82,16 @@ export async function fetchGenresList() {
   }
 }
 
-export async function fetchUpcoming(page) {
-  try {
-    const { data } = await axios.get(
-      `${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
-    );
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export async function fetchUpcoming(page) {
+//   try {
+//     const { data } = await axios.get(
+//       `${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
+//     );
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 export async function fetchTrailer(id) {
   try {
