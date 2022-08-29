@@ -107,7 +107,7 @@ export async function fetchTrailer(id) {
 
 export async function fetchFiltered(genre, year, page) {
   try {
-    const { data } = await axios.get(`${FILTER_URL}?api_key=${API_KEY}&with_genres=${genre}&primary_release_year=${year}&language=en-US&page=${page}`);
+    const { data } = await axios.get(`${FILTER_URL}?api_key=${API_KEY}&with_genres=${genre}&primary_release_year=${year}&language=en-US&page=${page}&include_adult=false`);
     return data;
   } catch (error) {
     console.log(error);

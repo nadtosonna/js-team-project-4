@@ -110,52 +110,68 @@
 }
 
 .filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
-
+  margin-top: -20px;
+  margin-left: -20px;
+      
   @include breakpoints(tablet) {
     margin-bottom: 30px;
-  }
-}
-
-.filter-btn-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 15px;
-
-  @include breakpoints(tablet) {
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     }
-  @include breakpoints(desktop) {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
+  
+}
+.filter-btn-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 .filter-btn-item {
   margin-left: auto;
   margin-right: auto;
 }
 
-.button-filter {
-    display: block;
-    height: 40px;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 12px 0 12px 0;
-    border: 1px solid var(--accent-color);
-    border-radius: 5px;
-    color: var(--text-color-grey);
-    font-weight: 500;
-    cursor: pointer;
-  
-    &:hover,
-    :active {
-      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
-      background-color: var(--accent-color);
-      color: var(--primary-color-white);
-    }
+// .filter-btn-list {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+//   grid-gap: 25px;
 
-        @include breakpoints(tablet) {
-          min-width: 160px;
-        }
+//   @include breakpoints(tablet) {
+//     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+//     grid-gap: 60px;
+//   }
+
+//   @include breakpoints(desktop) {
+//     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+//   }
+// }
+
+
+.button-filter {
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  min-width: 120px;
+  height: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px 0 12px 0;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  color: var(--text-color-grey);
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover,
+  :active {
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    background-color: var(--accent-color);
+    color: var(--primary-color-white);
+  }
+
+  @include breakpoints(tablet) {
+    min-width: 160px;
+  }
 }
 
 .btn-tab-active {
@@ -166,20 +182,14 @@
   transform: scale(1.05);
   box-shadow: none;
 }
-.filter-input {
-        height: 40px;
-        text-transform: uppercase;
-        text-align: center;
-        border: 1px solid var(--accent-color);
-        border-radius: 5px;
-        color: var(--text-color-grey);
-        font-weight: 500;
-        cursor: pointer;
-}
-.filter {
-width: 120px;
 
-@include breakpoints(tablet) {
-    width: 160px;
-  }
-}
+// .filter-input {
+//   height: 40px;
+//   text-transform: uppercase;
+//   text-align: center;
+//   border: 1px solid var(--accent-color);
+//   border-radius: 5px;
+//   color: var(--text-color-grey);
+//   font-weight: 500;
+//   cursor: pointer;
+// }
