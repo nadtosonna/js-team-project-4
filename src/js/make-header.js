@@ -1,7 +1,7 @@
 import getRefs from './common/refs';
 import { monitorAuthState } from './firebase';
 import search from '../images/header/search.svg';
-import { page, getTrendingMovies } from './main-page-render.js';
+import { getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
 import { clearBtnFilter } from './button-filter';
@@ -144,7 +144,7 @@ export function goHomePage() {
   searchForm.addEventListener('input', searchMovies);
   removeLogoHover();
   removeLogoActive();
-  getTrendingMovies(page);
+  getTrendingMovies();
   addSearchListener();
 }
 

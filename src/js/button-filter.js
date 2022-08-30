@@ -5,7 +5,7 @@ import {
   fetchTrendingMovies,
 } from './api/fetchMovies';
 import { getCardTemplate, getGenresNames, renderGalleryFromTemplate } from './get-templates';
-import { getGenresList, getTrendingMovies, page } from './main-page-render';
+import { getGenresList, getTrendingMovies} from './main-page-render';
 import { pagination, paginationSettings } from './pagination';
 import { async } from '@firebase/util';
 
@@ -59,10 +59,11 @@ export async function onTrendingClick() {
   upcomingBtn.classList.remove('btn-tab-active');
   topRatedBtn.classList.remove('btn-tab-active');
   
+  const { results, total_results: totalItems } = await fetchTrendingMovies(paginationSettings.startPage,);
   paginationSettings.searchType = 'main';
   paginationSettings.pagination.reset(totalItems);
 
-  renderGalleryFromTemplate(results);
+  getTrendingMovies(paginationSettings.startPage);
 }
 
 // export async function onTopClick() {
