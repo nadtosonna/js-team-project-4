@@ -57,20 +57,28 @@ export const getCardTemplate = (movie, genres) => {
   `;
 };
 
-export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
+export const getModalTemplate = (
+  movie,
+  existsInQueueLS,
+  existsInWatchedLS,
+  genresList
+) => {
   const {
     title,
     original_name,
     original_title,
     name,
     poster_path,
-    genres,
     popularity,
     vote_average,
     vote_count,
     overview,
+    genres,
   } = movie;
-  const genresArr = genres.map(({ name }) => name);
+  const correctGenres = getGenresNames(
+    genres.map(genre => genre.id),
+    genresList
+  );
   return `
   <div class="modal container" data-modal>
     <div class="modal-contaner">
@@ -105,15 +113,13 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
             </ul>
               <ul class="modal-list__key">
                 <li class="modal-info">Genre</li>
-                <li class="modal-info modal-info__library">${genresArr.join(
-                  ', '
-                )}</li>
+                <li class="modal-info modal-info__library">${correctGenres}</li>
             </ul>
             <ul class="modal-list__library">
-                
-                
-              
-                
+
+
+
+
             </ul>
             <h3 class="modal-text__title">About</h3>
             <p class="modal-text__review">${overview}</p>
@@ -133,7 +139,22 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
   `;
 };
 
-export function secondModalMarkup() {
+export function secondModalMarkup(movie, genres) {
+  console.log('||2', movie, genres);
+  const {
+    title,
+    original_name,
+    original_title,
+    name,
+    poster_path,
+    popularity,
+    vote_average,
+    vote_count,
+    overview,
+    genre_ids,
+  } = movie;
+  const correctGenres = getGenresNames(genre_ids, genres);
+
   return `<div class="modal container" data-modal>
     <div class="modal-contaner">
       <button class="modal-btn" type="button" data-modal-close>
@@ -151,21 +172,18 @@ export function secondModalMarkup() {
           <li class="modal-info">Genre</li>
         </ul>
         <ul class="modal-list__library">
-          <li class="modal-info__library">Vote / Votes</li>
-          <li class="modal-info__library">Popularity</li>
-          <li class="modal-info__library">Original Title</li>
-          <li class="modal-info__library">Genre</li>
+          <li class="modal-info">${Number(vote_average).toFixed(
+            1
+          )} / ${vote_count}</li>
+          <li class="modal-info__library">${popularity}</li>
+          <li class="modal-info__library">${
+            title || original_title || original_name
+          }</li>
+          <li class="modal-info__library">${correctGenres}</li>
         </ul>
         <h3 class="modal-text__title">About</h3>
         <p>
-          Four of the West’s most infamous outlaws assemble to steal a huge
-          stash of gold from the most corrupt settlement of the gold rush towns.
-          But not all goes to plan one is killed and the other three escapes
-          with bags of gold hide out in the abandoned gold mine where they
-          happen across another gang of three – who themselves were planning to
-          hit the very same bank! As tensions rise, things go from bad to worse
-          as they realise the bags of gold are filled with lead... they’ve been
-          double crossed – but by who and how?
+          ${overview}
         </p>
         <div class="modal-block__btn">
           <button class="modal-btn__addwatch" type="button" data-modal>
@@ -180,7 +198,7 @@ export function secondModalMarkup() {
   </div>`;
 }
 
-export function renderGalleryFromTemplate(data) {
+export function renderGalleryFromTemplate(data, genres) {
   moviesGallery.innerHTML = '';
 
   const galleryMarkup = data
@@ -199,30 +217,45 @@ export function renderGalleryFromTemplate(data) {
         overview,
         id,
       }) => {
+        const correctGenres = getGenresNames(genre_ids, genres);
+        console.log('|+', genre_ids, genres);
+
         return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
 
        <picture>
   <source
-    srcset="https://image.tmdb.org/t/p/w780${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w780${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 1280px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w500${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w500${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 7680px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w342${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 320px)"
   />
   <img
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
-    alt="${title || name ||original_title || original_name}"
+    srcset="https://image.tmdb.org/t/p/w342${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
+    alt="${title || name || original_title || original_name}"
     loading="lazy"
     width="395"
   />
@@ -234,7 +267,7 @@ export function renderGalleryFromTemplate(data) {
           title || name || original_title || original_name
         }</p>
         <p class='movies-gallery__genre ellipsis'>
-          ${genre_ids} | ${release_date?.split('-')[0] || 'Coming soon'}
+          ${correctGenres} | ${release_date?.split('-')[0] || 'Coming soon'}
         </p>
         <span class='movies-gallery__rating'>${Number(vote_average).toFixed(
           1

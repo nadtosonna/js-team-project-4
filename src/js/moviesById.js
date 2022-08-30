@@ -3,6 +3,7 @@ import { fetchTrailer, fetchMoviesByID } from './api/fetchMovies';
 import { getModalTemplate, secondModalMarkup } from './get-templates';
 import { onCloseCardModal } from './close-modal';
 import { actionWithModalWindow } from './modal';
+import { getGenresList } from './main-page-render';
 
 const { moviesGallery, backdrop } = getRefs();
 
@@ -17,15 +18,17 @@ moviesGallery.addEventListener('click', e => {
 });
 async function getMovieById(movieId) {
   try {
+    const genres = await getGenresList();
     const moviesInfo = await fetchMoviesByID(movieId);
 
-    backdrop.innerHTML = getModalTemplate(moviesInfo);
+    backdrop.innerHTML = getModalTemplate(moviesInfo, false, false, genres);
     backdrop.classList.remove('backdrop-modal-hidden');
     actionWithModalWindow(moviesInfo);
     onCloseCardModal();
   } catch (error) {
+    const genres = await getGenresList();
     backdrop.classList.remove('backdrop-modal-hidden');
-    backdrop.innerHTML = secondModalMarkup();
+    backdrop.innerHTML = secondModalMarkup(moviesInfo, genres);
     onCloseCardModal();
     console.log(error.message);
   }
