@@ -1,21 +1,36 @@
 import getRefs from './common/refs';
-import { fetchTop, fetchUpcoming, fetchTrendingMovies} from "./api/fetchMovies";
+import {
+  fetchTop,
+  fetchUpcoming,
+  fetchTrendingMovies,
+} from './api/fetchMovies';
 import { getCardTemplate, getGenresNames } from './get-templates';
 import { getGenresList, getTrendingMovies, page } from './main-page-render';
 import { pagination, movePagination } from './pagination';
 
-const { trendingBtn, topRatedBtn, upcomingBtn, moviesGallery, searchForm, yearFilter, genreFilter, filterInput } = getRefs();
+const {
+  trendingBtn,
+  topRatedBtn,
+  upcomingBtn,
+  moviesGallery,
+  searchForm,
+  yearFilter,
+  genreFilter,
+  filterInput,
+} = getRefs();
 
 trendingBtn.addEventListener('click', onTrendingClick);
 topRatedBtn.addEventListener('click', onTopClick);
 upcomingBtn.addEventListener('click', onUpcomingClick);
+
 
 export async function onTopClick() {
     topRatedBtn.classList.add('btn-tab-active');
     trendingBtn.classList.remove('btn-tab-active');
     upcomingBtn.classList.remove('btn-tab-active');
 
-    try {
+
+  try {
     const { results, total_results: totalResults } = await fetchTop();
     const genres = await getGenresList();
       
@@ -25,10 +40,12 @@ export async function onTopClick() {
       moviesGallery.innerHTML = '';
       pagination.reset(totalPagesMovies);
 
+
     let topUI = '';
     results.forEach(film => {
       topUI += getCardTemplate(film, genres);
     });
+
       moviesGallery.innerHTML = topUI;
    
     } catch (error) {
@@ -41,13 +58,15 @@ export async function onUpcomingClick() {
     trendingBtn.classList.remove('btn-tab-active');
     topRatedBtn.classList.remove('btn-tab-active');
 
-    try {
+
+  try {
     const { results, total_results: totalResults } = await fetchUpcoming();
     const genres = await getGenresList();
       
       const pageMovies = await fetchUpcoming(page);
+
     let totalPagesMovies = pageMovies.total_pages;
-    console.log(totalPagesMovies)
+    console.log(totalPagesMovies);
     moviesGallery.innerHTML = '';
     pagination.reset(totalPagesMovies);
 
@@ -56,11 +75,11 @@ export async function onUpcomingClick() {
       upcomingUI += getCardTemplate(film, genres);
     });
     moviesGallery.innerHTML = upcomingUI;
-
-    } catch (error) {
-        console.log(error);
-    }
+  } catch (error) {
+    console.log(error);
+  }
 }
+
 
 export async function onTrendingClick() {
     trendingBtn.classList.add('btn-tab-active');
@@ -73,9 +92,10 @@ export async function onTrendingClick() {
     moviesGallery.innerHTML = '';
     pagination.reset(totalPagesMovies);
 
-    getTrendingMovies(page);
+
+  getTrendingMovies(page);
 }
 export function clearBtnFilter() {
-    upcomingBtn.classList.remove('btn-tab-active');
-    topRatedBtn.classList.remove('btn-tab-active');
+  upcomingBtn.classList.remove('btn-tab-active');
+  topRatedBtn.classList.remove('btn-tab-active');
 }

@@ -1,20 +1,19 @@
 import getRefs from './common/refs';
 
+const { backdrop } = getRefs();
 
-const { backdrop, closeModalBtn } = getRefs();
+export function onCloseCardModal() {
+  window.addEventListener('keydown', closeModalWindow);
+  backdrop.addEventListener('click', closeModalWindow);
 
-window.addEventListener('keydown', closeModalWindow);
-backdrop.addEventListener('click', closeModalWindow);
-
-closeModalBtn.addEventListener('click', closeModalWindowBtn =>
-backdrop.classList.add('is-hidden'));
-
+  const closeModalBtn = document.querySelector('.modal-close');
+  closeModalBtn.addEventListener('click', e =>
+    backdrop.classList.add('backdrop-modal-hidden')
+  );
+}
 
 export function closeModalWindow(event) {
   if (event.code === 'Escape' || event.target === backdrop) {
-    backdrop.classList.add('is-hidden');
-    // window.removeEventListener('keydown', closeModalWindow);
-    console.log(event.target);
+    backdrop.classList.add('backdrop-modal-hidden');
   }
 }
-
