@@ -6,9 +6,7 @@ import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
 import { initPagination, paginationSettings } from './pagination';
 
-
-console.log(addEmptyTemplate);
-
+// console.log(addEmptyTemplate);
 const debounce = require('lodash.debounce');
 
 const {
