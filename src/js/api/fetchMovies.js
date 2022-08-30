@@ -23,13 +23,12 @@ export async function fetchTrendingMovies(page) {
 export async function fetchMovies(query, page) {
   try {
     const { data } = await axios.get(
-      `${SEARCH_URL}?api_key=${API_KEY}&language=en-US&include_adult=false`,
-      {
-        params: {
-          query: query.length ? query : null,
-          page,
-        },
-      }
+      `${SEARCH_URL}?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&include_adult=false`,
+      // {
+      //   params: {
+      //     query: query.length ? query : null,
+      //   },
+      // }
     );
     console.log(data);
     return data;
@@ -52,7 +51,7 @@ export async function fetchMoviesByID(id) {
 export async function fetchTop(page) {
   try {
     const { data } = await axios.get(
-      `${TOP_URL}?api_key=${API_KEY}&language=en-US&${page}`
+      `${TOP_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
     );
     return data;
   } catch (error) {
@@ -81,17 +80,6 @@ export async function fetchGenresList() {
     console.log(error);
   }
 }
-
-// export async function fetchUpcoming(page) {
-//   try {
-//     const { data } = await axios.get(
-//       `${UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=${page}`
-//     );
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 export async function fetchTrailer(id) {
   try {
