@@ -114,12 +114,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: -20px;
   margin-left: -20px;
 
   @include breakpoints(tablet) {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }
 .filter-btn-list {

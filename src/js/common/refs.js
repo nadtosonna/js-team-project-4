@@ -41,5 +41,6 @@ export default function getRefs() {
     nawList: document.querySelector('.naw-list'),
     searchFormInput: document.querySelector('.search-form__input'),
     moviesGalleryItem: document.querySelector('.movies-gallery__item'),
+    paginationContainer: document.getElementById('tui-pagination-container'),
   };
 }

@@ -1,13 +1,13 @@
+import getRefs from './common/refs';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import getRefs from './common/refs';
 import { fetchTrendingMovies, fetchMovies, fetchTop, fetchUpcoming } from './api/fetchMovies';
 import { getGenresList, getTrendingMovies } from './main-page-render.js';
 import { getCardTemplate, renderGalleryFromTemplate } from './get-templates.js';
 import { onTopClick, onUpcomingClick, onTrendingClick } from './button-filter.js';
 
+const { paginationContainer } = getRefs();
 
-const container = document.getElementById('tui-pagination-container');
 export const paginationSettings = {
     startPage: 1,
     searchType: null,
@@ -39,7 +39,7 @@ export const initPagination = ({ page, itemsPerPage, totalItems }) => {
         }
     }
 
-    const pagination = new Pagination(container, options);
+    const pagination = new Pagination(paginationContainer, options);
     paginationSettings.pagination = pagination;
 
     pagination.on('afterMove', async ({ page }) => {

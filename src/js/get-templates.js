@@ -202,16 +202,32 @@ export function renderGalleryFromTemplate(data) {
         return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
-        <img
-          src='${
-            poster_path
-              ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-          }'
-          alt='${original_title || original_name}'
-          loading='lazy'
-          width='395'
-        />
+
+       <picture>
+  <source
+    srcset="https://image.tmdb.org/t/p/w780${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+        }"
+    media="(min-width: 1280px)"
+  />
+  <source
+    srcset="https://image.tmdb.org/t/p/w500${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+        }"
+    media="(min-width: 7680px)"
+  />
+  <source
+    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+        }"
+    media="(min-width: 320px)"
+  />
+  <img
+    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+        }"
+    alt="${title || name ||original_title || original_name}"
+    loading="lazy"
+    width="395"
+  />
+</picture>
+
       </div>
       <div class='movies-gallery__text'>
         <p class='movies-gallery__title'>${
