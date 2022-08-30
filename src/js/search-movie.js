@@ -2,14 +2,13 @@ import { fetchMovies } from './api/fetchMovies';
 import { showLoader, hideLoader } from './loader';
 import getRefs from './common/refs';
 import { showLoader, hideLoader } from './loader';
-import { getCardTemplate, renderGalleryFromTemplate } from './get-templates';
-import { getGenresList } from './main-page-render';
+import { renderGalleryFromTemplate } from './get-templates';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notiflixSettings } from './common/notiflix-settings';
 import { goHomePage } from './make-header';
 import { pagination, paginationSettings } from './pagination';
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 500;
 const {
   trendingBtn,
   topRatedBtn,
@@ -27,9 +26,7 @@ export function addSearchListener() {
 }
 
 async function searchMovies(event) {
-  // event.preventDefault();
   const searchQuery = event.target.value.trim();
-  console.log(searchQuery);
 
   if (searchQuery === '') {
     // goHomePage();
@@ -41,11 +38,10 @@ async function searchMovies(event) {
       searchQuery,
       paginationSettings.startPage,
     );
-    // const genres = await getGenresList();
 
     if (totalItems === 0) {
       Notify.failure(
-        'Search result was not successful. Enter the correct movie name!',
+        'Wrong Title! Enter the correct movie name!',
         notiflixSettings
       );
       return;
@@ -59,19 +55,10 @@ async function searchMovies(event) {
     upcomingBtn.classList.remove('btn-tab-active');
 
     renderGalleryFromTemplate(results);
-    // const pageMovies = await fetchMovies(page);
-    // console.log(pageMovies)
-    // let totalPagesMovies = pageMovies.total_pages;
-    // console.log(totalPagesMovies)
-    // moviesGallery.innerHTML = '';
-    // pagination.reset(totalPagesMovies);
-
-    // let searchUI = '';
-    // results.forEach(film => {
-    //   searchUI += getCardTemplate(film, genres);
-    // });
-    // moviesGallery.innerHTML = searchUI;
   } catch (error) {
-    console.log(error);
+    Notify.failure(
+        'OOPS! Something went wrong!',
+        notiflixSettings
+      );
   }
 }

@@ -87,7 +87,6 @@ export async function fetchTrailer(id) {
       `${MOVIE_ID_URL}${id}/videos?api_key=${API_KEY}&language=en-US`
     );
     return data;
-    // return data.results;
   } catch (error) {
     console.log(error);
   }

@@ -5,6 +5,7 @@ import { getTrendingMovies } from './main-page-render.js';
 import { addSearchListener } from './search-movie.js';
 import { addEmptyTemplate } from './make-empty-template-my-library';
 import { initPagination, paginationSettings } from './pagination';
+import { clearBtnFilter } from './button-filter';
 
 
 console.log(addEmptyTemplate);
@@ -21,7 +22,10 @@ const {
   moviesGalleryContainer,
   emptyCard,
   btnFilter,
+  topRatedBtn,
+  upcomingBtn,
   container,
+  paginationContainer,
 } = getRefs();
 
 addHeaderSearchForm();
@@ -35,6 +39,7 @@ window.addEventListener('resize', debounce(chandeLogoLink, 250));
 
 export function onClickLibrary(e) {
   e.preventDefault();
+  clearBtnFilter();
 
   if (library.classList.contains('current')) {
     return;
@@ -47,6 +52,7 @@ export function onClickLibrary(e) {
   header.classList.add('library-header-bg');
   btnFilter.classList.add('visually-hidden');
   container.classList.add('is-hidden');
+  paginationContainer.classList.add('visually-hidden');
   // addEmptyTemplate();
   addHeaderBtnList();
   addLogoHover();
@@ -55,6 +61,7 @@ export function onClickLibrary(e) {
 
 function onClickHome(e) {
   e.preventDefault();
+  paginationContainer.classList.remove('visually-hidden');
   if (home.classList.contains('current')) {
     return;
   }
@@ -63,6 +70,7 @@ function onClickHome(e) {
 
 function onClickLogoLink(e) {
   moviesGalleryContainer.classList.remove('visually-hidden');
+  paginationContainer.classList.remove('visually-hidden');
   emptyCard.innerHTML = '';
   e.preventDefault();
   if (home.classList.contains('current')) {

@@ -25,7 +25,7 @@ export function markupEmptyTemplate() {
       />
       <p class="empty-template__title">
         Oops!<br />
-        List don\`t have movies
+        List is empty! Hurry up and add movies!
       </p>
       <!-- <p class="empty-template__text">
         visit home <a class="empty-template__link" href="#">page</a>

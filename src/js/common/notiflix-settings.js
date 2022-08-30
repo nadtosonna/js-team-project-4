@@ -1,7 +1,7 @@
 export const notiflixSettings = {
-  width: '480px',
+  width: '260px',
   position: 'center-top',
-  distance: '160px',
+  distance: '30px',
   useIcon: false,
   backOverlay: false,
   showOnlyTheLastOne: true,
@@ -12,7 +12,7 @@ export const notiflixSettings = {
   timeout: 2000,
 
   failure: {
-    background: 'rgb(255, 107, 8, 0.7)',
+    background: 'rgb(255, 107, 8, 1)',
     textColor: '#FFFFFF',
   },
 };
@@ -30,9 +30,4 @@ export const authNotiflixSettings = {
   fontSize: '16px',
   cssAnimationDuration: 800,
   timeout: 2500,
-
-  // failure: {
-  //   background: '#ff001b',
-  //   textColor: '#FFFFFF',
-  // },
 };

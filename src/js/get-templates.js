@@ -205,22 +205,22 @@ export function renderGalleryFromTemplate(data) {
 
        <picture>
   <source
-    srcset="https://image.tmdb.org/t/p/w780${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    srcset="https://image.tmdb.org/t/p/w780${poster_path ? poster_path : '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
         }"
     media="(min-width: 1280px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w500${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    srcset="https://image.tmdb.org/t/p/w500${poster_path ? poster_path : '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
         }"
-    media="(min-width: 7680px)"
+    media="(min-width: 768px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
         }"
     media="(min-width: 320px)"
   />
   <img
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : '/h5oGodvcoq8cyIDTy79yKn4qbey.jpg'
         }"
     alt="${title || name ||original_title || original_name}"
     loading="lazy"

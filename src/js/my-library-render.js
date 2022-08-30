@@ -1,7 +1,8 @@
 import getRefs from './common/refs';
 import { markupEmptyTemplate } from './make-empty-template-my-library';
+import { paginationSettings } from './pagination';
 
-const { moviesGallery, moviesGalleryContainer, library } = getRefs();
+const { moviesGallery, moviesGalleryContainer, library, paginationContainer } = getRefs();
 
 function reduceWatcedFilms(array) {
     return array.reduce((acc, film) => acc + getCardTemplate(film), "");
@@ -26,7 +27,9 @@ function onMyLibraryClick() {
     const myLibraryWatched = JSON.parse(localStorage.getItem("movies-watched"));
   
     if (myLibraryWatched) {
-        moviesGalleryContainer.classList.remove('visually-hidden');
+      moviesGalleryContainer.classList.remove('visually-hidden');
+      paginationContainer.classList.remove('visually-hidden');
+      paginationSettings.searchType = 'watched';
         renderWatchedFilms(myLibraryWatched);
     } else {
         moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
@@ -37,7 +40,8 @@ function onMyLibraryClick() {
         watchedBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
         if (myLibraryWatched) {
-            renderWatchedFilms(myLibraryWatched);
+          renderWatchedFilms(myLibraryWatched);
+          paginationContainer.classList.remove('visually-hidden');
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
         }
@@ -48,7 +52,9 @@ function onMyLibraryClick() {
         queueBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
         if (myLibraryQueue) {
-            renderWatchedFilms(myLibraryQueue);
+          renderWatchedFilms(myLibraryQueue);
+          paginationContainer.classList.remove('visually-hidden');
+          paginationSettings.searchType = 'queue';
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
         }
