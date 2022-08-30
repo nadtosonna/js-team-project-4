@@ -1,4 +1,4 @@
-import { fetchMovies } from './api/fetchMovies';
+import { fetchMovies, page } from './api/fetchMovies';
 import { showLoader, hideLoader } from './loader';
 import getRefs from './common/refs';
 import { showLoader, hideLoader } from './loader';
@@ -7,6 +7,7 @@ import { getGenresList } from './main-page-render';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notiflixSettings } from './common/notiflix-settings';
 import { goHomePage } from './make-header';
+import { pagination } from './pagination';
 
 const DEBOUNCE_DELAY = 300;
 const { moviesGallery } = getRefs();
@@ -42,6 +43,14 @@ async function searchMovies(event) {
       );
       return;
     }
+
+    // const pageMovies = await fetchMovies(page);
+    // console.log(pageMovies)
+    // let totalPagesMovies = pageMovies.total_pages;
+    // console.log(totalPagesMovies)
+    // moviesGallery.innerHTML = '';
+    // pagination.reset(totalPagesMovies);
+
     let searchUI = '';
     results.forEach(film => {
       searchUI += getCardTemplate(film, genres);
