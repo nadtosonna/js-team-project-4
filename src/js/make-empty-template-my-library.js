@@ -5,6 +5,7 @@ const refs = getRefs();
 export function addEmptyTemplate(keyName) {
   refs.moviesGallery.innerHTML = '';
   refs.moviesGalleryContainer.classList.add('visually-hidden');
+  refs.paginationContainer.classList.add('visually-hidden');
   if (localStorage.getItem(keyName) !== null) {
     return;
   }
