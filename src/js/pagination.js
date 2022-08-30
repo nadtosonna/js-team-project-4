@@ -47,7 +47,7 @@ export const initPagination = ({ page, itemsPerPage, totalItems }) => {
             try {
                 const { results } = await fetchTrendingMovies(page);
                 renderGalleryFromTemplate(results);
-                scrollTo();
+                window.scrollTo(pageYOffset, 0);
             } catch (error) {
                 console.log(error);
             }
@@ -55,7 +55,7 @@ export const initPagination = ({ page, itemsPerPage, totalItems }) => {
             try {
                 const { results } = await fetchMovies(page);
                 renderGalleryFromTemplate(results);
-                scrollTo();
+                window.scrollTo(pageYOffset, 0);
             } catch (error) {
                 console.log(error);
             }
@@ -63,7 +63,7 @@ export const initPagination = ({ page, itemsPerPage, totalItems }) => {
             try {
                 const { results } = await fetchTop(page);
                 renderGalleryFromTemplate(results);
-                scrollTo();
+                window.scrollTo(pageYOffset, 0);
             } catch (error) {
                 console.log(error);
             }
@@ -71,7 +71,7 @@ export const initPagination = ({ page, itemsPerPage, totalItems }) => {
             try {
                 const { results } = await fetchUpcoming(page);
                 renderGalleryFromTemplate(results);
-                scrollTo();
+                window.scrollTo(pageYOffset, 0);
             } catch (error) {
                 console.log(error);
             }
