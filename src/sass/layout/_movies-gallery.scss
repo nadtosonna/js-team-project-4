@@ -30,7 +30,7 @@
 
   &__item {
     margin-bottom: 20px;
-    transition: transform 0.5s linear;
+    transition: transform 500ms linear;
 
     border-radius: 5px;
     @include breakpoints(tablet) {
@@ -81,7 +81,7 @@
 
   &__text {
     font-family: Roboto, sans-serif;
-    // transition: translate 10s linear;
+    transition: transform 500ms linear;
 
     @include font(12px, 500, 16px);
 

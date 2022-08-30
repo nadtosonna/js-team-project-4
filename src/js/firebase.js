@@ -64,7 +64,7 @@ async function loginEmailPassword(e) {
       loginEmail,
       loginPassword
     );
-    logoutBtn.classList.remove('is-hidden-logout');
+
     authBackdrop.classList.add('auth-form-hidden');
     document.body.classList.toggle('body-overflow');
     console.log(userCredential.user);
@@ -84,7 +84,9 @@ async function createAcount(e) {
     await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
     Notify.success(`Registration was successful! `, authNotiflixSettings);
     removeInput();
-    signOut(auth);
+    logoutBtn.classList.remove('is-hidden-logout');
+    authBackdrop.classList.add('auth-form-hidden');
+    document.body.classList.remove('body-overflow');
   } catch (error) {
     Notify.failure(`${error.message}`, authNotiflixSettings);
   }
@@ -99,9 +101,9 @@ export function monitorAuthState() {
 
     if (library.classList.contains('current')) {
       authBackdrop.classList.remove('auth-form-hidden');
-      document.body.classList.toggle('body-overflow');
+      document.body.classList.add('body-overflow');
     }
-    console.log('no user');
+    // console.log('no user');
   });
 }
 

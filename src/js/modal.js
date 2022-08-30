@@ -36,10 +36,14 @@ export function actionWithModalWindow(movieData) {
   //
   //   modal.innerHTML = getModalTemplate(
   //     movieData,
-  //     existsInQueueLS,
-  //     existsInWatchedLS
+  //
   //   );
-
+  backdrop.innerHTML = getModalTemplate(
+    movieData,
+    existsInQueueLS,
+    existsInWatchedLS
+  );
+  backdrop.classList.remove('backdrop-modal-hidden');
   const queueBtn = document.querySelector('.modal-btn__addqueue');
   const watchBtn = document.querySelector('.modal-btn__addwatch');
   const closeBtn = document.querySelector('.modal-close');

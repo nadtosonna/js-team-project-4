@@ -7,9 +7,7 @@ import { addEmptyTemplate } from './make-empty-template-my-library';
 import { initPagination, paginationSettings } from './pagination';
 import { clearBtnFilter } from './button-filter';
 
-
-console.log(addEmptyTemplate);
-
+// console.log(addEmptyTemplate);
 const debounce = require('lodash.debounce');
 
 const {
