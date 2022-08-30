@@ -1,7 +1,8 @@
 import getRefs from './common/refs';
 import { markupEmptyTemplate } from './make-empty-template-my-library';
+import { paginationSettings } from './pagination';
 
-const { moviesGallery, moviesGalleryContainer, library } = getRefs();
+const { moviesGallery, moviesGalleryContainer, library, paginationContainer } = getRefs();
 
 function reduceWatcedFilms(array) {
     return array.reduce((acc, film) => acc + renderGalleryFromTemplate(film), "");
@@ -25,9 +26,13 @@ function onMyLibraryClick() {
     const myLibraryQueue = JSON.parse(localStorage.getItem("movies-in-queue"));
     const myLibraryWatched = JSON.parse(localStorage.getItem("movies-watched"));
   
+
     if (myLibraryWatched && myLibraryWatched.length !== 0) {
-        moviesGalleryContainer.classList.remove('visually-hidden');
-        renderWatchedFilms(myLibraryWatched);
+      moviesGalleryContainer.classList.remove('visually-hidden');
+      paginationContainer.classList.remove('visually-hidden');
+      paginationSettings.searchType = 'watched';
+      renderWatchedFilms(myLibraryWatched);
+      
     } else {
         moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
     }
@@ -36,8 +41,10 @@ function onMyLibraryClick() {
         queueBtn.classList.remove("accent-btn");
         watchedBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
+        
         if (myLibraryWatched && myLibraryWatched.length !== 0) {
-            renderWatchedFilms(myLibraryWatched);
+          renderWatchedFilms(myLibraryWatched);
+          paginationContainer.classList.remove('visually-hidden');
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
         }
@@ -47,8 +54,12 @@ function onMyLibraryClick() {
         watchedBtn.classList.remove("accent-btn");
         queueBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
+        
         if (myLibraryQueue && myLibraryQueue.length !== 0) {
-            renderWatchedFilms(myLibraryQueue);
+          renderWatchedFilms(myLibraryQueue);
+          paginationContainer.classList.remove('visually-hidden');
+          paginationSettings.searchType = 'queue';
+
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
         }

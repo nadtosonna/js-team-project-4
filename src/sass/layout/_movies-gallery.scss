@@ -146,10 +146,13 @@
 // }
 
 .button-filter {
+
+  @include font(12px, 500, 16px); 
+
   display: block;
   margin-top: 20px;
   margin-left: 20px;
-  min-width: 65px;
+  min-width: 70px;
   height: 40px;
   text-transform: uppercase;
   text-align: center;
@@ -169,6 +172,7 @@
 
   @include breakpoints(tablet) {
     min-width: 160px;
+    @include font(16px, 500, 16px);
   }
 }
 

@@ -4,8 +4,6 @@ import getRefs from './common/refs';
 import { getCardTemplate, renderGalleryFromTemplate } from './get-templates';
 import { initPagination, paginationSettings } from './pagination';
 
-// export let page = 1;
-
 const { moviesGallery, trendingBtn } = getRefs();
 
 export async function getGenresList() {
@@ -33,9 +31,6 @@ export async function getTrendingMovies(renderPage) {
 
     paginationSettings.searchType = 'main';
     paginationSettings.totalItemsHome = totalItems;
-
-    // console.log(results);
-    // console.log(renderGalleryFromTemplate);
 
     renderGalleryFromTemplate(results);
 
