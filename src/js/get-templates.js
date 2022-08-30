@@ -1,19 +1,11 @@
+import {
+  getTrendingMovies,
+  fetchGenresList,
+  getGenresList,
+} from './main-page-render.js';
 import sprite from '../images/symbol-defs.svg';
 import getRefs from './common/refs';
 const { moviesGallery } = getRefs();
-
-const getGenresNames = (genresIds, genres) => {
-  if (!genresIds || !genresIds.length) return '';
-  let genresNames = [];
-  genresIds.forEach(genreId => {
-    let genreName = genres[genreId];
-    if (genreName) genresNames.push(genreName);
-  });
-  if (genresNames.length > 2)
-    return `${genresNames[0]}, ${genresNames[1]}, Other`;
-  if (genresNames.length === 2) return `${genresNames[0]}, ${genresNames[1]}`;
-  return genresNames[0];
-};
 
 export const getCardTemplate = (movie, genres) => {
   const {
@@ -26,8 +18,11 @@ export const getCardTemplate = (movie, genres) => {
     release_date,
     id,
   } = movie;
-  const correctGenres = getGenresNames(genre_ids, genres);
-  // console.log(id);
+  console.log(genre_ids);
+
+  // const correctGenres = getGenres(genre_ids);
+  console.log(correctGenres);
+  console.log('correctGenres', correctGenres);
   return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
@@ -180,49 +175,90 @@ export function secondModalMarkup() {
   </div>`;
 }
 
-export function renderGalleryFromTemplate(data) {
-  moviesGallery.innerHTML = '';
+const getGenresNames = (genresIds, genresListObj) => {
+  const genresIdList = genresIds.map(genreId => genresListObj[genreId]);
+  let genresString = '';
 
-  const galleryMarkup = data
-    .map(
-      ({
-        title,
-        original_name,
-        original_title,
-        name,
-        poster_path,
-        release_date,
-        genre_ids,
-        popularity,
-        vote_average,
-        vote_count,
-        overview,
-        id,
-      }) => {
-        return `
+  if (genresIdList.length > 2) {
+    genresString = genresIdList.slice(0, 2).join(', ') + ', Other';
+  } else {
+    genresString = genresIdList.join(', ');
+  }
+  return genresString;
+
+  // if (!genresIds || !genresIds.length) return '';
+  // let genresNames = [];
+  // genresIds.forEach(genreId => {
+  //   console.log(genreId);
+  //   let genreName = genres[genreId];
+  //   if (genreName) genresNames.push(genreName);
+  // });
+  // if (genresNames.length > 2)
+  //   return `${genresNames[0]}, ${genresNames[1]}, Other`;
+  // if (genresNames.length === 2) return `${genresNames[0]}, ${genresNames[1]}`;
+  // return genresNames[0];
+};
+
+export async function renderGalleryFromTemplate(data) {
+  moviesGallery.innerHTML = '';
+  try {
+    const genresListObj = await getGenresList(data);
+    // const genresList = Object.values(genresListObj);
+    // console.log(genresListObj)
+
+    const galleryMarkup = data
+      .map(
+        ({
+          title,
+          original_name,
+          original_title,
+          name,
+          poster_path,
+          release_date,
+          genre_ids,
+          popularity,
+          vote_average,
+          vote_count,
+          overview,
+          id,
+        }) => {
+          const genryStr = getGenresNames(genre_ids, genresListObj);
+          return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
 
        <picture>
   <source
-    srcset="https://image.tmdb.org/t/p/w780${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w780${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 1280px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w500${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w500${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 7680px)"
   />
   <source
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
+    srcset="https://image.tmdb.org/t/p/w342${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
     media="(min-width: 320px)"
   />
   <img
-    srcset="https://image.tmdb.org/t/p/w342${poster_path ? poster_path : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-        }"
-    alt="${title || name ||original_title || original_name}"
+    srcset="https://image.tmdb.org/t/p/w342${
+      poster_path
+        ? poster_path
+        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+    }"
+    alt="${title || name || original_title || original_name}"
     loading="lazy"
     width="395"
   />
@@ -234,7 +270,7 @@ export function renderGalleryFromTemplate(data) {
           title || name || original_title || original_name
         }</p>
         <p class='movies-gallery__genre ellipsis'>
-          ${genre_ids} | ${release_date?.split('-')[0] || 'Coming soon'}
+          ${genryStr} | ${release_date?.split('-')[0] || 'Coming soon'}
         </p>
         <span class='movies-gallery__rating'>${Number(vote_average).toFixed(
           1
@@ -242,8 +278,11 @@ export function renderGalleryFromTemplate(data) {
       </div>
     </li>
   `;
-      }
-    )
-    .join('');
-  moviesGallery.insertAdjacentHTML('beforeend', galleryMarkup);
+        }
+      )
+      .join('');
+    moviesGallery.insertAdjacentHTML('beforeend', galleryMarkup);
+  } catch (error) {
+    console.log(error.message);
+  }
 }

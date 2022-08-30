@@ -4,7 +4,6 @@ import getRefs from './common/refs';
 import { getCardTemplate, renderGalleryFromTemplate } from './get-templates';
 import { initPagination, paginationSettings } from './pagination';
 
-
 // export let page = 1;
 
 const { moviesGallery, trendingBtn } = getRefs();
@@ -20,9 +19,13 @@ export async function getGenresList() {
 export async function getTrendingMovies(renderPage) {
   trendingBtn.classList.add('btn-tab-active');
   try {
-    const { results, page, total_results: totalItems } = await fetchTrendingMovies(renderPage);
+    const {
+      results,
+      page,
+      total_results: totalItems,
+    } = await fetchTrendingMovies(renderPage);
 
-     initPagination({
+    initPagination({
       page,
       itemsPerPage: results.length,
       totalItems,
@@ -35,10 +38,6 @@ export async function getTrendingMovies(renderPage) {
     console.log(renderGalleryFromTemplate);
 
     renderGalleryFromTemplate(results);
-
-
-
-
 
     //  const pageMovies = await fetchTrendingMovies(page);
     //  const genres = await getGenresList();
@@ -53,7 +52,6 @@ export async function getTrendingMovies(renderPage) {
     //   html += getCardTemplate(film, genres);
     // });
     // moviesGallery.innerHTML = html;
-
   } catch (error) {
     console.log(error);
   }
