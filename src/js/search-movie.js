@@ -1,4 +1,4 @@
-import { fetchMovies, page } from './api/fetchMovies';
+import { fetchMovies } from './api/fetchMovies';
 import { showLoader, hideLoader } from './loader';
 import getRefs from './common/refs';
 import { showLoader, hideLoader } from './loader';
