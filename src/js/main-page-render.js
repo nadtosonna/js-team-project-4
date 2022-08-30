@@ -34,8 +34,8 @@ export async function getTrendingMovies(renderPage) {
     paginationSettings.searchType = 'main';
     paginationSettings.totalItemsHome = totalItems;
 
-    console.log(results);
-    console.log(renderGalleryFromTemplate);
+    // console.log(results);
+    // console.log(renderGalleryFromTemplate);
 
     renderGalleryFromTemplate(results);
 

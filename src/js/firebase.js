@@ -103,7 +103,7 @@ export function monitorAuthState() {
       authBackdrop.classList.remove('auth-form-hidden');
       document.body.classList.add('body-overflow');
     }
-    console.log('no user');
+    // console.log('no user');
   });
 }
 
