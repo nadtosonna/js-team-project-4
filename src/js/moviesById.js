@@ -3,6 +3,7 @@ import { fetchTrailer, fetchMoviesByID } from './api/fetchMovies';
 import { getModalTemplate, secondModalMarkup } from './get-templates';
 import { onCloseCardModal } from './close-modal';
 import { actionWithModalWindow } from './modal';
+import { QUEUE_STORAGE_KEY, WATCHED_STORAGE_KEY } from './common/keys';
 
 const { moviesGallery, backdrop } = getRefs();
 
@@ -19,8 +20,6 @@ async function getMovieById(movieId) {
   try {
     const moviesInfo = await fetchMoviesByID(movieId);
 
-    backdrop.innerHTML = getModalTemplate(moviesInfo);
-    backdrop.classList.remove('backdrop-modal-hidden');
     actionWithModalWindow(moviesInfo);
     onCloseCardModal();
   } catch (error) {
