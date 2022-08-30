@@ -43,7 +43,9 @@ export const getCardTemplate = (movie, genres) => {
         />
       </div>
       <div class='movies-gallery__text'>
-        <p class='movies-gallery__title'>${title || original_title || original_name}</p>
+        <p class='movies-gallery__title'>${
+          title || original_title || original_name
+        }</p>
         <p class='movies-gallery__genre ellipsis'>
           ${correctGenres} | ${release_date?.split('-')[0] || '2077'}
         </p>
@@ -87,9 +89,11 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
             <h2 class="modal-title">${title}</h2>
             <ul class="modal-list__key">
                 <li class="modal-info">Vote / Votes</li>
-                <li class="modal-info modal-info__library">${Number(
+                <li class="modal-info modal-info__library"><span class="modal-info__vote">${Number(
                   vote_average
-                ).toFixed(1)} / ${vote_count}</li>
+                ).toFixed(
+                  1
+                )} </span> / <span class="modal-info__votes">${vote_count}</span></li>
             </ul>
               <ul class="modal-list__key">
                 <li class="modal-info">Popularity</li>
@@ -112,7 +116,7 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
                 
             </ul>
             <h3 class="modal-text__title">About</h3>
-            <p>${overview}</p>
+            <p class="modal-text__review">${overview}</p>
             <div class="modal-block__btn">
                    <button class="modal-btn__addwatch" type="button">${
                      existsInWatchedLS
@@ -177,46 +181,53 @@ export function secondModalMarkup() {
 }
 
 export function renderGalleryFromTemplate(data) {
-
   moviesGallery.innerHTML = '';
-  
-  const galleryMarkup = data.map(({
-    title,
-    original_name,
-    original_title,
-    name,
-    poster_path,
-    release_date,
-    genre_ids,
-    popularity,
-    vote_average,
-    vote_count,
-    overview,
-    id}) => {
-    return `
+
+  const galleryMarkup = data
+    .map(
+      ({
+        title,
+        original_name,
+        original_title,
+        name,
+        poster_path,
+        release_date,
+        genre_ids,
+        popularity,
+        vote_average,
+        vote_count,
+        overview,
+        id,
+      }) => {
+        return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
         <img
-          src='${poster_path
-        ? `https://image.tmdb.org/t/p/w500${poster_path}`
-        : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
-      }'
+          src='${
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : 'https://ik.imagekit.io/rqegzjddo/no-poster-avalible.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661766934161'
+          }'
           alt='${original_title || original_name}'
           loading='lazy'
           width='395'
         />
       </div>
       <div class='movies-gallery__text'>
-        <p class='movies-gallery__title'>${title || name || original_title || original_name}</p>
+        <p class='movies-gallery__title'>${
+          title || name || original_title || original_name
+        }</p>
         <p class='movies-gallery__genre ellipsis'>
           ${genre_ids} | ${release_date?.split('-')[0] || 'Coming soon'}
         </p>
         <span class='movies-gallery__rating'>${Number(vote_average).toFixed(
-        1
-      )}</span>
+          1
+        )}</span>
       </div>
     </li>
   `;
-  }).join('');
+      }
+    )
+    .join('');
   moviesGallery.insertAdjacentHTML('beforeend', galleryMarkup);
 }

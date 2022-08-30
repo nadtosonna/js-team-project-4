@@ -46,8 +46,8 @@
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 552px;
-    padding: 48px 20px 40px 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -73,18 +73,18 @@
   transform: rotate(-90deg);
 
   @media screen and (max-width: 767px) {
-    left: 242px;
-    bottom: 965px;
+    right: 8px;
+    top: 8px;
   }
 
   @media screen and (min-width: 768px) {
-    left: 662px;
-    bottom: 514px;
+    right: 8px;
+    top: 8px;
   }
 
   @media screen and (min-width: 1280px) {
-    left: 770px;
-    bottom: 522px;
+    right: 8px;
+    top: 8px;
   }
 }
 
@@ -125,20 +125,15 @@
 
   @media screen and (max-width: 767px) {
     margin-top: 20px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.1px;
+    @include font(20px, 500, 23px);
   }
 
   @media screen and (min-width: 780px) {
-    font-size: 20px;
-    line-height: 1.13px;
+    @include font(20px, 500, 23px);
   }
 
   @media screen and (min-width: 1280px) {
-    padding-top: 5px;
-    font-size: 30px;
-    line-height: 1.13px;
+    @include font(30px, 500, 35px);
   }
 }
 
@@ -163,6 +158,23 @@
   margin-bottom: 20px;
 }
 
+.modal-info__vote {
+  padding: 1px 10px;
+  margin-right: 5px;
+
+  color: var(--primary-color-white);
+  background-color: var(--accent-color);
+  border-radius: 5px;
+}
+
+.modal-info__votes {
+  padding: 1px 10px;
+  margin-left: 3px;
+
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+
 .modal-list__library {
   flex-grow: 2;
   display: inline-block;
@@ -185,12 +197,14 @@
 }
 
 .modal-text__title {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.67;
+  @include font(12px, 500, 16px);
   margin-bottom: 8px;
   text-transform: uppercase;
   color: var(--text-color-black);
+}
+
+.modal-text__review {
+  @include font(12px, 500, 20px);
 }
 
 .modal-text {
@@ -204,13 +218,13 @@
 .modal-block__btn {
   @media screen and (max-width: 767px) {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
 
 .modal-btn__addwatch,
 .modal-btn__addqueue {
-  height: 44px;
+  min-height: 44px;
   margin-top: 20px;
   text-align: center;
   text-transform: uppercase;
@@ -238,6 +252,7 @@
   }
 
   @media screen and (min-width: 1280px) {
+    display: inline-block;
     width: 136px;
     padding: 12px 10px;
   }
