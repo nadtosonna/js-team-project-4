@@ -24,10 +24,10 @@ export async function getTrendingMovies(page) {
      const pageMovies = await fetchTrendingMovies(page);
      const genres = await getGenresList();
 
-    let totalPagesMovies = pageMovies.total_pages;
-    console.log(totalPagesMovies)
-    moviesGallery.innerHTML = '';
-    pagination.reset(totalPagesMovies);
+    // let totalPagesMovies = pageMovies.total_pages;
+    // console.log(totalPagesMovies)
+    // moviesGallery.innerHTML = '';
+    // pagination.reset(totalPagesMovies);
 
     let html = '';
     results.forEach(film => {
