@@ -25,7 +25,7 @@ function onMyLibraryClick() {
     const myLibraryQueue = JSON.parse(localStorage.getItem("movies-in-queue"));
     const myLibraryWatched = JSON.parse(localStorage.getItem("movies-watched"));
   
-    if (myLibraryWatched) {
+    if (myLibraryWatched && myLibraryWatched.length !== 0) {
         moviesGalleryContainer.classList.remove('visually-hidden');
         renderWatchedFilms(myLibraryWatched);
     } else {
@@ -36,7 +36,7 @@ function onMyLibraryClick() {
         queueBtn.classList.remove("accent-btn");
         watchedBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
-        if (myLibraryWatched) {
+        if (myLibraryWatched && myLibraryWatched.length !== 0) {
             renderWatchedFilms(myLibraryWatched);
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());;
@@ -47,7 +47,7 @@ function onMyLibraryClick() {
         watchedBtn.classList.remove("accent-btn");
         queueBtn.classList.add("accent-btn");
         moviesGallery.innerHTML = "";
-        if (myLibraryQueue) {
+        if (myLibraryQueue && myLibraryQueue.length !== 0) {
             renderWatchedFilms(myLibraryQueue);
         } else {
             moviesGallery.insertAdjacentHTML('beforeend', markupEmptyTemplate());
