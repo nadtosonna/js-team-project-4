@@ -61,7 +61,7 @@ export async function onTrendingClick() {
   
   const { results, total_results: totalItems } = await fetchTrendingMovies(paginationSettings.startPage,);
   paginationSettings.searchType = 'main';
-  paginationSettings.pagination.reset(totalItems);
+  paginationSettings.pagination.reset(paginationSettings.totalItemsHome);
 
   getTrendingMovies(paginationSettings.startPage);
 }
