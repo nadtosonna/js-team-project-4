@@ -15,5 +15,8 @@ export function onCloseCardModal() {
 export function closeModalWindow(event) {
   if (event.code === 'Escape' || event.target === backdrop) {
     backdrop.classList.add('backdrop-modal-hidden');
+    window.removeEventListener('keydown', closeModalWindow);
+    backdrop.removeEventListener('click', closeModalWindow);
   }
+  console.log(event.code);
 }
