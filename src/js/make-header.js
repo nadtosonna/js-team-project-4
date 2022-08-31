@@ -51,7 +51,6 @@ export function onClickLibrary(e) {
   btnFilter.classList.add('visually-hidden');
   container.classList.add('is-hidden');
   paginationContainer.classList.add('visually-hidden');
-  // addEmptyTemplate();
   addHeaderBtnList();
   addLogoHover();
   addLogoActive();

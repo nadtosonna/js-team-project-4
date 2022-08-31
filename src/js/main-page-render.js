@@ -33,20 +33,7 @@ export async function getTrendingMovies(renderPage) {
     paginationSettings.totalItemsHome = totalItems;
 
     renderGalleryFromTemplate(results);
-
-    //  const pageMovies = await fetchTrendingMovies(page);
-    //  const genres = await getGenresList();
-
-    // let totalPagesMovies = pageMovies.total_pages;
-    // console.log(totalPagesMovies)
-    // moviesGallery.innerHTML = '';
-    // pagination.reset(totalPagesMovies);
-
-    // let html = '';
-    // results.forEach(film => {
-    //   html += getCardTemplate(film, genres);
-    // });
-    // moviesGallery.innerHTML = html;
+    
   } catch (error) {
     console.log(error);
   }

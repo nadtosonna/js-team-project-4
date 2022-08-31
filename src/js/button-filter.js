@@ -13,9 +13,6 @@ const {
   trendingBtn,
   topRatedBtn,
   upcomingBtn,
-  moviesGallery,
-  searchForm,
-  filterInput,
 } = getRefs();
 
 trendingBtn.addEventListener('click', onTrendingClick);
