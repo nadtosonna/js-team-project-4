@@ -18,5 +18,4 @@ export function closeModalWindow(event) {
     window.removeEventListener('keydown', closeModalWindow);
     backdrop.removeEventListener('click', closeModalWindow);
   }
-  console.log(event.code);
 }
