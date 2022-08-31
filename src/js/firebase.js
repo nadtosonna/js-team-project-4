@@ -13,8 +13,6 @@ import { onClickLibrary } from './make-header';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { authNotiflixSettings } from './common/notiflix-settings';
 
-// console.log(onClickLibrary(e));
-
 const {
   header,
   headerContainer,
@@ -68,7 +66,7 @@ async function loginEmailPassword(e) {
     authBackdrop.classList.add('auth-form-hidden');
     document.body.classList.toggle('body-overflow');
     console.log(userCredential.user);
-    Notify.success(`successful`, authNotiflixSettings);
+    Notify.success(`You are logged in!`, authNotiflixSettings);
     removeInput();
   } catch (error) {
     Notify.failure(`${error.message}`, authNotiflixSettings);

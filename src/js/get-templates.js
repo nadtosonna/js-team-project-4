@@ -18,11 +18,7 @@ export const getCardTemplate = (movie, genres) => {
     release_date,
     id,
   } = movie;
-  console.log(genre_ids);
 
-  // const correctGenres = getGenres(genre_ids);
-  console.log(correctGenres);
-  console.log('correctGenres', correctGenres);
   return `
     <li class='movies-gallery__item' data-id='${id}'>
       <div class='movies-gallery__img'>
@@ -104,11 +100,7 @@ export const getModalTemplate = (movie, existsInQueueLS, existsInWatchedLS) => {
                   ', '
                 )}</li>
             </ul>
-            <ul class="modal-list__library">
-                
-                
-              
-                
+            <ul class="modal-list__library">  
             </ul>
             <h3 class="modal-text__title">About</h3>
             <p class="modal-text__review">${overview}</p>
@@ -185,26 +177,12 @@ const getGenresNames = (genresIds, genresListObj) => {
     genresString = genresIdList.join(', ');
   }
   return genresString;
-
-  // if (!genresIds || !genresIds.length) return '';
-  // let genresNames = [];
-  // genresIds.forEach(genreId => {
-  //   console.log(genreId);
-  //   let genreName = genres[genreId];
-  //   if (genreName) genresNames.push(genreName);
-  // });
-  // if (genresNames.length > 2)
-  //   return `${genresNames[0]}, ${genresNames[1]}, Other`;
-  // if (genresNames.length === 2) return `${genresNames[0]}, ${genresNames[1]}`;
-  // return genresNames[0];
 };
 
 export async function renderGalleryFromTemplate(data) {
   moviesGallery.innerHTML = '';
   try {
     const genresListObj = await getGenresList(data);
-    // const genresList = Object.values(genresListObj);
-    // console.log(genresListObj)
 
     const galleryMarkup = data
       .map(

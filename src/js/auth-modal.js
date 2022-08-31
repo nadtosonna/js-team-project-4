@@ -1,7 +1,6 @@
 import getRefs from './common/refs';
 import { goHomePage } from './make-header';
 const { authBackdrop } = getRefs();
-// console.log(authForm);
 const authFormCloseIcon = document.querySelector('.auth-form-close-icon');
 authBackdrop.classList.add('auth-form-hidden');
 

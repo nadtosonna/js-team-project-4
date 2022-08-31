@@ -8,12 +8,11 @@ import { notiflixSettings } from './common/notiflix-settings';
 import { goHomePage } from './make-header';
 import { pagination, paginationSettings } from './pagination';
 
-const DEBOUNCE_DELAY = 500;
+const DEBOUNCE_DELAY = 600;
 const {
   trendingBtn,
   topRatedBtn,
   upcomingBtn,
-  moviesGallery,
 } = getRefs();
 
 const debounce = require('lodash.debounce');
@@ -55,6 +54,8 @@ async function searchMovies(event) {
     upcomingBtn.classList.remove('btn-tab-active');
 
     renderGalleryFromTemplate(results);
+
+    event.target.value = '';
   } catch (error) {
     Notify.failure(
         'OOPS! Something went wrong!',

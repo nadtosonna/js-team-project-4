@@ -13,7 +13,6 @@ export async function fetchTrendingMovies(page) {
     const { data } = await axios.get(
       `${TRENDING_URL}?api_key=${API_KEY}&page=${page}`
     );
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -24,13 +23,7 @@ export async function fetchMovies(query, page) {
   try {
     const { data } = await axios.get(
       `${SEARCH_URL}?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&include_adult=false`
-      // {
-      //   params: {
-      //     query: query.length ? query : null,
-      //   },
-      // }
     );
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
