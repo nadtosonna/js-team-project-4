@@ -1,13 +1,14 @@
 .movies-gallery {
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
   padding-top: 20px;
 
   @include breakpoints(tablet) {
     display: flex;
     flex-wrap: wrap;
     margin-left: -32px;
+    margin-bottom: -32px;
     padding-top: 60px;
-    padding-bottom: 60px;
+    // padding-bottom: 60px;
   }
   @include breakpoints(desktop) {
     margin-left: -16px;
@@ -146,8 +147,7 @@
 // }
 
 .button-filter {
-
-  @include font(12px, 500, 16px); 
+  @include font(12px, 500, 16px);
 
   display: block;
   margin-top: 20px;
